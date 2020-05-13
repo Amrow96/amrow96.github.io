@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+Route::get('/login', 'Auth\LoginController@showLogin')->name('login');
+Route::post('/login', 'Auth\LoginController@login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/selector', 'SelectorController@selector')->name('selector');
+
+Route::group(['middleware' => ['auth']], function () {
+
+
 });

@@ -16,26 +16,28 @@
     <div id="app">
         <div class="container">
             <div class="row ">        
-                <div class="col-2">
+                <div class="col-2 vh-100">
                         {{-- Hacemos las 4 columnas con un for --}}
                     @for ($i = 0; $i < 4; $i++)
-                        <object data="{{ asset('img/Columna.svg') }}" type="image/svg+xml">
+                        <object data="{{ asset('img/Columna.svg') }}" height="100%" type="image/svg+xml">
                             <!-- Imagen alternativa si el SVG no puede cargarse -->
-                            <img src="gráficoalternativo.png" alt="Imagen PNG alternativa">
+                            <img src="" alt="Imagen PNG alternativa">
                         </object>
                     @endfor
                 </div>
                 <div class="col-8 ">
-                    @yield('principal')
                     <div class="titulo"><p>Tipografías</p></div>
                     <div class="subtitulo">Tipografías</div>
+
+                    @yield('principal')
+
                 </div>      
-                 <div class="col-2 ">
+                 <div class="col-2 vh-100 ">
                     {{-- Hacemos las 4 columnas con un for --}}
                     @for ($i = 0; $i < 4; $i++)
-                        <object   data="{{ asset('img/Columna.svg') }}" type="image/svg+xml">
+                        <object   data="{{ asset('img/Columna.svg') }}" height="100%" type="image/svg+xml">
                             <!-- Imagen alternativa si el SVG no puede cargarse -->
-                            <img src="gráficoalternativo.png" alt="Imagen PNG alternativa">
+                            <img src="" alt="Imagen PNG alternativa">
                         </object>
                     @endfor
                 </div>
