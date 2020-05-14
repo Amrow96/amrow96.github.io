@@ -15,10 +15,10 @@
 <body class="app">
     <div id="app">
         <div class="container">
-            <div class="row ">        
-                <div class="col-8 ">
-                    <div class="titulo"><p>Tipografías</p></div>
-                    <div class="subtitulo">Tipografías</div>
+            <div class="row justify-content-md-center ">        
+                <div class="col-8 offset-2">
+                    <div class="titulo"><p>Titulo</p></div>
+                    <div class="subtitulo">Subtitulo</div>
                     @yield('principal')
                 </div>      
             </div>
