@@ -86,6 +86,13 @@
     font-family: var(--font-family-text) !important;
 }
 
+.app {
+    background-image: url(../../resources/img/Columnas4.svg);
+    background-size: 100%;
+    background-repeat: repeat-y;
+
+}
+
 html {
     font-family: 'Crimson Text', serif;
     line-height: 1.15;

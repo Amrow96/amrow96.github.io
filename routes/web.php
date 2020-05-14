@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/selector', 'SelectorController@selector')->name('selector');
 
 Route::group(['middleware' => ['auth']], function () {
-
+//Mentre no funcioni el deixarem vuit pero hi va: 
+//Selector de cruds
 
 });

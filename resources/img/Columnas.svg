@@ -1,0 +1,17 @@
+<svg id="Columnas" xmlns="http://www.w3.org/2000/svg" width="1920" height="412" viewBox="0 0 1920 412">
+  <rect id="Rectángulo_3" data-name="Rectángulo 3" width="1920" height="412" fill="none"/>
+  <g id="Columna_Izq" data-name="Columna Izq" transform="translate(60 1)">
+    <line id="Línea_18" data-name="Línea 18" y2="412" transform="translate(0 -1)" fill="none" stroke="#4265ff" stroke-width="8"/>
+    <line id="Línea_19" data-name="Línea 19" y2="412" transform="translate(199 -1)" fill="none" stroke="#4265ff" stroke-width="8"/>
+    <line id="Línea_20" data-name="Línea 20" y2="412" transform="translate(99.89 -1)" fill="none" stroke="#4265ff" stroke-width="8"/>
+    <line id="Línea_21" data-name="Línea 21" y2="412" transform="translate(149.945 -1)" fill="none" stroke="#4265ff" stroke-width="8"/>
+    <line id="Línea_22" data-name="Línea 22" y2="412" transform="translate(49.834 -1)" fill="none" stroke="#4265ff" stroke-width="8"/>
+  </g>
+  <g id="Columna_Izq-2" data-name="Columna Izq" transform="translate(1660 1)">
+    <line id="Línea_18-2" data-name="Línea 18" y2="412" transform="translate(0 -1)" fill="none" stroke="#4265ff" stroke-width="8"/>
+    <line id="Línea_19-2" data-name="Línea 19" y2="412" transform="translate(199 -1)" fill="none" stroke="#4265ff" stroke-width="8"/>
+    <line id="Línea_20-2" data-name="Línea 20" y2="412" transform="translate(99.89 -1)" fill="none" stroke="#4265ff" stroke-width="8"/>
+    <line id="Línea_21-2" data-name="Línea 21" y2="412" transform="translate(149.945 -1)" fill="none" stroke="#4265ff" stroke-width="8"/>
+    <line id="Línea_22-2" data-name="Línea 22" y2="412" transform="translate(49.834 -1)" fill="none" stroke="#4265ff" stroke-width="8"/>
+  </g>
+</svg>

@@ -7,6 +7,9 @@ Selector{{-- TODO: llegir aquest Text de la BAse de dades  id=2 controlAcces--}}
         <a class="btn btn-secondary">{{ Auth::user()->email }}</a>
         
       <div>Has de seleccionar una de les dues opcions</div>
+        <a class="btn btn-primary"href="{{ route('textos') }}">Textos</a>
+        <a class="btn btn-secondary"href="{{ route('imagenes') }}">Imagenes</a>
+
     @else
         <a class="btn btn-danger"href="{{ route('logout') }}">Logout</a>
         <div>No estas loguejat:</div>
