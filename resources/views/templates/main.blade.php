@@ -15,8 +15,8 @@
 <body class="app">
     <div id="app">
         <div class="container">
-            <div class="row justify-content-md-center ">        
-                <div class="col-8 offset-2">
+            <div class="row justify-content-md-center col-8 offset-2 ">        
+                <div>
                     <div class="titulo"><p>Titulo</p></div>
                     <div class="subtitulo">Subtitulo</div>
                     @yield('principal')

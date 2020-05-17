@@ -5,6 +5,7 @@ Welcome
 @endsection
 @section('principal')
 <div class="container">
+    <home></home>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -16,7 +17,7 @@ Welcome
                         </div>
                     @endif
 
-Aqui el contenido
+                Aqui el contenido
                 </div>
             </div>
         </div>

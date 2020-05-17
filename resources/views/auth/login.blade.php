@@ -4,9 +4,8 @@ Control d'Acces
 {{-- TODO: llegir aquest Text de la BAse de dades  id=2 controlAcces--}}
 @endsection
 @section('principal')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="container justify-content-center ">
+    <div class="row ">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>{{-- TODO: llegir text de la base de dades  id=2 controlAcces--}}
                     @if(Auth::check())
@@ -47,7 +46,6 @@ Control d'Acces
                     </form>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 @endsection

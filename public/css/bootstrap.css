@@ -93,6 +93,10 @@
 
 }
 
+.democolor {
+    background-color: deeppink;
+}
+
 html {
     font-family: 'Crimson Text', serif;
     line-height: 1.15;
