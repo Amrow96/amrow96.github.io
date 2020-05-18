@@ -1967,6 +1967,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37746,67 +37748,75 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col justify-content-center" }, [
-        _c("img", {
-          staticClass: "justify-content-center",
-          attrs: {
-            src: "resources/img/IsotipoCirculo.svg",
-            onerror: "this.onerror=null; this.src='image.png'"
-          }
-        }),
-        _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
         _c("h1", { staticClass: "titulo" }, [
           _vm._v(_vm._s(_vm.textosMostrar[0].text))
         ]),
         _vm._v(" "),
         _c("h2", { staticClass: "subtitulo" }, [
           _vm._v(_vm._s(_vm.textosMostrar[1].text))
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn",
-            on: {
-              click: function($event) {
-                return _vm.modificarIdioma(0)
-              }
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn",
+          on: {
+            click: function($event) {
+              return _vm.modificarIdioma(0)
             }
-          },
-          [_vm._v("Traduir al Catala")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn",
-            on: {
-              click: function($event) {
-                return _vm.modificarIdioma(1)
-              }
+          }
+        },
+        [_vm._v("Traduir al Català")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn",
+          on: {
+            click: function($event) {
+              return _vm.modificarIdioma(1)
             }
-          },
-          [_vm._v("Traduir al Castella")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn",
-            on: {
-              click: function($event) {
-                return _vm.modificarIdioma(2)
-              }
+          }
+        },
+        [_vm._v("Traduir al Castella")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn",
+          on: {
+            click: function($event) {
+              return _vm.modificarIdioma(2)
             }
-          },
-          [_vm._v("Traduir al Anglés")]
-        )
-      ])
+          }
+        },
+        [_vm._v("Traduir al Anglés")]
+      )
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mt-3" }, [
+      _c("img", {
+        attrs: {
+          src: "resources/img/IsotipoCirculo.svg",
+          onerror: "this.onerror=null; this.src='image.png'"
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 

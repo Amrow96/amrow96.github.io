@@ -1,19 +1,21 @@
 <template>
   <main>
     <!-- Isotip + intntro -->
-    <div class="row">
-      <div class="col justify-content-center">
+    <div class="row justify-content-center">
+      <div class="row mt-3">
         <img
-          class="justify-content-center"
           src="resources/img/IsotipoCirculo.svg"
           onerror="this.onerror=null; this.src='image.png'"
         />
+      </div>
+      <div class="row">
         <h1 class="titulo">{{ textosMostrar[0].text}}</h1>
         <h2 class="subtitulo">{{textosMostrar[1].text}}</h2>
-        <button class="btn" @click="modificarIdioma(0)">Traduir al Catala</button>
-        <button class="btn" @click="modificarIdioma(1)">Traduir al Castella</button>
-        <button class="btn" @click="modificarIdioma(2)">Traduir al Anglés</button>
       </div>
+
+      <button class="btn" @click="modificarIdioma(0)">Traduir al Català</button>
+      <button class="btn" @click="modificarIdioma(1)">Traduir al Castella</button>
+      <button class="btn" @click="modificarIdioma(2)">Traduir al Anglés</button>
     </div>
   </main>
 </template>
