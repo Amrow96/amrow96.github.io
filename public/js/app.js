@@ -1941,7 +1941,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 //
 //
 //
@@ -1966,27 +1971,84 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       textos: null,
-      idioma: [" txtcast, txtcat, txteng "],
-      paraula: "1",
-      consulta: "nompau"
+      paraula: [{
+        referenica: "welcome",
+        numero: "6"
+      }, {
+        referenica: "ni papa",
+        numero: "1"
+      }],
+      textosCat: [],
+      textosCast: [],
+      textosEng: [],
+      textosMostrar: []
     };
   },
   created: function created() {
-    this.capturarTextos();
+    var _iterator = _createForOfIteratorHelper(this.paraula),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var item = _step.value;
+        this.capturarTextos(item);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    this.modificarIdioma(0);
   },
-  mounted: function mounted() {
-    console.log("Component mounted.");
-  },
+  mounted: function mounted() {},
   methods: {
-    capturarTextos: function capturarTextos() {
+    capturarTextos: function capturarTextos(id) {
       var me = this;
-      axios.get("/textos/" + me.paraula).then(function (response) {
-        me.textos = response.data.data;
+      axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret
+      .then(function (response) {
+        var text = response.data.data; //cridar al metode que assigna els valors als arrays
+
+        me.assignarTextos(text);
       })["catch"](function (error) {
-        console.log(error);
+        return console.log(error);
       });
     },
-    obtenirTextParticular: function obtenirTextParticular(item) {}
+    assignarTextos: function assignarTextos(element) {
+      var me = this; //obtenir la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+
+      me.textosCat.push({
+        text: element.txtcat,
+        referencia: element.txtref
+      });
+      me.textosCast.push({
+        text: element.txtcast,
+        referencia: element.txtref
+      });
+      me.textosEng.push({
+        text: element.txteng,
+        referencia: element.txtref
+      });
+    },
+    modificarIdioma: function modificarIdioma(id) {
+      var me = this;
+
+      switch (id) {
+        case 0:
+          me.textosMostrar = me.textosCat;
+          break;
+
+        case 1:
+          //   console.log("Acabem de cambiar de:", me.textosMostrar[0].text);
+          me.textosMostrar = me.textosCast;
+          break;
+        //console.log("Acabem de cambiar a:", me.textosMostrar[0].text);
+
+        case 2:
+          me.textosMostrar = me.textosEng;
+          break;
+      }
+    }
   }
 });
 
@@ -37684,21 +37746,22 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", [
-    _c("div", { staticClass: "container " }, [
-      _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col justify-content-center" }, [
         _c("img", {
+          staticClass: "justify-content-center",
           attrs: {
-            src: "resources/img/Isotipo.svg",
+            src: "resources/img/IsotipoCirculo.svg",
             onerror: "this.onerror=null; this.src='image.png'"
           }
         }),
         _vm._v(" "),
-        _c("h1", [
-          _vm._v(
-            "\n                Esto es el componente con el texto:\n                " +
-              _vm._s(_vm.textos) +
-              "\n            "
-          )
+        _c("h1", { staticClass: "titulo" }, [
+          _vm._v(_vm._s(_vm.textosMostrar[0].text))
+        ]),
+        _vm._v(" "),
+        _c("h2", { staticClass: "subtitulo" }, [
+          _vm._v(_vm._s(_vm.textosMostrar[1].text))
         ]),
         _vm._v(" "),
         _c(
@@ -37707,11 +37770,37 @@ var render = function() {
             staticClass: "btn",
             on: {
               click: function($event) {
-                return _vm.capturarTextParticular()
+                return _vm.modificarIdioma(0)
               }
             }
           },
-          [_vm._v("\n                BTN Change\n            ")]
+          [_vm._v("Traduir al Catala")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn",
+            on: {
+              click: function($event) {
+                return _vm.modificarIdioma(1)
+              }
+            }
+          },
+          [_vm._v("Traduir al Castella")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn",
+            on: {
+              click: function($event) {
+                return _vm.modificarIdioma(2)
+              }
+            }
+          },
+          [_vm._v("Traduir al Anglés")]
         )
       ])
     ])
