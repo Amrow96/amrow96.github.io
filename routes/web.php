@@ -21,6 +21,7 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/musica', 'MusicaController@index')->name('musica');
 Route::get('/textos', 'TextosController@index')->name('textos');
 Route::get('/selector', 'SelectorController@selector')->name('selector');
 
