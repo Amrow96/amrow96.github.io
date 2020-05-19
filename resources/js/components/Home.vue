@@ -2,13 +2,14 @@
   <main>
     <!-- Isotip + intntro -->
     <div class="row justify-content-center">
-      <div class="row mt-3">
+      <div class="row mt-3 col-12">
         <img
+          width="100%"
           src="resources/img/IsotipoCirculo.svg"
           onerror="this.onerror=null; this.src='image.png'"
         />
       </div>
-      <div class="row">
+      <div class="text-center mt-3">
         <h1 class="titulo">{{ textosMostrar[0].text}}</h1>
         <h2 class="subtitulo">{{textosMostrar[1].text}}</h2>
       </div>
@@ -26,8 +27,8 @@ export default {
     return {
       textos: null,
       paraula: [
-        { referenica: "welcome", numero: "6" },
-        { referenica: "ni papa", numero: "1" }
+        { referencia: "descripcio", numero: "6" },
+        { referencia: "controlAcces", numero: "1" }
       ],
 
       textosCat: [],
@@ -40,6 +41,7 @@ export default {
     for (let item of this.paraula) {
       this.capturarTextos(item);
     }
+    this.textosMostrar = [];
     this.modificarIdioma(0);
   },
   mounted() {},
@@ -47,23 +49,47 @@ export default {
     capturarTextos(id) {
       let me = this;
       axios
-        .get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret
+        .get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
         .then(function(response) {
           let text = response.data.data;
           //cridar al metode que assigna els valors als arrays
-          me.assignarTextos(text);
+          me.assignarTextos(text, id);
         })
         .catch(error => console.log(error));
     },
 
-    assignarTextos(element) {
+    assignarTextos(element, id) {
+      // pasem el resultat de la request i la referencia interna que hem utilitzat
       let me = this;
+      // let i = 0; //Busquem la posició en la que esta aquesta referencia
 
-      //obtenir la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+      // let trobat = false;
+      // if (!trobat) {
+      //   for (let item of me.paraula) {
+      //     if (item.referencia === id.referencia) {
+      //       //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+
+      //       me.textosCat[i] = {
+      //         text: element.txtcat,
+      //         referencia: element.txtref
+      //       };
+      //       me.textosCast[i] = {
+      //         text: element.txtcast,
+      //         referencia: element.txtref
+      //       };
+
+      //       me.textosEng[i] = {
+      //         text: element.txteng,
+      //         referencia: element.txtref
+      //       };
+      //       trobat = true; //Comprovant per sortir del bucle
+      //     }
+
+      //     i++;
+      //   }
+      // }
       me.textosCat.push({ text: element.txtcat, referencia: element.txtref });
-
       me.textosCast.push({ text: element.txtcast, referencia: element.txtref });
-
       me.textosEng.push({ text: element.txteng, referencia: element.txtref });
     },
 

@@ -1969,15 +1969,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       textos: null,
       paraula: [{
-        referenica: "welcome",
+        referencia: "descripcio",
         numero: "6"
       }, {
-        referenica: "ni papa",
+        referencia: "controlAcces",
         numero: "1"
       }],
       textosCat: [],
@@ -2001,23 +2002,47 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       _iterator.f();
     }
 
+    this.textosMostrar = [];
     this.modificarIdioma(0);
   },
   mounted: function mounted() {},
   methods: {
     capturarTextos: function capturarTextos(id) {
       var me = this;
-      axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret
+      axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
       .then(function (response) {
         var text = response.data.data; //cridar al metode que assigna els valors als arrays
 
-        me.assignarTextos(text);
+        me.assignarTextos(text, id);
       })["catch"](function (error) {
         return console.log(error);
       });
     },
-    assignarTextos: function assignarTextos(element) {
-      var me = this; //obtenir la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+    assignarTextos: function assignarTextos(element, id) {
+      // pasem el resultat de la request i la referencia interna que hem utilitzat
+      var me = this; // let i = 0; //Busquem la posició en la que esta aquesta referencia
+      // let trobat = false;
+      // if (!trobat) {
+      //   for (let item of me.paraula) {
+      //     if (item.referencia === id.referencia) {
+      //       //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+      //       me.textosCat[i] = {
+      //         text: element.txtcat,
+      //         referencia: element.txtref
+      //       };
+      //       me.textosCast[i] = {
+      //         text: element.txtcast,
+      //         referencia: element.txtref
+      //       };
+      //       me.textosEng[i] = {
+      //         text: element.txteng,
+      //         referencia: element.txtref
+      //       };
+      //       trobat = true; //Comprovant per sortir del bucle
+      //     }
+      //     i++;
+      //   }
+      // }
 
       me.textosCat.push({
         text: element.txtcat,
@@ -37751,7 +37776,7 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "text-center mt-3" }, [
         _c("h1", { staticClass: "titulo" }, [
           _vm._v(_vm._s(_vm.textosMostrar[0].text))
         ]),
@@ -37807,9 +37832,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-3" }, [
+    return _c("div", { staticClass: "row mt-3 col-12" }, [
       _c("img", {
         attrs: {
+          width: "100%",
           src: "resources/img/IsotipoCirculo.svg",
           onerror: "this.onerror=null; this.src='image.png'"
         }

@@ -76,13 +76,13 @@
 
 .titulo {
     color: var(--primary);
-    font-size: 3em;
+    font-size: 1.5em;
     font-family: var(--font-family-sans-serif) !important;
 }
 
 .subtitulo {
     color: var(--secondary);
-    font-size: 2em;
+    font-size: 1em;
     font-family: var(--font-family-text) !important;
 }
 
