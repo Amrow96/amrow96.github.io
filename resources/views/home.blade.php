@@ -9,4 +9,5 @@ Welcome
     {{-- Aqui anira el contingut que no estigués al vue --}}
     {{-- Aqui aniria el Footer --}}
 </div>
+
 @endsection

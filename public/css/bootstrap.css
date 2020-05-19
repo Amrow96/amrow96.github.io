@@ -70,19 +70,20 @@
     box-sizing: border-box;
 }
 
-.maxheigth {
-    height: 100hv;
+.alineamientoVertical {
+    transform: translateY(40%);
+
 }
 
 .titulo {
     color: var(--primary);
-    font-size: 1.5em;
+    font-size: 2em;
     font-family: var(--font-family-sans-serif) !important;
 }
 
 .subtitulo {
     color: var(--secondary);
-    font-size: 1em;
+    font-size: 1.5em;
     font-family: var(--font-family-text) !important;
 }
 

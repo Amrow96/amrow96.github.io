@@ -24,6 +24,7 @@ Vue.component(
     require("./components/ExampleComponent.vue").default
 );
 Vue.component("home", require("./components/Home.vue").default);
+Vue.component("musica", require("./components/Musica.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,5 +33,5 @@ Vue.component("home", require("./components/Home.vue").default);
  */
 
 const app = new Vue({
-    el: "#app",
+    el: "#app"
 });

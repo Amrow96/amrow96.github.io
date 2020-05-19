@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "b": "^2.0.1",
-        "bootstrap": "^4.4.1"
+        "bootstrap": "^4.4.1",
+        "waypoints": "^4.0.1"
     }
 }
