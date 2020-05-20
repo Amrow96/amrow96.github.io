@@ -2,7 +2,6 @@
     <main>
         <div class="row">
             <div class="col col-12 text-center ">
-                <!-- TODO Mirar de fer aquest apartat estigui centrat Verticalment-->
                 <!-- Isotip + intntro -->
                 <div class="vh-100 ">
                     <div class="alineamientoVertical">
@@ -29,9 +28,12 @@
                 </div>
                 <!-- Video -->
                 <div class="vh-100 ">
-                    <video class="col-12 alineamientoVertical" controls>
+                    <video
+                        id="videoPresentacio"
+                        class="col-12 alineamientoVertical"
+                        controls
+                    >
                         <source
-                            id="videoPresentacio"
                             src="resources/video/intro.mp4#t=30,55"
                             type="video/mp4"
                         />
@@ -135,12 +137,6 @@ export default {
         }
         this.textosMostrar = [];
         this.modificarIdioma(0);
-        var waypoint = new Waypoint({
-            element: document.getElementById("videoPresentacio"),
-            handler: function() {
-                alert("Way point basico lanzado");
-            }
-        });
     },
     mounted() {},
     methods: {

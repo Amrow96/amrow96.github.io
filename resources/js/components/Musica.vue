@@ -1,21 +1,31 @@
 <template>
     <main>
-        <div class="container col-12 hv-100  mt-auto">
-            <div class="col col-12">
-                <div class="row justify-content-center text-center ">
-                    <h1 class="titulo">{{ textosMostrar[0].text }}</h1>
-                    <h2 class="subtitulo">{{ textosMostrar[1].text }}</h2>
-                    <p></p>
-                </div>
-                <div class="row col-12 democolor justify-content-center">
-                    <li v-for="item in projectes" :key="item.titol">
-                        {{ item.titol }}
-                    </li>
+        <div class="row">
+            <div class="col col-12 text-center ">
+                <div class="vh-100 d-flex justify-content-center">
+                    <div class="col mt-auto mb-auto">
+                        <div class="row">
+                            <div class="col ">
+                                <h1 class="titulo">
+                                    {{ textosMostrar[0].text }}
+                                </h1>
+                                <h2 class="subtitulo">
+                                    {{ textosMostrar[1].text }}
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="text-center row mt-3">
+                            <li v-for="item in projectes" :key="item.titol">
+                                {{ item.titol }}
+                            </li>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 </template>
+
 <script>
 export default {
     data() {
@@ -30,6 +40,28 @@ export default {
             textosMostrar: [],
 
             projectes: [
+                {
+                    titol: "Si em paguessin per sortir de festa",
+                    link: "youtube.com/kliu",
+                    text:
+                        "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+                },
+                {
+                    titol: "LP-T'ho Pinto",
+                    link: "youtube.com/kliu",
+                    text: "Amb el meu grup vam fer aquest disc amb 12 cançons"
+                },
+                {
+                    titol: "Si em paguessin per sortir de festa",
+                    link: "youtube.com/kliu",
+                    text:
+                        "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+                },
+                {
+                    titol: "LP-T'ho Pinto",
+                    link: "youtube.com/kliu",
+                    text: "Amb el meu grup vam fer aquest disc amb 12 cançons"
+                },
                 {
                     titol: "Si em paguessin per sortir de festa",
                     link: "youtube.com/kliu",

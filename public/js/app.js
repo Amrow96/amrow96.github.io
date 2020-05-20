@@ -2057,6 +2057,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2108,12 +2110,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     this.textosMostrar = [];
     this.modificarIdioma(0);
-    var waypoint = new Waypoint({
-      element: document.getElementById("videoPresentacio"),
-      handler: function handler() {
-        alert("Way point basico lanzado");
-      }
-    });
   },
   mounted: function mounted() {},
   methods: {
@@ -2232,6 +2228,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2247,6 +2253,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       textosEng: [],
       textosMostrar: [],
       projectes: [{
+        titol: "Si em paguessin per sortir de festa",
+        link: "youtube.com/kliu",
+        text: "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+      }, {
+        titol: "LP-T'ho Pinto",
+        link: "youtube.com/kliu",
+        text: "Amb el meu grup vam fer aquest disc amb 12 cançons"
+      }, {
+        titol: "Si em paguessin per sortir de festa",
+        link: "youtube.com/kliu",
+        text: "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+      }, {
+        titol: "LP-T'ho Pinto",
+        link: "youtube.com/kliu",
+        text: "Amb el meu grup vam fer aquest disc amb 12 cançons"
+      }, {
         titol: "Si em paguessin per sortir de festa",
         link: "youtube.com/kliu",
         text: "Amb el meu grup vam fer aquest treball del cual estem molt contents"
@@ -38236,11 +38258,13 @@ var staticRenderFns = [
     return _c("div", { staticClass: "vh-100 " }, [
       _c(
         "video",
-        { staticClass: "col-12 alineamientoVertical", attrs: { controls: "" } },
+        {
+          staticClass: "col-12 alineamientoVertical",
+          attrs: { id: "videoPresentacio", controls: "" }
+        },
         [
           _c("source", {
             attrs: {
-              id: "videoPresentacio",
               src: "resources/video/intro.mp4#t=30,55",
               type: "video/mp4"
             }
@@ -38272,34 +38296,46 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", [
-    _c("div", { staticClass: "container col-12 hv-100  mt-auto" }, [
-      _c("div", { staticClass: "col col-12" }, [
-        _c("div", { staticClass: "row justify-content-center text-center " }, [
-          _c("h1", { staticClass: "titulo" }, [
-            _vm._v(_vm._s(_vm.textosMostrar[0].text))
-          ]),
-          _vm._v(" "),
-          _c("h2", { staticClass: "subtitulo" }, [
-            _vm._v(_vm._s(_vm.textosMostrar[1].text))
-          ]),
-          _vm._v(" "),
-          _c("p")
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row col-12 democolor justify-content-center" },
-          _vm._l(_vm.projectes, function(item) {
-            return _c("li", { key: item.titol }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(item.titol) +
-                  "\n                "
-              )
-            ])
-          }),
-          0
-        )
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col col-12 text-center " }, [
+        _c("div", { staticClass: "vh-100 d-flex justify-content-center" }, [
+          _c("div", { staticClass: "col mt-auto mb-auto" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col " }, [
+                _c("h1", { staticClass: "titulo" }, [
+                  _vm._v(
+                    "\n                                " +
+                      _vm._s(_vm.textosMostrar[0].text) +
+                      "\n                            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("h2", { staticClass: "subtitulo" }, [
+                  _vm._v(
+                    "\n                                " +
+                      _vm._s(_vm.textosMostrar[1].text) +
+                      "\n                            "
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "text-center row mt-3" },
+              _vm._l(_vm.projectes, function(item) {
+                return _c("li", { key: item.titol }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(item.titol) +
+                      "\n                        "
+                  )
+                ])
+              }),
+              0
+            )
+          ])
+        ])
       ])
     ])
   ])
@@ -50632,15 +50668,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************!*\
   !*** ./resources/js/components/Home.vue ***!
   \******************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=f2b6376c& */ "./resources/js/components/Home.vue?vue&type=template&id=f2b6376c&");
 /* harmony import */ var _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home.vue?vue&type=script&lang=js& */ "./resources/js/components/Home.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -50670,7 +50705,7 @@ component.options.__file = "resources/js/components/Home.vue"
 /*!*******************************************************************!*\
   !*** ./resources/js/components/Home.vue?vue&type=script&lang=js& ***!
   \*******************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
