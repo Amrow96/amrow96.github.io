@@ -2189,6 +2189,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       mediaElement.seekable.end(); // Returns the ending time (in seconds)
 
       mediaElement.currentTime = 122; // Seek to 122 seconds
+    },
+    openMusica: function openMusica() {
+      window.location.href = "/musica";
     }
   }
 });

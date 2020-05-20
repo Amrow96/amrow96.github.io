@@ -220,6 +220,9 @@ export default {
             mediaElement.seekable.start(30); // Returns the starting time (in seconds)
             mediaElement.seekable.end(); // Returns the ending time (in seconds)
             mediaElement.currentTime = 122; // Seek to 122 seconds
+        },
+        openMusica() {
+            window.location.href = "/musica";
         }
     }
 };
