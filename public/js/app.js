@@ -2018,47 +2018,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2191,7 +2150,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       mediaElement.currentTime = 122; // Seek to 122 seconds
     },
     openMusica: function openMusica() {
-      window.location.href = "/musica";
+      window.location.href = "musica";
+    },
+    openDAW: function openDAW() {
+      window.location.href = "daw";
+    },
+    openDAM: function openDAM() {
+      window.location.href = "dam";
     }
   }
 });
@@ -38069,27 +38034,19 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("main", [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-12 text-center " }, [
-        _c("div", { staticClass: "vh-100 " }, [
+      _c("div", { staticClass: "col col-12 text-center" }, [
+        _c("div", { staticClass: "vh-100" }, [
           _c("div", { staticClass: "alineamientoVertical" }, [
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "text-center row mt-3" }, [
               _c("div", { staticClass: "col" }, [
                 _c("h1", { staticClass: "titulo" }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.textosMostrar[0].text) +
-                      "\n                            "
-                  )
+                  _vm._v(_vm._s(_vm.textosMostrar[0].text))
                 ]),
                 _vm._v(" "),
                 _c("h2", { staticClass: "subtitulo" }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.textosMostrar[1].text) +
-                      "\n                            "
-                  )
+                  _vm._v(_vm._s(_vm.textosMostrar[1].text))
                 ])
               ])
             ])
@@ -38100,82 +38057,91 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "vh-100" }, [
           _c("div", { staticClass: "row alineamientoVertical" }, [
-            _c("div", { staticClass: "col  col-12" }, [
+            _c("div", { staticClass: "col col-12" }, [
               _c("div", { staticClass: "card-deck mb-3" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c("img", {
-                    staticClass: "card-img-top",
-                    attrs: { src: "", alt: "Card image cap" }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-header titulo" }, [
-                      _vm._v(
-                        "\n                                        " +
-                          _vm._s(_vm.textosMostrar[2].text) +
-                          "\n                                    "
-                      )
-                    ]),
+                _c(
+                  "div",
+                  {
+                    staticClass: "card",
+                    on: {
+                      click: function($event) {
+                        return _vm.openMusica()
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: { src: "", alt: "Card image cap" }
+                    }),
                     _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "\n                                        " +
-                          _vm._s(_vm.textosMostrar[3].text) +
-                          "\n                                    "
-                      )
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("h5", { staticClass: "card-header titulo" }, [
+                        _vm._v(_vm._s(_vm.textosMostrar[2].text))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(_vm.textosMostrar[3].text))
+                      ])
                     ])
-                  ])
-                ]),
+                  ]
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "card" }, [
-                  _c("img", {
-                    staticClass: "card-img-top",
-                    attrs: { src: "", alt: "Card image cap" }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-header titulo" }, [
-                      _vm._v(
-                        "\n                                        " +
-                          _vm._s(_vm.textosMostrar[4].text) +
-                          "\n                                    "
-                      )
-                    ]),
+                _c(
+                  "div",
+                  {
+                    staticClass: "card",
+                    on: {
+                      click: function($event) {
+                        return _vm.openDAM()
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: { src: "", alt: "Card image cap" }
+                    }),
                     _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "\n                                        " +
-                          _vm._s(_vm.textosMostrar[5].text) +
-                          "\n                                    "
-                      )
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("h5", { staticClass: "card-header titulo" }, [
+                        _vm._v(_vm._s(_vm.textosMostrar[4].text))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(_vm.textosMostrar[5].text))
+                      ])
                     ])
-                  ])
-                ]),
+                  ]
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "card" }, [
-                  _c("img", {
-                    staticClass: "card-img-top",
-                    attrs: { src: "", alt: "Card image cap" }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-header titulo" }, [
-                      _vm._v(
-                        "\n                                        " +
-                          _vm._s(_vm.textosMostrar[6].text) +
-                          "\n                                    "
-                      )
-                    ]),
+                _c(
+                  "div",
+                  {
+                    staticClass: "card",
+                    on: {
+                      click: function($event) {
+                        return _vm.openDAW()
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: { src: "", alt: "Card image cap" }
+                    }),
                     _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "\n                                        " +
-                          _vm._s(_vm.textosMostrar[7].text) +
-                          "\n                                    "
-                      )
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("h5", { staticClass: "card-header titulo" }, [
+                        _vm._v(_vm._s(_vm.textosMostrar[6].text))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(_vm.textosMostrar[7].text))
+                      ])
                     ])
-                  ])
-                ])
+                  ]
+                )
               ])
             ])
           ])
@@ -38192,11 +38158,7 @@ var render = function() {
                 }
               }
             },
-            [
-              _vm._v(
-                "\n                    Traduir al Català\n                "
-              )
-            ]
+            [_vm._v("Traduir al Català")]
           ),
           _vm._v(" "),
           _c(
@@ -38209,11 +38171,7 @@ var render = function() {
                 }
               }
             },
-            [
-              _vm._v(
-                "\n                    Traduir al Castella\n                "
-              )
-            ]
+            [_vm._v("Traduir al Castella")]
           ),
           _vm._v(" "),
           _c(
@@ -38226,11 +38184,7 @@ var render = function() {
                 }
               }
             },
-            [
-              _vm._v(
-                "\n                    Traduir al Anglés\n                "
-              )
-            ]
+            [_vm._v("Traduir al Anglés")]
           )
         ])
       ])
@@ -38258,7 +38212,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "vh-100 " }, [
+    return _c("div", { staticClass: "vh-100" }, [
       _c(
         "video",
         {

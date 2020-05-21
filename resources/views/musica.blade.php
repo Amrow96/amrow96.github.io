@@ -1,7 +1,7 @@
 @extends('templates.main')
 
 @section('titulo')
-Welcome
+Musica
 @endsection
 @section('principal')
 <div class="container">
