@@ -3,6 +3,8 @@
 Selector{{-- TODO: llegir aquest Text de la BAse de dades  id=2 controlAcces--}}
 @endsection
 @section('principal')
+        <textos></textos>
+
     @if(Auth::check())
         <a class="btn btn-secondary">{{ Auth::user()->email }}</a>
         {{-- Aqui estas loguejat faltarà posar el auth al routes--}}
@@ -11,6 +13,5 @@ Selector{{-- TODO: llegir aquest Text de la BAse de dades  id=2 controlAcces--}}
        <div>No estas loguejat!</div>
         {{-- <a class="btn btn-danger"href="{{ route('logout') }}">Logout</a> --}}
     @endif
-        <textos></textos>
 
     @endsection

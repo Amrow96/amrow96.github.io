@@ -31,18 +31,16 @@ class TextosController extends Controller
      */
     public function store(Request $request)
     {
-         $text = new Textos();
+        $text = new Textos();
 
-        $text->idtxt = $request->input('idtxt');
         $text->txtref = $request->input('txtref');
         $text->txtcat = $request->input('txtcat');
-        $text->txtcast = $$request->input('txtcast');
+        $text->txtcast = $request->input('txtcast');
         $text->txteng = $request->input('txteng');
         
 
         try {
             $text->save();
-            
             $respuesta = (new TextoResource($text))
                 ->response()
                 ->setStatusCode(201);
@@ -76,10 +74,10 @@ class TextosController extends Controller
      */
     public function update(Request $request,  $referencia)
     {
-         $texto = Textos::find($referencia);
-         $text->txtref = $request->input('txtref');
+        $text = Textos::find($referencia);
+        $text->txtref = $request->input('txtref');
         $text->txtcat = $request->input('txtcat');
-        $text->txtcast = $$request->input('txtcast');
+        $text->txtcast = $request->input('txtcast');
         $text->txteng = $request->input('txteng');
         
 

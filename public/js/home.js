@@ -6,25 +6,36 @@ var waypoint = new Waypoint({
         console.log("Scrolled to waypoint!");
     }
 });
-//   var tema = getCookie("tema");
-//   if (tema != "") {
-//       //setejem el modo light, abans haurem de comprovar si es dark o light i en funcio d'aixo setejarem
-//       if(tema="light"){ 
-//           $style= "<style type=\"text/css\">#welcomeToCyanCoding {display:none;}</style>";
-//         //  <link rel="stylesheet" href="{{ asset('css/bootstrapDark.css') }}">
 
-//     alert("Welcome again " + username);
-// } else {
-// //   creem la cookie tema amb el modo dark
-// username = prompt("Please enter your name:", "");
-// if (username != "" && username != null) {
-//     setCookie("username", username, 365);
-// }
-// };
-  
-// if(isset($_COOKIE["style"])) {
-// $style= "<link rel=\"stylesheet\" href=\"{{ asset('css/bootstrapDark.css') }}\">";
-// } else {
-// $style= "<link rel=\"stylesheet\" href=\"{{ asset('css/bootstrap.css') }}\">";
-// setcookie("style=true", date("m/d/y"), time() + 10 * 365 * 24 * 60 * 60, "/");
-// }
+function canviarcolor() {
+    //Capturem el valor de la cookie actual
+    var resultat = "";
+    var name = "tema=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            resultat = c.substring(name.length, c.length);
+        }
+    }
+    if (resultat !== "") {
+        var d = new Date();
+        d.setTime(d.getTime() + 2 * 24 * 60 * 60 * 1000);
+        var expires = "expires=" + d.toUTCString();
+
+        if (resultat == "light") {
+            var cvalue = "dark";
+        } else if (resultat == "dark") {
+            var cvalue = "light";
+        }
+        document.cookie = "tema" + "=" + cvalue + ";" + expires + ";path=/";
+
+        location.reload();
+    } else {
+        document.cookie = "tema=light" + ";" + expires + ";path=/";
+    }
+}
