@@ -6,6 +6,9 @@ Control d'Acces
 @section('principal')
 <div class="container justify-content-center ">
     <div class="row ">
+      <div class="col col-12 text-center">
+        <div class="vh-100 d-flex justify-content-center">
+          <div class="col mt-auto mb-auto">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>{{-- TODO: llegir text de la base de dades  id=2 controlAcces--}}
                     @if(Auth::check())
@@ -13,7 +16,6 @@ Control d'Acces
                 <div class="card-body">
                     <form method="POST" action="{{ action('Auth\LoginController@login') }}">
                         @csrf
-
                         <div class="form-group row">{{-- TODO: llegir text de la base de dades  id=3 correu--}}
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -27,8 +29,6 @@ Control d'Acces
 
                             <div class="col-md-6">
                                 <input id="paswd" type="password" class="form-control" name="paswd" value="{{ old('paswd') }}" required autocomplete="current-password">
-
-                             
                             </div>
                         </div>
 
@@ -46,6 +46,10 @@ Control d'Acces
                     </form>
                 </div>
             </div>
+             </div>
+            </div>
+             </div>
+            
     </div>
 </div>
 @endsection

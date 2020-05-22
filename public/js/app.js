@@ -2018,6 +2018,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -81039,6 +81040,7 @@ var staticRenderFns = [
         _c("img", {
           staticClass: "col-6",
           attrs: {
+            onclick: "canviarcolor()",
             src: "resources/img/IsotipoCirculo.svg",
             onerror: "this.onerror=null; this.src='image.png'"
           }

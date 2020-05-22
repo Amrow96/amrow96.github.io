@@ -8,6 +8,7 @@
             <div class="row">
               <div class="col">
                 <img
+                  onclick = "canviarcolor()"
                   class="col-6"
                   src="resources/img/IsotipoCirculo.svg"
                   onerror="this.onerror=null; this.src='image.png'"
