@@ -7,5 +7,8 @@ DAM
 <div class="container">
     <musica></musica>Estas en DAM
 </div>
-
+<script>
+        var cookiDate = new Date(2020,11,24);
+        document.cookie = "paginavisitada=dam; expires=" + cookiDate.toUTCString();
+    </script>
 @endsection

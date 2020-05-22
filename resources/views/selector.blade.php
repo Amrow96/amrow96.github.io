@@ -5,14 +5,12 @@ Selector{{-- TODO: llegir aquest Text de la BAse de dades  id=2 controlAcces--}}
 @section('principal')
     @if(Auth::check())
         <a class="btn btn-secondary">{{ Auth::user()->email }}</a>
-   @else   
-      <div>Has de seleccionar una de les dues opcions</div>
-        <a class="btn btn-primary"  href="{{ route('textos')}}">Textos</a>
-        <a class="btn btn-primary"  {{-- href="{{ route('imagenes') }}" --}}>Imagenes</a>
-       
-
-    {{-- @else --}}
-        <a class="btn btn-danger"href="{{ route('logout') }}">Logout</a>
-        <div>No estas loguejat!</div>
+        {{-- Aqui estas loguejat faltarà posar el auth al routes--}}
+   @else         
+   
+       <div>No estas loguejat!</div>
+        {{-- <a class="btn btn-danger"href="{{ route('logout') }}">Logout</a> --}}
     @endif
-@endsection
+        <textos></textos>
+
+    @endsection
