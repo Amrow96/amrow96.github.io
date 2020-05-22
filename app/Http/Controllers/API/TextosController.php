@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 
 use App\Models\Textos;
+use App\Clases\Utilitat;
 use Illuminate\Http\Request;
 use App\Http\Resources\TextoResource;
 
@@ -30,7 +31,28 @@ class TextosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $text = new Textos();
+
+        $text->idtxt = $request->input('idtxt');
+        $text->txtref = $request->input('txtref');
+        $text->txtcat = $request->input('txtcat');
+        $text->txtcast = $$request->input('txtcast');
+        $text->txteng = $request->input('txteng');
+        
+
+        try {
+            $text->save();
+            
+            $respuesta = (new TextoResource($text))
+                ->response()
+                ->setStatusCode(201);
+
+        } catch (QueryException $e) {
+            $mensaje = Utilitat::errorMessage($e);
+            $respuesta = response()
+                ->json(['error' => $mensaje], 400);
+        }
+        return $respuesta;
     }
 
     /**
@@ -52,9 +74,28 @@ class TextosController extends Controller
      * @param  \App\Models\Textos  $textos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Textos $textos)
+    public function update(Request $request,  $referencia)
     {
-        //
+         $texto = Textos::find($referencia);
+         $text->txtref = $request->input('txtref');
+        $text->txtcat = $request->input('txtcat');
+        $text->txtcast = $$request->input('txtcast');
+        $text->txteng = $request->input('txteng');
+        
+
+        try {
+            $text->save();
+            
+            $respuesta = (new TextoResource($text))
+                ->response()
+                ->setStatusCode(200);
+
+        } catch (QueryException $e) {
+            $mensaje = Utilitat::errorMessage($e);
+            $respuesta = response()
+                ->json(['error' => $mensaje], 400);
+        }
+        return $respuesta;
     }
 
     /**
@@ -63,8 +104,26 @@ class TextosController extends Controller
      * @param  \App\Models\Textos  $textos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Textos $textos)
+    public function destroy($referencia)
     {
-        //
+        
+         $texto = Textos::find($referencia);
+         
+        if($text!= null){
+            try {
+            $text->delete();
+            
+            $respuesta = (new TextoResource($text))
+                ->response()
+                ->setStatusCode(200);
+
+        } catch (QueryException $e) {
+            $mensaje = Utilitat::errorMessage($e);
+            $respuesta = response()
+                ->json(['error' => $mensaje], 400);
+        } }else{
+            $respuesta = response()->json(["error"=> "Registro no encontrado"], 404);
+        }
+        return $respuesta;
     }
 }
