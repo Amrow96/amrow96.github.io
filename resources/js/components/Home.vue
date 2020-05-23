@@ -197,6 +197,7 @@ export default {
           break;
         default:
           me.textosMostrar = me.textosCat;
+          id = 0;
           break;
       }
 
