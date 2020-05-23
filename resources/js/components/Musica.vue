@@ -125,10 +125,7 @@ export default {
         }
       }
       this.textosMostrar = [];
-      console.log(
-        "estem al asignar textos amb el idioma",
-        this.getCookie("idioma")
-      );
+
       this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
     },
     getCookie(cname) {

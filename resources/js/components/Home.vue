@@ -158,10 +158,7 @@ export default {
         }
       }
       this.textosMostrar = [];
-      console.log(
-        "estem al asignar textos amb el idioma",
-        this.getCookie("idioma")
-      );
+
       this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
     },
     getCookie(cname) {
@@ -208,7 +205,7 @@ export default {
       //detectem de quina pagina ve i mostrem un video en funció d'aquest
       let element = "intro.mp4";
 
-      let origen = getCookie("paginavisitada");
+      let origen = this.getCookie("paginavisitada");
       console.log("estem mostrant la cookie", origen);
       switch (origen) {
         case "musica":
