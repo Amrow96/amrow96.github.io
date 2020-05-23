@@ -2474,6 +2474,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2549,17 +2551,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         mediaElement.onended = function () {
           // console.log("estem mostrant el src del video acabat", contenido.getAttribute("src"));
-          if (contenido.getAttribute("src") == "resources/video/dam.mp4" || "resources/video/daw.mp4") {
-            console.log("estem canviant el boto de twiter"); //Si el video ve dels cicles mostrem boto twiter
-
+          if (contenido.getAttribute("src") === ("resources/video/dam.mp4" || false)) {
+            //Si el video ve dels cicles mostrem boto twiter
             var btnTwitter = document.getElementById("btnTwitter");
-            btnTwitter.setAttribute("class", "visible btn-primary btn");
-          }
-
-          if (contenido.getAttribute("src") === "resources/video/musica.mp4") {
+            btnTwitter.setAttribute("class", "visible btn-primary btn  mt-auto mb-auto");
+          } else if (contenido.getAttribute("src") === "resources/video/musica.mp4") {
             //Si ve de musica mostrem boto insta;
-            var btnInsta = document.getElementById("btnInstagram");
-            btnInsta.setAttribute("class", "visible btn-primary btn");
+            var btnInsta = document.getElementById("btnInsta");
+            btnInsta.setAttribute("class", "visible btn-primary btn  mt-auto mb-auto");
           }
         };
       }
@@ -82592,59 +82591,61 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "vh-100" }, [
           _c("div", { staticClass: "text-center row mt-3" }, [
-            _c(
-              "a",
-              {
-                staticClass: "invisible btn-secondary btn",
-                attrs: {
-                  id: "btnInsta",
-                  href: "https://www.instagram.com/kliuoficial/"
-                }
-              },
-              [_vm._v("Instagram")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "invisible btn-secondary btn",
-                attrs: {
-                  id: "btnTwitter",
-                  href: "https://twitter.com/PauTrompeta_Dev"
-                }
-              },
-              [_vm._v("Twitter")]
-            ),
-            _vm._v(" "),
-            _c(
-              "video",
-              {
-                directives: [
-                  {
-                    name: "waypoint",
-                    rawName: "v-waypoint",
-                    value: {
-                      active: true,
-                      callback: _vm.onWaypoint,
-                      options: _vm.intersectionOptions
-                    },
-                    expression:
-                      "{\n                          active: true,\n                          callback: onWaypoint,\n                          options: intersectionOptions\n                      }"
-                  }
-                ],
-                staticClass: "col-12 alineamientoVertical",
-                attrs: { id: "videoPresentacio", controls: "" }
-              },
-              [
-                _c("source", {
+            _c("div", { staticClass: "row d-flex justify-content-center" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "invisible btn-secondary btn mt-auto mb-auto",
                   attrs: {
-                    id: "contenidoVideo",
-                    src: _vm.direccioVideo,
-                    type: "video/mp4"
+                    id: "btnInsta",
+                    href: "https://www.instagram.com/kliuoficial/"
                   }
-                })
-              ]
-            )
+                },
+                [_vm._v("Instagram")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "invisible btn-secondary btn mt-auto mb-auto",
+                  attrs: {
+                    id: "btnTwitter",
+                    href: "https://twitter.com/PauTrompeta_Dev"
+                  }
+                },
+                [_vm._v("Twitter")]
+              ),
+              _vm._v(" "),
+              _c(
+                "video",
+                {
+                  directives: [
+                    {
+                      name: "waypoint",
+                      rawName: "v-waypoint",
+                      value: {
+                        active: true,
+                        callback: _vm.onWaypoint,
+                        options: _vm.intersectionOptions
+                      },
+                      expression:
+                        "{\n                          active: true,\n                          callback: onWaypoint,\n                          options: intersectionOptions\n                      }"
+                    }
+                  ],
+                  staticClass: "col-12",
+                  attrs: { id: "videoPresentacio", controls: "" }
+                },
+                [
+                  _c("source", {
+                    attrs: {
+                      id: "contenidoVideo",
+                      src: _vm.direccioVideo,
+                      type: "video/mp4"
+                    }
+                  })
+                ]
+              )
+            ])
           ])
         ]),
         _vm._v(" "),

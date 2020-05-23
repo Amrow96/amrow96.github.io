@@ -26,29 +26,31 @@
         <!-- Video -->
         <div class="vh-100">
           <div class="text-center row mt-3">
-            <a
-              id="btnInsta"
-              class="invisible btn-secondary btn"
-              href="https://www.instagram.com/kliuoficial/"
-            >Instagram</a>
-            <a
-              id="btnTwitter"
-              class="invisible btn-secondary btn"
-              href="https://twitter.com/PauTrompeta_Dev"
-            >Twitter</a>
+            <div class="row d-flex justify-content-center">
+              <a
+                id="btnInsta"
+                class="invisible btn-secondary btn mt-auto mb-auto"
+                href="https://www.instagram.com/kliuoficial/"
+              >Instagram</a>
+              <a
+                id="btnTwitter"
+                class="invisible btn-secondary btn mt-auto mb-auto"
+                href="https://twitter.com/PauTrompeta_Dev"
+              >Twitter</a>
 
-            <video
-              id="videoPresentacio"
-              class="col-12 alineamientoVertical"
-              controls
-              v-waypoint="{
+              <video
+                id="videoPresentacio"
+                class="col-12"
+                controls
+                v-waypoint="{
                             active: true,
                             callback: onWaypoint,
                             options: intersectionOptions
                         }"
-            >
-              <source id="contenidoVideo" :src="direccioVideo" type="video/mp4" />
-            </video>
+              >
+                <source id="contenidoVideo" :src="direccioVideo" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
         <!-- Dafo -->
@@ -156,19 +158,24 @@ export default {
         mediaElement.onended = function() {
           // console.log("estem mostrant el src del video acabat", contenido.getAttribute("src"));
           if (
-            contenido.getAttribute("src") == "resources/video/dam.mp4" ||
-            "resources/video/daw.mp4"
+            contenido.getAttribute("src") ===
+            ("resources/video/dam.mp4" || "resources/video/daw.mp4")
           ) {
-            console.log("estem canviant el boto de twiter");
-
             //Si el video ve dels cicles mostrem boto twiter
             var btnTwitter = document.getElementById("btnTwitter");
-            btnTwitter.setAttribute("class", "visible btn-primary btn");
-          }
-          if (contenido.getAttribute("src") === "resources/video/musica.mp4") {
+            btnTwitter.setAttribute(
+              "class",
+              "visible btn-primary btn  mt-auto mb-auto"
+            );
+          } else if (
+            contenido.getAttribute("src") === "resources/video/musica.mp4"
+          ) {
             //Si ve de musica mostrem boto insta;
-            var btnInsta = document.getElementById("btnInstagram");
-            btnInsta.setAttribute("class", "visible btn-primary btn");
+            var btnInsta = document.getElementById("btnInsta");
+            btnInsta.setAttribute(
+              "class",
+              "visible btn-primary btn  mt-auto mb-auto"
+            );
           }
         };
       }
