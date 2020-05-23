@@ -11,12 +11,14 @@
               </div>
             </div>
             <div class="text-center row mt-3">
-              <li v-for="item in projectes" :key="item.titol">
-                <a class="democolor" :href="item.link">
-                  {{
-                  item.titol
-                  }}
-                </a>
+              <li class="list-unstyled" v-for="item in projectes" :key="item.titol">
+                <ul>
+                  <a :href="item.link">
+                    {{
+                    item.titol
+                    }}
+                  </a>
+                </ul>
               </li>
             </div>
           </div>
