@@ -38,6 +38,17 @@
             <source :src="direccioVideo" type="video/mp4" />
           </video>
         </div>
+        <!-- Dafo -->
+        <div class="vh-100 d-flex justify-content-center">
+          <div class="alineamientoVertical">
+            <div class="text-center row mt-3">
+              <div class="col">
+                <h1 class="titulo">{{ textosMostrar[9].text }}</h1>
+                <h4>{{ textosMostrar[8].text }}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Cards  -->
         <div class="vh-100">
           <div class="row alineamientoVertical">
@@ -103,7 +114,8 @@ export default {
         { referencia: "damdesc", numero: "15" },
         { referencia: "daw", numero: "14" },
         { referencia: "dawdesc", numero: "16" },
-        { referencia: "dafo", numero: "30" }
+        { referencia: "dafo", numero: "30" },
+        { referencia: "dafonom", numero: "33" }
       ],
 
       textosCat: [],
