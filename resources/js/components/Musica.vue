@@ -49,36 +49,35 @@ export default {
             "Amb el meu grup vam fer aquest treball del cual estem molt contents"
         },
         {
-          titol: "LP-T'ho Pinto",
-          link: "youtube.com/kliu",
-          text: "Amb el meu grup vam fer aquest disc amb 12 cançons"
+          titol: "La Nostra Festa",
+          link: "https://www.youtube.com/watch?v=aepUHsLw7dQ",
+          text: "Amb el meu grup vam fer el tema oficial de la FM de Sitges"
         },
         {
-          titol: "Si em paguessin per sortir de festa",
-          link: "youtube.com/kliu",
+          titol: "Aquesta Nit",
+          link: "https://www.youtube.com/watch?v=0-gExVhHryA",
           text:
             "Amb el meu grup vam fer aquest treball del cual estem molt contents"
         },
         {
-          titol: "LP-T'ho Pinto",
-          link: "youtube.com/kliu",
-          text: "Amb el meu grup vam fer aquest disc amb 12 cançons"
-        },
-        {
-          titol: "Si em paguessin per sortir de festa",
-          link: "youtube.com/kliu",
+          titol: "Todo Va a Cambiar",
+          link: "https://www.youtube.com/watch?v=eP-3zncYruw",
           text:
-            "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+            "Amb el meu grup vam fer aquest Videoclip i estem molt ilusionats"
+        },
+        {
+          titol: "Canal de Youtube",
+          link: "https://www.youtube.com/channel/UC0FnCUEsZEgTMhqkEW7-X7A/",
+          text: "El nostre canal de youtube"
         },
         {
           titol: "LP-T'ho Pinto",
-          link: "youtube.com/kliu",
-          text: "Amb el meu grup vam fer aquest disc amb 12 cançons"
+          link: "https://www.youtube.com/watch?v=DjAGP_CCxT4",
+          text: "Amb el meu grup vam fer aquest disc amb 11 cançons"
         }
       ]
     };
   },
-
   created() {
     for (let item of this.paraula) {
       this.capturarTextos(item);

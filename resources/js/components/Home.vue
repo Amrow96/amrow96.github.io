@@ -242,10 +242,13 @@ export default {
           element = "dam.mp4";
           break;
         case "daw":
-          element = "DWES_23API.mp4";
+          element = "daw.mp4";
+          break;
+        default:
+          element = "intro.mp4";
           break;
       }
-      var baseSrc = "resources/video/" + element + "#t=30,55"; //separem la direcció a través dels parametres
+      var baseSrc = "resources/video/" + element; //+ "#t=30,55";//Si volguessim talar per un minut en concret //separem la direcció a través dels parametres
       this.direccioVideo = baseSrc;
     },
     imagen() {

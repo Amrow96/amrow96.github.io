@@ -2025,6 +2025,31 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2052,6 +2077,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }, {
         referencia: "dawdesc",
         numero: "16"
+      }, {
+        referencia: "dafo",
+        numero: "30"
+      }, {
+        referencia: "dafonom",
+        numero: "33"
       }],
       textosCat: [],
       textosCast: [],
@@ -2145,7 +2176,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
 
       this.textosMostrar = [];
-      console.log("estem al asignar textos amb el idioma", this.getCookie("idioma"));
       this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
     },
     getCookie: function getCookie(cname) {
@@ -2186,6 +2216,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         default:
           me.textosMostrar = me.textosCat;
+          id = 0;
           break;
       }
 
@@ -2195,7 +2226,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     videoselector: function videoselector() {
       //detectem de quina pagina ve i mostrem un video en funció d'aquest
       var element = "intro.mp4";
-      var origen = getCookie("paginavisitada");
+      var origen = this.getCookie("paginavisitada");
       console.log("estem mostrant la cookie", origen);
 
       switch (origen) {
@@ -2208,11 +2239,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           break;
 
         case "daw":
-          element = "DWES_23API.mp4";
+          element = "daw.mp4";
+          break;
+
+        default:
+          element = "intro.mp4";
           break;
       }
 
-      var baseSrc = "resources/video/" + element + "#t=30,55"; //separem la direcció a través dels parametres
+      var baseSrc = "resources/video/" + element; //+ "#t=30,55";//Si volguessim talar per un minut en concret //separem la direcció a través dels parametres
 
       this.direccioVideo = baseSrc;
     },
@@ -2276,6 +2311,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2295,25 +2332,25 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         link: "https://www.youtube.com/watch?v=mb-lFVcJTVM",
         text: "Amb el meu grup vam fer aquest treball del cual estem molt contents"
       }, {
-        titol: "LP-T'ho Pinto",
-        link: "youtube.com/kliu",
-        text: "Amb el meu grup vam fer aquest disc amb 12 cançons"
+        titol: "La Nostra Festa",
+        link: "https://www.youtube.com/watch?v=aepUHsLw7dQ",
+        text: "Amb el meu grup vam fer el tema oficial de la FM de Sitges"
       }, {
-        titol: "Si em paguessin per sortir de festa",
-        link: "youtube.com/kliu",
+        titol: "Aquesta Nit",
+        link: "https://www.youtube.com/watch?v=0-gExVhHryA",
         text: "Amb el meu grup vam fer aquest treball del cual estem molt contents"
       }, {
-        titol: "LP-T'ho Pinto",
-        link: "youtube.com/kliu",
-        text: "Amb el meu grup vam fer aquest disc amb 12 cançons"
+        titol: "Todo Va a Cambiar",
+        link: "https://www.youtube.com/watch?v=eP-3zncYruw",
+        text: "Amb el meu grup vam fer aquest Videoclip i estem molt ilusionats"
       }, {
-        titol: "Si em paguessin per sortir de festa",
-        link: "youtube.com/kliu",
-        text: "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+        titol: "Canal de Youtube",
+        link: "https://www.youtube.com/channel/UC0FnCUEsZEgTMhqkEW7-X7A/",
+        text: "El nostre canal de youtube"
       }, {
         titol: "LP-T'ho Pinto",
-        link: "youtube.com/kliu",
-        text: "Amb el meu grup vam fer aquest disc amb 12 cançons"
+        link: "https://www.youtube.com/watch?v=DjAGP_CCxT4",
+        text: "Amb el meu grup vam fer aquest disc amb 11 cançons"
       }]
     };
   },
@@ -2386,7 +2423,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
 
       this.textosMostrar = [];
-      console.log("estem al asignar textos amb el idioma", this.getCookie("idioma"));
       this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
     },
     getCookie: function getCookie(cname) {
@@ -2427,6 +2463,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         default:
           me.textosMostrar = me.textosCat;
+          id = 0;
           break;
       }
 
@@ -82011,6 +82048,20 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "vh-100 d-flex justify-content-center" }, [
+          _c("div", { staticClass: "alineamientoVertical" }, [
+            _c("div", { staticClass: "text-center row mt-3" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("h1", { staticClass: "titulo" }, [
+                  _vm._v(_vm._s(_vm.textosMostrar[9].text))
+                ]),
+                _vm._v(" "),
+                _c("h4", [_vm._v(_vm._s(_vm.textosMostrar[8].text))])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "vh-100" }, [
           _c("div", { staticClass: "row alineamientoVertical" }, [
             _c("div", { staticClass: "col col-12" }, [
@@ -82088,51 +82139,79 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row col-12" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn col-4",
-              on: {
-                click: function($event) {
-                  return _vm.modificarIdioma(0)
-                }
-              }
-            },
-            [_vm._v("Traduir al Català")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn col-4",
-              on: {
-                click: function($event) {
-                  return _vm.modificarIdioma(1)
-                }
-              }
-            },
-            [_vm._v("Traduir al Castella")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn col-4",
-              on: {
-                click: function($event) {
-                  return _vm.modificarIdioma(2)
-                }
-              }
-            },
-            [_vm._v("Traduir al Anglés")]
-          )
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "page-footer" }, [
+          _c("div", { staticClass: "row alineamientoVertical" }, [
+            _c("div", { staticClass: "col col-12" }, [
+              _c("div", { staticClass: "row col-12" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn col-3",
+                    attrs: { onclick: "canviarcolor()" }
+                  },
+                  [_vm._v("Cambiar el Tema")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn col-3",
+                    on: {
+                      click: function($event) {
+                        return _vm.modificarIdioma(0)
+                      }
+                    }
+                  },
+                  [_vm._v("Traduir al Català")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn col-3",
+                    on: {
+                      click: function($event) {
+                        return _vm.modificarIdioma(1)
+                      }
+                    }
+                  },
+                  [_vm._v("Traduir al Castellano")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn col-3",
+                    on: {
+                      click: function($event) {
+                        return _vm.modificarIdioma(2)
+                      }
+                    }
+                  },
+                  [_vm._v("Translate to Anglés")]
+                )
+              ])
+            ])
+          ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "page-footer font-small blue pt-4" }, [
+      _c("div", { staticClass: "footer-copyright text-center py-3" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-right" })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -82175,19 +82254,21 @@ var render = function() {
               "div",
               { staticClass: "text-center row mt-3" },
               _vm._l(_vm.projectes, function(item) {
-                return _c("li", { key: item.titol }, [
-                  _c(
-                    "a",
-                    { staticClass: "democolor", attrs: { href: item.link } },
-                    [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(item.titol) +
-                          "\n              "
-                      )
-                    ]
-                  )
-                ])
+                return _c(
+                  "li",
+                  { key: item.titol, staticClass: "list-unstyled" },
+                  [
+                    _c("ul", [
+                      _c("a", { attrs: { href: item.link } }, [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(item.titol) +
+                            "\n                "
+                        )
+                      ])
+                    ])
+                  ]
+                )
               }),
               0
             )
