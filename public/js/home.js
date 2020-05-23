@@ -9,6 +9,7 @@ var waypoint = new Waypoint({
 
 function canviarcolor() {
     //Capturem el valor de la cookie actual
+
     var resultat = "";
     var name = "tema=";
     var decodedCookie = decodeURIComponent(document.cookie);

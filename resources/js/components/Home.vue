@@ -10,7 +10,7 @@
                                 <img
                                     onclick="canviarcolor()"
                                     class="col-6"
-                                    src="resources/img/IsotipoCirculo.svg"
+                                    :src="img"
                                     onerror="this.onerror=null; this.src='image.png'"
                                 />
                             </div>
@@ -48,7 +48,7 @@
                                 <div class="card" @click="openMusica()">
                                     <img
                                         class="card-img-top"
-                                        src
+                                        src=""
                                         alt="Card image cap"
                                     />
                                     <div class="card-body">
@@ -63,7 +63,7 @@
                                 <div class="card" @click="openDAM()">
                                     <img
                                         class="card-img-top"
-                                        src
+                                        src=""
                                         alt="Card image cap"
                                     />
                                     <div class="card-body">
@@ -78,7 +78,7 @@
                                 <div class="card" @click="openDAW()">
                                     <img
                                         class="card-img-top"
-                                        src
+                                        src=""
                                         alt="Card image cap"
                                     />
                                     <div class="card-body">
@@ -129,7 +129,8 @@ export default {
             textosCat: [],
             textosCast: [],
             textosEng: [],
-            textosMostrar: []
+            textosMostrar: [],
+            img: ""
         };
     },
     created() {
@@ -138,6 +139,7 @@ export default {
         }
         this.textosMostrar = [];
         this.modificarIdioma(0);
+        this.imagen();
     },
     mounted() {},
     methods: {
@@ -211,6 +213,9 @@ export default {
             mediaElement.seekable.start(30); // Returns the starting time (in seconds)
             mediaElement.seekable.end(); // Returns the ending time (in seconds)
             mediaElement.currentTime = 122; // Seek to 122 seconds
+        },
+        imagen() {
+            this.img = document.getElementById("ruta").getAttribute("desc");
         },
         openMusica() {
             window.location.href = "musica";

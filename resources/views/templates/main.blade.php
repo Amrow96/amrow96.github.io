@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <?php
+
+
 $nom="tema";
     if(isset($_COOKIE[$nom])) {
-        if($_COOKIE[$nom]=="dark"){
-            $style= "<link rel='stylesheet' href='css/bootstrapDark.css'>";
+        if($_COOKIE[$nom] == "dark"){
+            $style = "<link rel='stylesheet' href='css/bootstrapDark.css'>";
+        $rutaImg = "resources/img/IsotipoCirculoDark.svg";
+
+
         }
         else{
             $style= "<link rel='stylesheet' href='css/bootstrap.css'>";
+        $rutaImg = "resources/img/IsotipoCirculo.svg";
+
         }
-    }else{$style= "<link rel='stylesheet' href='css/bootstrap.css'>";
+    }else{
+        $style= "<link rel='stylesheet' href='css/bootstrap.css'>";
+        $rutaImg = "resources/img/IsotipoCirculo.svg";
+
     }
-    ; ?>
+
+   $ruta = "<div id='ruta' desc='" . $rutaImg ."'/>";
+     ?>
 <html lang="en">
 
 <head>
@@ -24,6 +36,7 @@ $nom="tema";
 </head>
 
 <body class="app">
+    
     <div id="app">
         <div class="container">
             <div class="row  col-8 offset-2 ">        
@@ -31,6 +44,7 @@ $nom="tema";
             </div>
         </div>
     </div>
+    <?php echo $ruta ?>
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/home.js') }}"></script>

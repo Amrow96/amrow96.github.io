@@ -2091,7 +2091,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       textosCat: [],
       textosCast: [],
       textosEng: [],
-      textosMostrar: []
+      textosMostrar: [],
+      img: ""
     };
   },
   created: function created() {
@@ -2111,6 +2112,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     this.textosMostrar = [];
     this.modificarIdioma(0);
+    this.imagen();
   },
   mounted: function mounted() {},
   methods: {
@@ -2195,6 +2197,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       mediaElement.seekable.end(); // Returns the ending time (in seconds)
 
       mediaElement.currentTime = 122; // Seek to 122 seconds
+    },
+    imagen: function imagen() {
+      this.img = document.getElementById("ruta").getAttribute("desc");
     },
     openMusica: function openMusica() {
       window.location.href = "musica";
@@ -81913,7 +81918,18 @@ var render = function() {
       _c("div", { staticClass: "col col-12 text-center" }, [
         _c("div", { staticClass: "vh-100" }, [
           _c("div", { staticClass: "alineamientoVertical" }, [
-            _vm._m(0),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("img", {
+                  staticClass: "col-6",
+                  attrs: {
+                    onclick: "canviarcolor()",
+                    src: _vm.img,
+                    onerror: "this.onerror=null; this.src='image.png'"
+                  }
+                })
+              ])
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "text-center row mt-3" }, [
               _c("div", { staticClass: "col" }, [
@@ -81937,7 +81953,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "vh-100" }, [
           _c("div", { staticClass: "row alineamientoVertical" }, [
@@ -82112,23 +82128,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("img", {
-          staticClass: "col-6",
-          attrs: {
-            onclick: "canviarcolor()",
-            src: "resources/img/IsotipoCirculo.svg",
-            onerror: "this.onerror=null; this.src='image.png'"
-          }
-        })
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
