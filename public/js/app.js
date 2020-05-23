@@ -2019,6 +2019,47 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2086,42 +2127,58 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     assignarTextos: function assignarTextos(element, id) {
       // pasem el resultat de la request i la referencia interna que hem utilitzat
-      var me = this; // let i = 0; //Busquem la posició en la que esta aquesta referencia
-      // let trobat = false;
-      // if (!trobat) {
-      //   for (let item of me.paraula) {
-      //     if (item.referencia === id.referencia) {
-      //       //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
-      //       me.textosCat[i] = {
-      //         text: element.txtcat,
-      //         referencia: element.txtref
-      //       };
-      //       me.textosCast[i] = {
-      //         text: element.txtcast,
-      //         referencia: element.txtref
-      //       };
-      //       me.textosEng[i] = {
-      //         text: element.txteng,
-      //         referencia: element.txtref
-      //       };
-      //       trobat = true; //Comprovant per sortir del bucle
-      //     }
-      //     i++;
-      //   }
-      // }
+      var me = this;
+      var i = 0; //Busquem la posició en la que esta aquesta referencia
 
-      me.textosCat.push({
-        text: element.txtcat,
-        referencia: element.txtref
-      });
-      me.textosCast.push({
-        text: element.txtcast,
-        referencia: element.txtref
-      });
-      me.textosEng.push({
-        text: element.txteng,
-        referencia: element.txtref
-      });
+      var trobat = false;
+
+      if (!trobat) {
+        var _iterator2 = _createForOfIteratorHelper(me.paraula),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var item = _step2.value;
+
+            if (item.referencia === id.referencia) {
+              //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+              me.textosCat[i] = {
+                text: element.txtcat,
+                referencia: element.txtref
+              };
+              me.textosCast[i] = {
+                text: element.txtcast,
+                referencia: element.txtref
+              };
+              me.textosEng[i] = {
+                text: element.txteng,
+                referencia: element.txtref
+              };
+              trobat = true; //Comprovant per sortir del bucle
+            }
+
+            i++;
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      }
+
+      this.textosMostrar = [];
+      this.modificarIdioma(0); // me.textosCat.push({
+      //   text: element.txtcat,
+      //   referencia: element.txtref
+      // });
+      // me.textosCast.push({
+      //   text: element.txtcast,
+      //   referencia: element.txtref
+      // });
+      // me.textosEng.push({
+      //   text: element.txteng,
+      //   referencia: element.txtref
+      // });
     },
     modificarIdioma: function modificarIdioma(id) {
       var me = this;
@@ -81726,11 +81783,19 @@ var render = function() {
             _c("div", { staticClass: "text-center row mt-3" }, [
               _c("div", { staticClass: "col" }, [
                 _c("h1", { staticClass: "titulo" }, [
-                  _vm._v(_vm._s(_vm.textosMostrar[0].text))
+                  _vm._v(
+                    "\n                                " +
+                      _vm._s(_vm.textosMostrar[0].text) +
+                      "\n                            "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("h2", { staticClass: "subtitulo" }, [
-                  _vm._v(_vm._s(_vm.textosMostrar[1].text))
+                  _vm._v(
+                    "\n                                " +
+                      _vm._s(_vm.textosMostrar[1].text) +
+                      "\n                            "
+                  )
                 ])
               ])
             ])
@@ -81761,11 +81826,19 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "card-body" }, [
                       _c("h5", { staticClass: "card-header titulo" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[2].text))
+                        _vm._v(
+                          "\n                                        " +
+                            _vm._s(_vm.textosMostrar[2].text) +
+                            "\n                                    "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[3].text))
+                        _vm._v(
+                          "\n                                        " +
+                            _vm._s(_vm.textosMostrar[3].text) +
+                            "\n                                    "
+                        )
                       ])
                     ])
                   ]
@@ -81789,11 +81862,19 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "card-body" }, [
                       _c("h5", { staticClass: "card-header titulo" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[4].text))
+                        _vm._v(
+                          "\n                                        " +
+                            _vm._s(_vm.textosMostrar[4].text) +
+                            "\n                                    "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[5].text))
+                        _vm._v(
+                          "\n                                        " +
+                            _vm._s(_vm.textosMostrar[5].text) +
+                            "\n                                    "
+                        )
                       ])
                     ])
                   ]
@@ -81817,11 +81898,19 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "card-body" }, [
                       _c("h5", { staticClass: "card-header titulo" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[6].text))
+                        _vm._v(
+                          "\n                                        " +
+                            _vm._s(_vm.textosMostrar[6].text) +
+                            "\n                                    "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[7].text))
+                        _vm._v(
+                          "\n                                        " +
+                            _vm._s(_vm.textosMostrar[7].text) +
+                            "\n                                    "
+                        )
                       ])
                     ])
                   ]
@@ -81842,7 +81931,11 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Traduir al Català")]
+            [
+              _vm._v(
+                "\n                    Traduir al Català\n                "
+              )
+            ]
           ),
           _vm._v(" "),
           _c(
@@ -81855,7 +81948,11 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Traduir al Castella")]
+            [
+              _vm._v(
+                "\n                    Traduir al Castella\n                "
+              )
+            ]
           ),
           _vm._v(" "),
           _c(
@@ -81868,7 +81965,11 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Traduir al Anglés")]
+            [
+              _vm._v(
+                "\n                    Traduir al Anglés\n                "
+              )
+            ]
           )
         ])
       ])
