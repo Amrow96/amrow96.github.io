@@ -25,18 +25,31 @@
         </div>
         <!-- Video -->
         <div class="vh-100">
-          <video
-            id="videoPresentacio"
-            class="col-12 alineamientoVertical"
-            controls
-            v-waypoint="{
+          <div class="text-center row mt-3">
+            <a
+              id="btnInsta"
+              class="invisible btn-secondary btn"
+              href="https://www.instagram.com/kliuoficial/"
+            >Instagram</a>
+            <a
+              id="btnTwitter"
+              class="invisible btn-secondary btn"
+              href="https://twitter.com/PauTrompeta_Dev"
+            >Twitter</a>
+
+            <video
+              id="videoPresentacio"
+              class="col-12 alineamientoVertical"
+              controls
+              v-waypoint="{
                             active: true,
                             callback: onWaypoint,
                             options: intersectionOptions
                         }"
-          >
-            <source :src="direccioVideo" type="video/mp4" />
-          </video>
+            >
+              <source id="contenidoVideo" :src="direccioVideo" type="video/mp4" />
+            </video>
+          </div>
         </div>
         <!-- Dafo -->
         <div class="vh-100 d-flex justify-content-center">
@@ -78,12 +91,9 @@
         </div>
         <!-- Footer -->
         <footer class="page-footer font-small blue pt-4">
-          <!-- Copyright -->
           <div class="footer-copyright text-center py-3"></div>
           <div class="text-right"></div>
-          <!-- Copyright -->
         </footer>
-        <!-- Footer -->
         <div class="page-footer">
           <div class="row alineamientoVertical">
             <div class="col col-12">
@@ -140,7 +150,27 @@ export default {
     onWaypoint({ going, direction }) {
       if (going === this.$waypointMap.GOING_IN) {
         var mediaElement = document.getElementById("videoPresentacio");
+        var contenido = document.getElementById("contenidoVideo");
         mediaElement.play();
+        //Mirem que s'hagui acabat el video
+        mediaElement.onended = function() {
+          // console.log("estem mostrant el src del video acabat", contenido.getAttribute("src"));
+          if (
+            contenido.getAttribute("src") == "resources/video/dam.mp4" ||
+            "resources/video/daw.mp4"
+          ) {
+            console.log("estem canviant el boto de twiter");
+
+            //Si el video ve dels cicles mostrem boto twiter
+            var btnTwitter = document.getElementById("btnTwitter");
+            btnTwitter.setAttribute("class", "visible btn-primary btn");
+          }
+          if (contenido.getAttribute("src") === "resources/video/musica.mp4") {
+            //Si ve de musica mostrem boto insta;
+            var btnInsta = document.getElementById("btnInstagram");
+            btnInsta.setAttribute("class", "visible btn-primary btn");
+          }
+        };
       }
     },
     capturarTextos(id) {
@@ -233,7 +263,7 @@ export default {
       let element = "intro.mp4";
 
       let origen = this.getCookie("paginavisitada");
-      console.log("estem mostrant la cookie", origen);
+      // console.log("estem mostrant la cookie", origen);
       switch (origen) {
         case "musica":
           element = "musica.mp4";
