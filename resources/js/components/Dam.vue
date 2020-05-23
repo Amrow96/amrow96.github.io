@@ -43,37 +43,19 @@ export default {
 
       projectes: [
         {
-          titol: "Si em paguessin per sortir de festa",
-          link: "https://www.youtube.com/watch?v=mb-lFVcJTVM",
-          text:
-            "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+          titol: "Marcianets",
+          link: "https://github.com/Amrow96/PMDM-Marcianets",
+          text: "Joc dels marcianets fet amb android i libgdx"
         },
         {
-          titol: "La Nostra Festa",
-          link: "https://www.youtube.com/watch?v=aepUHsLw7dQ",
-          text: "Amb el meu grup vam fer el tema oficial de la FM de Sitges"
+          titol: "Xat senzill",
+          link: "https://github.com/Amrow96/PSP-Xat_Senzill/",
+          text: "Xat utilitzant processos i fils"
         },
         {
-          titol: "Aquesta Nit",
-          link: "https://www.youtube.com/watch?v=0-gExVhHryA",
-          text:
-            "Amb el meu grup vam fer aquest treball del cual estem molt contents"
-        },
-        {
-          titol: "Todo Va a Cambiar",
-          link: "https://www.youtube.com/watch?v=eP-3zncYruw",
-          text:
-            "Amb el meu grup vam fer aquest Videoclip i estem molt ilusionats"
-        },
-        {
-          titol: "Canal de Youtube",
-          link: "https://www.youtube.com/channel/UC0FnCUEsZEgTMhqkEW7-X7A/",
-          text: "El nostre canal de youtube"
-        },
-        {
-          titol: "LP-T'ho Pinto",
-          link: "https://www.youtube.com/watch?v=DjAGP_CCxT4",
-          text: "Amb el meu grup vam fer aquest disc amb 11 cançons"
+          titol: "Loteria Grafica",
+          link: "https://github.com/Amrow96/P2-Loteria",
+          text: "Joc realitzat amb java amb una interficie grafica"
         }
       ]
     };
