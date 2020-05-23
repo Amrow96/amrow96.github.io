@@ -2025,41 +2025,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2092,7 +2057,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       textosCast: [],
       textosEng: [],
       textosMostrar: [],
-      img: ""
+      img: "",
+      direccioVideo: ""
     };
   },
   created: function created() {
@@ -2114,8 +2080,20 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     this.modificarIdioma(0);
     this.imagen();
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.videoselector();
+  },
   methods: {
+    //Detectem quan estem veient el video i el reproduim
+    onWaypoint: function onWaypoint(_ref) {
+      var going = _ref.going,
+          direction = _ref.direction;
+
+      if (going === this.$waypointMap.GOING_IN) {
+        var mediaElement = document.getElementById("videoPresentacio");
+        mediaElement.play();
+      }
+    },
     capturarTextos: function capturarTextos(id) {
       var me = this;
       axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
@@ -2191,12 +2169,28 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
     },
     videoselector: function videoselector() {
-      var mediaElement = document.getElementById("videoPresentacio");
-      mediaElement.seekable.start(30); // Returns the starting time (in seconds)
+      //detectem de quina pagina ve i mostrem un video en funció d'aquest
+      var element = "intro.mp4";
+      var origen = getCookie("paginavisitada");
+      console.log("estem mostrant la cookie", origen);
 
-      mediaElement.seekable.end(); // Returns the ending time (in seconds)
+      switch (origen) {
+        case "musica":
+          element = "musica.mp4";
+          break;
 
-      mediaElement.currentTime = 122; // Seek to 122 seconds
+        case "dam":
+          element = "dam.mp4";
+          break;
+
+        case "daw":
+          element = "DWES_23API.mp4";
+          break;
+      }
+
+      var baseSrc = "resources/video/" + element + "#t=30,55"; //separem la direcció a través dels parametres
+
+      this.direccioVideo = baseSrc;
     },
     imagen: function imagen() {
       this.img = document.getElementById("ruta").getAttribute("desc");
@@ -81934,26 +81928,44 @@ var render = function() {
             _c("div", { staticClass: "text-center row mt-3" }, [
               _c("div", { staticClass: "col" }, [
                 _c("h1", { staticClass: "titulo" }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.textosMostrar[0].text) +
-                      "\n                            "
-                  )
+                  _vm._v(_vm._s(_vm.textosMostrar[0].text))
                 ]),
                 _vm._v(" "),
                 _c("h2", { staticClass: "subtitulo" }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.textosMostrar[1].text) +
-                      "\n                            "
-                  )
+                  _vm._v(_vm._s(_vm.textosMostrar[1].text))
                 ])
               ])
             ])
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0),
+        _c("div", { staticClass: "vh-100" }, [
+          _c(
+            "video",
+            {
+              directives: [
+                {
+                  name: "waypoint",
+                  rawName: "v-waypoint",
+                  value: {
+                    active: true,
+                    callback: _vm.onWaypoint,
+                    options: _vm.intersectionOptions
+                  },
+                  expression:
+                    "{\n                          active: true,\n                          callback: onWaypoint,\n                          options: intersectionOptions\n                      }"
+                }
+              ],
+              staticClass: "col-12 alineamientoVertical",
+              attrs: { id: "videoPresentacio", controls: "" }
+            },
+            [
+              _c("source", {
+                attrs: { src: _vm.direccioVideo, type: "video/mp4" }
+              })
+            ]
+          )
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "vh-100" }, [
           _c("div", { staticClass: "row alineamientoVertical" }, [
@@ -81970,26 +81982,13 @@ var render = function() {
                     }
                   },
                   [
-                    _c("img", {
-                      staticClass: "card-img-top",
-                      attrs: { src: "", alt: "Card image cap" }
-                    }),
-                    _vm._v(" "),
                     _c("div", { staticClass: "card-body" }, [
-                      _c("h5", { staticClass: "card-header titulo" }, [
-                        _vm._v(
-                          "\n                                        " +
-                            _vm._s(_vm.textosMostrar[2].text) +
-                            "\n                                    "
-                        )
+                      _c("h5", { staticClass: "titulo" }, [
+                        _vm._v(_vm._s(_vm.textosMostrar[2].text))
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
-                        _vm._v(
-                          "\n                                        " +
-                            _vm._s(_vm.textosMostrar[3].text) +
-                            "\n                                    "
-                        )
+                        _vm._v(_vm._s(_vm.textosMostrar[3].text))
                       ])
                     ])
                   ]
@@ -82006,26 +82005,13 @@ var render = function() {
                     }
                   },
                   [
-                    _c("img", {
-                      staticClass: "card-img-top",
-                      attrs: { src: "", alt: "Card image cap" }
-                    }),
-                    _vm._v(" "),
                     _c("div", { staticClass: "card-body" }, [
-                      _c("h5", { staticClass: "card-header titulo" }, [
-                        _vm._v(
-                          "\n                                        " +
-                            _vm._s(_vm.textosMostrar[4].text) +
-                            "\n                                    "
-                        )
+                      _c("h5", { staticClass: "titulo" }, [
+                        _vm._v(_vm._s(_vm.textosMostrar[4].text))
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
-                        _vm._v(
-                          "\n                                        " +
-                            _vm._s(_vm.textosMostrar[5].text) +
-                            "\n                                    "
-                        )
+                        _vm._v(_vm._s(_vm.textosMostrar[5].text))
                       ])
                     ])
                   ]
@@ -82042,26 +82028,13 @@ var render = function() {
                     }
                   },
                   [
-                    _c("img", {
-                      staticClass: "card-img-top",
-                      attrs: { src: "", alt: "Card image cap" }
-                    }),
-                    _vm._v(" "),
                     _c("div", { staticClass: "card-body" }, [
-                      _c("h5", { staticClass: "card-header titulo" }, [
-                        _vm._v(
-                          "\n                                        " +
-                            _vm._s(_vm.textosMostrar[6].text) +
-                            "\n                                    "
-                        )
+                      _c("h5", { staticClass: "titulo" }, [
+                        _vm._v(_vm._s(_vm.textosMostrar[6].text))
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
-                        _vm._v(
-                          "\n                                        " +
-                            _vm._s(_vm.textosMostrar[7].text) +
-                            "\n                                    "
-                        )
+                        _vm._v(_vm._s(_vm.textosMostrar[7].text))
                       ])
                     ])
                   ]
@@ -82082,11 +82055,7 @@ var render = function() {
                 }
               }
             },
-            [
-              _vm._v(
-                "\n                    Traduir al Català\n                "
-              )
-            ]
+            [_vm._v("Traduir al Català")]
           ),
           _vm._v(" "),
           _c(
@@ -82099,11 +82068,7 @@ var render = function() {
                 }
               }
             },
-            [
-              _vm._v(
-                "\n                    Traduir al Castella\n                "
-              )
-            ]
+            [_vm._v("Traduir al Castella")]
           ),
           _vm._v(" "),
           _c(
@@ -82116,41 +82081,14 @@ var render = function() {
                 }
               }
             },
-            [
-              _vm._v(
-                "\n                    Traduir al Anglés\n                "
-              )
-            ]
+            [_vm._v("Traduir al Anglés")]
           )
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "vh-100" }, [
-      _c(
-        "video",
-        {
-          staticClass: "col-12 alineamientoVertical",
-          attrs: { id: "videoPresentacio", controls: "" }
-        },
-        [
-          _c("source", {
-            attrs: {
-              src: "resources/video/intro.mp4#t=30,55",
-              type: "video/mp4"
-            }
-          })
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -82855,6 +82793,17 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-waypoint/dist/vue-waypoint.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vue-waypoint/dist/vue-waypoint.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():undefined}("undefined"!=typeof self?self:this,function(){return function(e){function t(n){if(r[n])return r[n].exports;var o=r[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,t),o.l=!0,o.exports}var r={};return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{configurable:!1,enumerable:!0,get:n})},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=2)}([function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.removeObserver=t.addObserver=void 0;var n=r(1),o={},i=function(e,t){return e.forEach(function(e){return u(e,t)})},u=function(e,t){return t((0,n.mapEntry)(e))},O=function(e,t){return new window.IntersectionObserver(e,t)},a=function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:o,n=O(function(e,r){return i(e,t)},r);return n.observe(e),n},f=function(e,t){return e.unobserve(t)};t.addObserver=a,t.removeObserver=f},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){return e?"in":"out"},o=function(e,t){return e.top<t.top?"top":e.left>t.left?"right":e.top>t.top?"bottom":e.left<t.left?"left":void 0},i=function(e){return e._waypointData},u=function(e,t){var r=i(e);return void 0!==r?r:t},O=function(e){var t=e.boundingClientRect,r=e.isIntersecting,i=e.target,O=u(i,t);return i._waypointData=t,{el:i,going:n(r),direction:o(t,O),_entry:e}};t.going=n,t.GOING_IN="in",t.GOING_OUT="out",t.direction=o,t.DIRECTION_TOP="top",t.DIRECTION_RIGHT="right",t.DIRECTION_BOTTOM="bottom",t.DIRECTION_LEFT="left",t.mapEntry=O},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=r(3),o=function(e){return e&&e.__esModule?e:{default:e}}(n),i=r(1),u=r(0),O={install:function(e){(0,o.default)(e),e.prototype.$addObserver=u.addObserver,e.prototype.$removeObserver=u.removeObserver,e.prototype.$waypointMap={GOING_IN:i.GOING_IN,GOING_OUT:i.GOING_OUT,DIRECTION_TOP:i.DIRECTION_TOP,DIRECTION_RIGHT:i.DIRECTION_RIGHT,DIRECTION_BOTTOM:i.DIRECTION_BOTTOM,DIRECTION_LEFT:i.DIRECTION_LEFT}},addObserver:u.addObserver,removeObserver:u.removeObserver,map:{GOING_IN:i.GOING_IN,GOING_OUT:i.GOING_OUT,DIRECTION_TOP:i.DIRECTION_TOP,DIRECTION_RIGHT:i.DIRECTION_RIGHT,DIRECTION_BOTTOM:i.DIRECTION_BOTTOM,DIRECTION_LEFT:i.DIRECTION_LEFT}};t.default=O,"undefined"!=typeof window&&window.Vue&&window.Vue.use(O)},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=r(0),o=function(e){e.directive("waypoint",{inserted:function(e,t,r){var o=t.value,i=o.active,u=o.callback,O=o.options;if(i){var a=(0,n.addObserver)(e,u,O);r._waypoint=a}},updated:function(e,t,r,o){var i=t.value,u=i.active,O=i.callback,a=i.options;if(void 0!==o._waypoint&&(0,n.removeObserver)(o._waypoint,e),u){var f=(0,n.addObserver)(e,O,a);r._waypoint=f}},unbind:function(e,t,r){void 0!==r._waypoint&&(0,n.removeObserver)(r._waypoint,e)}})};t.default=o}])});
 
 /***/ }),
 
@@ -94917,7 +94866,9 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var vue_waypoint__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-waypoint */ "./node_modules/vue-waypoint/dist/vue-waypoint.js");
+/* harmony import */ var vue_waypoint__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_waypoint__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -94926,6 +94877,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+ // Waypoint plugin
+
+Vue.use(vue_waypoint__WEBPACK_IMPORTED_MODULE_0___default.a);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -94947,7 +94901,7 @@ Vue.component("textos", __webpack_require__(/*! ./components/RegistroTextos.vue 
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["BootstrapVue"]);
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["BootstrapVue"]);
 var app = new Vue({
   el: "#app"
 });

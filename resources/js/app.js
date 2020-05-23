@@ -5,8 +5,12 @@
  */
 
 require("./bootstrap");
-
 window.Vue = require("vue");
+
+import VueWaypoint from "vue-waypoint";
+
+// Waypoint plugin
+Vue.use(VueWaypoint);
 
 /**
  * The following block of code may be used to automatically register your

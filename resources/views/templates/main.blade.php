@@ -21,7 +21,7 @@ $nom="tema";
 
     }
 
-   $ruta = "<div id='ruta' desc='" . $rutaImg ."'/>";
+   $ruta = "<div id='ruta' idioma="0" desc='" . $rutaImg ."'/>";
      ?>
 <html lang="en">
 
