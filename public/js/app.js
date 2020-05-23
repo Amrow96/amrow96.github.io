@@ -2167,18 +2167,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
 
       this.textosMostrar = [];
-      this.modificarIdioma(0); // me.textosCat.push({
-      //   text: element.txtcat,
-      //   referencia: element.txtref
-      // });
-      // me.textosCast.push({
-      //   text: element.txtcast,
-      //   referencia: element.txtref
-      // });
-      // me.textosEng.push({
-      //   text: element.txteng,
-      //   referencia: element.txtref
-      // });
+      this.modificarIdioma(0);
     },
     modificarIdioma: function modificarIdioma(id) {
       var me = this;
@@ -2236,6 +2225,12 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2318,7 +2313,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     this.textosMostrar = [];
     this.modificarIdioma(0);
-    this.$cookie.set("registre", keyValue, "expiring time");
   },
   mounted: function mounted() {},
   methods: {
@@ -2335,42 +2329,47 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     assignarTextos: function assignarTextos(element, id) {
       // pasem el resultat de la request i la referencia interna que hem utilitzat
-      var me = this; // let i = 0; //Busquem la posició en la que esta aquesta referencia
-      // let trobat = false;
-      // if (!trobat) {
-      //   for (let item of me.paraula) {
-      //     if (item.referencia === id.referencia) {
-      //       //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
-      //       me.textosCat[i] = {
-      //         text: element.txtcat,
-      //         referencia: element.txtref
-      //       };
-      //       me.textosCast[i] = {
-      //         text: element.txtcast,
-      //         referencia: element.txtref
-      //       };
-      //       me.textosEng[i] = {
-      //         text: element.txteng,
-      //         referencia: element.txtref
-      //       };
-      //       trobat = true; //Comprovant per sortir del bucle
-      //     }
-      //     i++;
-      //   }
-      // }
+      var me = this;
+      var i = 0; //Busquem la posició en la que esta aquesta referencia
 
-      me.textosCat.push({
-        text: element.txtcat,
-        referencia: element.txtref
-      });
-      me.textosCast.push({
-        text: element.txtcast,
-        referencia: element.txtref
-      });
-      me.textosEng.push({
-        text: element.txteng,
-        referencia: element.txtref
-      });
+      var trobat = false;
+
+      if (!trobat) {
+        var _iterator2 = _createForOfIteratorHelper(me.paraula),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var item = _step2.value;
+
+            if (item.referencia === id.referencia) {
+              //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+              me.textosCat[i] = {
+                text: element.txtcat,
+                referencia: element.txtref
+              };
+              me.textosCast[i] = {
+                text: element.txtcast,
+                referencia: element.txtref
+              };
+              me.textosEng[i] = {
+                text: element.txteng,
+                referencia: element.txtref
+              };
+              trobat = true; //Comprovant per sortir del bucle
+            }
+
+            i++;
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      }
+
+      this.textosMostrar = [];
+      this.modificarIdioma(0);
     },
     modificarIdioma: function modificarIdioma(id) {
       var me = this;
@@ -2405,6 +2404,28 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2596,32 +2617,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      idioma: 0,
       resultat: [],
-      textos: {
-        gestioIncidencies: ["Gestió d'Incidencies", "Gestión de Incidencias", "Incidents Management"],
-        buscar: ["Buscar", "Buscar", "Search"],
-        buscador: ["Buscador", "Buscador", "Browser"],
-        editar: ["Editar", "Editar", "Edit"],
-        afegirIncidencia: ["Afegir Incidencia", "Añadir Incidencia", "Add Incidence"],
-        editarIncidencia: ["Editar Incidencia", "Editar Incidencia", "Edit Incidence"],
-        numeroIncidencia: ["Numero d'Incidencia", " Numero de Incidencia", "Incidence Number"],
-        hora: ["Hora", "Hora", "Hour"],
-        fecha: ["Data", "Fecha", "Date"],
-        cancelar: ["Cancelar", "Cancelar", "Cancel"],
-        guardar: ["Guardar", "Guardar", "Save"],
-        telefon: ["Telèfon de l'Alertant", "Telefono del Alertante", "Alerting Phone"],
-        municipi: ["Municipi", "Municipio", "Town"],
-        adreca: ["Adreça", "Dirección", "Address"],
-        compAdreca: ["Complement d'Adreça", "Complemento de Dirección", "Add-on Address"],
-        tipusAlertant: ["Tipus d'Alertant", "Tipo de Alertant:", "Alerter's Type"],
-        alertant: ["Alertant", "Alertante", "Alerter"],
-        estatIncidencia: ["Estat de l'Incidencia", "Estado de la incidencia", "Incidence Status"],
-        tipusIncidencia: ["Tipus d'Incidencia", "Tipo de incidencia", "Incidence Type"],
-        descripcio: ["Descripció", "Descripción", "Description"]
-      },
+      paraula: [{
+        referencia: "musica",
+        numero: "17"
+      }, {
+        referencia: "musicadesc",
+        numero: "18"
+      }, {
+        referencia: "cat",
+        numero: "19"
+      }, {
+        referencia: "cast",
+        numero: "20"
+      }, {
+        referencia: "eng",
+        numero: "21"
+      }, {
+        referencia: "aceptar",
+        numero: "22"
+      }, {
+        referencia: "guardar",
+        numero: "23"
+      }, {
+        referencia: "cancelar",
+        numero: "24"
+      }, {
+        referencia: "ref",
+        numero: "25"
+      }, {
+        referencia: "newtext",
+        numero: "26"
+      }, {
+        referencia: "edit",
+        numero: "27"
+      }, {
+        referencia: "buscar",
+        numero: "28"
+      }, {
+        referencia: "edittext",
+        numero: "29"
+      }, {
+        referencia: "textos",
+        numero: "31"
+      }],
+      textosCat: [],
+      textosCast: [],
+      textosEng: [],
+      textosMostrar: [],
       objectText: {
-        idtxt: "",
+        idtxt: null,
         txtref: "",
         txtcat: "",
         txtcast: "",
@@ -2638,7 +2683,7 @@ __webpack_require__.r(__webpack_exports__);
         label: "Castellà"
       }, {
         key: "txteng",
-        label: "Anglés"
+        label: "Anglès"
       }, "gestionar"],
       perPage: 5,
       currentPage: 1,
@@ -2652,13 +2697,29 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.capturarTextos();
+    var _iterator = _createForOfIteratorHelper(this.paraula),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var item = _step.value;
+        this.capturarTextos(item);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    this.capturarTotsTextos();
+    this.textosMostrar = [];
+    this.modificarIdioma(0);
   },
+  mounted: function mounted() {},
   methods: {
-    capturarTextos: function capturarTextos() {
+    capturarTotsTextos: function capturarTotsTextos() {
       var me = this;
-      axios.get("/textos") //Busquem amb el me.paraula un element en concret a través del numero = id
-      .then(function (response) {
+      axios.get("/textos/").then(function (response) {
         me.resultat = response.data.data; //cridar al metode que assigna els valors als arrays
       })["catch"](function (error) {
         return console.log(error);
@@ -2693,8 +2754,8 @@ __webpack_require__.r(__webpack_exports__);
       var me = this; //pasem el objecte a afegir
 
       console.log(this.objectText);
-      axios.post("/textos/", me.objectText).then(function (response) {
-        me.capturarTextos();
+      axios.post("/textos", me.objectText).then(function (response) {
+        me.capturarTotsTextos();
         me.mensajeAdd();
         me.cancelar();
       })["catch"](function (error) {
@@ -2710,6 +2771,80 @@ __webpack_require__.r(__webpack_exports__);
     cancelar: function cancelar() {
       this.$bvModal.hide("editTextModal");
       this.$bvModal.hide("addTextModal");
+    },
+    capturarTextos: function capturarTextos(id) {
+      var me = this;
+      axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
+      .then(function (response) {
+        var text = response.data.data; //cridar al metode que assigna els valors als arrays
+
+        me.assignarTextos(text, id);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    assignarTextos: function assignarTextos(element, id) {
+      // pasem el resultat de la request i la referencia interna que hem utilitzat
+      var me = this;
+      var i = 0; //Busquem la posició en la que esta aquesta referencia
+
+      var trobat = false;
+
+      if (!trobat) {
+        var _iterator2 = _createForOfIteratorHelper(me.paraula),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var item = _step2.value;
+
+            if (item.referencia === id.referencia) {
+              //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+              me.textosCat[i] = {
+                text: element.txtcat,
+                referencia: element.txtref
+              };
+              me.textosCast[i] = {
+                text: element.txtcast,
+                referencia: element.txtref
+              };
+              me.textosEng[i] = {
+                text: element.txteng,
+                referencia: element.txtref
+              };
+              trobat = true; //Comprovant per sortir del bucle
+            }
+
+            i++;
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      }
+
+      this.textosMostrar = [];
+      this.modificarIdioma(0);
+    },
+    modificarIdioma: function modificarIdioma(id) {
+      var me = this;
+
+      switch (id) {
+        case 0:
+          me.textosMostrar = me.textosCat;
+          break;
+
+        case 1:
+          //   console.log("Acabem de cambiar de:", me.textosMostrar[0].text);
+          me.textosMostrar = me.textosCast;
+          break;
+        //console.log("Acabem de cambiar a:", me.textosMostrar[0].text);
+
+        case 2:
+          me.textosMostrar = me.textosEng;
+          break;
+      }
     }
   }
 });
@@ -82046,11 +82181,19 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col" }, [
                 _c("h1", { staticClass: "titulo" }, [
-                  _vm._v(_vm._s(_vm.textosMostrar[0].text))
+                  _vm._v(
+                    "\n                                " +
+                      _vm._s(_vm.textosMostrar[0].text) +
+                      "\n                            "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("h2", { staticClass: "subtitulo" }, [
-                  _vm._v(_vm._s(_vm.textosMostrar[1].text))
+                  _vm._v(
+                    "\n                                " +
+                      _vm._s(_vm.textosMostrar[1].text) +
+                      "\n                            "
+                  )
                 ])
               ])
             ]),
@@ -82106,7 +82249,13 @@ var render = function() {
           "div",
           { staticClass: "col-12 text-center" },
           [
-            _c("h1", { staticClass: "text-center mb-5" }, [_vm._v("Textos")]),
+            _c("h1", { staticClass: "text-center mt-5 mb-3 titulo" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.textosMostrar[13].text) +
+                  "\n            "
+              )
+            ]),
             _vm._v(" "),
             _c(
               "b-input-group",
@@ -82116,7 +82265,7 @@ var render = function() {
                   attrs: {
                     type: "search",
                     id: "filterInput",
-                    placeholder: _vm.textos.buscar[_vm.idioma] + "..."
+                    placeholder: _vm.textosMostrar[11].text + "..."
                   },
                   model: {
                     value: _vm.filter,
@@ -82160,7 +82309,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v(_vm._s(_vm.textos.editar[_vm.idioma]))]
+                        [_vm._v(_vm._s(_vm.textosMostrar[10].text))]
                       )
                     ]
                   }
@@ -82201,7 +82350,13 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v(_vm._s(_vm.textos.afegirIncidencia[_vm.idioma]))]
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.textosMostrar[9].text) +
+                    "\n            "
+                )
+              ]
             )
           ],
           1
@@ -82210,10 +82365,7 @@ var render = function() {
         _c(
           "b-modal",
           {
-            attrs: {
-              id: "editTextModal",
-              title: _vm.textos.editarIncidencia[_vm.idioma]
-            },
+            attrs: { id: "editTextModal", title: _vm.textosMostrar[12].text },
             on: {
               ok: function($event) {
                 return _vm.updateText(_vm.objectText.idtxt)
@@ -82237,7 +82389,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v(_vm._s(_vm.textos.cancelar[_vm.idioma]))]
+                      [_vm._v(_vm._s(_vm.textosMostrar[7].text))]
                     ),
                     _vm._v(" "),
                     _c(
@@ -82250,7 +82402,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v(_vm._s(_vm.textos.guardar[_vm.idioma]))]
+                      [_vm._v(_vm._s(_vm.textosMostrar[6].text))]
                     )
                   ]
                 },
@@ -82263,9 +82415,9 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.textos.numeroIncidencia[_vm.idioma]) +
-                      ":\n            "
+                    "\n                        " +
+                      _vm._s(_vm.textosMostrar[8].text) +
+                      ":\n                        "
                   ),
                   _c("input", {
                     directives: [
@@ -82280,7 +82432,7 @@ var render = function() {
                     attrs: {
                       name: "txtref",
                       type: "text",
-                      placeholder: _vm.textos.numeroIncidencia[_vm.idioma]
+                      placeholder: _vm.textosMostrar[8].text
                     },
                     domProps: { value: _vm.objectText.txtref },
                     on: {
@@ -82296,9 +82448,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.textos.telefon[_vm.idioma]) +
-                      ":\n            "
+                    "\n                        " +
+                      _vm._s(_vm.textosMostrar[2].text) +
+                      ":\n                        "
                   ),
                   _c("input", {
                     directives: [
@@ -82313,7 +82465,7 @@ var render = function() {
                     attrs: {
                       type: "text",
                       name: "txtcat",
-                      placeholder: _vm.textos.telefon[_vm.idioma]
+                      placeholder: _vm.textosMostrar[2].text
                     },
                     domProps: { value: _vm.objectText.txtcat },
                     on: {
@@ -82329,9 +82481,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.textos.adreca[_vm.idioma]) +
-                      ":\n            "
+                    "\n                        " +
+                      _vm._s(_vm.textosMostrar[3].text) +
+                      ":\n                        "
                   ),
                   _c("input", {
                     directives: [
@@ -82346,7 +82498,7 @@ var render = function() {
                     attrs: {
                       type: "text",
                       name: "txtcast",
-                      placeholder: _vm.textos.adreca[_vm.idioma]
+                      placeholder: _vm.textosMostrar[3].text
                     },
                     domProps: { value: _vm.objectText.txtcast },
                     on: {
@@ -82362,9 +82514,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.textos.adreca[_vm.idioma]) +
-                      ":\n            "
+                    "\n                        " +
+                      _vm._s(_vm.textosMostrar[4].text) +
+                      ":\n                        "
                   ),
                   _c("input", {
                     directives: [
@@ -82379,7 +82531,7 @@ var render = function() {
                     attrs: {
                       type: "text",
                       name: "txteng",
-                      placeholder: _vm.textos.adreca[_vm.idioma]
+                      placeholder: _vm.textosMostrar[4].text
                     },
                     domProps: { value: _vm.objectText.txteng },
                     on: {
@@ -82400,10 +82552,7 @@ var render = function() {
         _c(
           "b-modal",
           {
-            attrs: {
-              id: "addTextModal",
-              title: _vm.textos.editarIncidencia[_vm.idioma]
-            },
+            attrs: { id: "addTextModal", title: _vm.textosMostrar[9].text },
             on: {
               ok: function($event) {
                 return _vm.updateText(_vm.objectText.idtxt)
@@ -82427,7 +82576,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v(_vm._s(_vm.textos.cancelar[_vm.idioma]))]
+                      [_vm._v(_vm._s(_vm.textosMostrar[7].text))]
                     ),
                     _vm._v(" "),
                     _c(
@@ -82440,7 +82589,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v(_vm._s(_vm.textos.guardar[_vm.idioma]))]
+                      [_vm._v(_vm._s(_vm.textosMostrar[6].text))]
                     )
                   ]
                 },
@@ -82453,9 +82602,9 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.textos.numeroIncidencia[_vm.idioma]) +
-                      ":\n            "
+                    "\n                        " +
+                      _vm._s(_vm.textosMostrar[8].text) +
+                      ":\n                        "
                   ),
                   _c("input", {
                     directives: [
@@ -82470,7 +82619,7 @@ var render = function() {
                     attrs: {
                       name: "txtref",
                       type: "text",
-                      placeholder: _vm.textos.numeroIncidencia[_vm.idioma]
+                      placeholder: _vm.textosMostrar[8].text
                     },
                     domProps: { value: _vm.objectText.txtref },
                     on: {
@@ -82486,9 +82635,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.textos.telefon[_vm.idioma]) +
-                      ":\n            "
+                    "\n                        " +
+                      _vm._s(_vm.textosMostrar[2].text) +
+                      ":\n                        "
                   ),
                   _c("input", {
                     directives: [
@@ -82503,7 +82652,7 @@ var render = function() {
                     attrs: {
                       type: "text",
                       name: "txtcat",
-                      placeholder: _vm.textos.telefon[_vm.idioma]
+                      placeholder: _vm.textosMostrar[2].text
                     },
                     domProps: { value: _vm.objectText.txtcat },
                     on: {
@@ -82519,9 +82668,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.textos.adreca[_vm.idioma]) +
-                      ":\n            "
+                    "\n                        " +
+                      _vm._s(_vm.textosMostrar[3].text) +
+                      ":\n                        "
                   ),
                   _c("input", {
                     directives: [
@@ -82536,7 +82685,7 @@ var render = function() {
                     attrs: {
                       type: "text",
                       name: "txtcast",
-                      placeholder: _vm.textos.adreca[_vm.idioma]
+                      placeholder: _vm.textosMostrar[3].text
                     },
                     domProps: { value: _vm.objectText.txtcast },
                     on: {
@@ -82552,9 +82701,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.textos.adreca[_vm.idioma]) +
-                      ":\n            "
+                    "\n                        " +
+                      _vm._s(_vm.textosMostrar[4].text) +
+                      ":\n                        "
                   ),
                   _c("input", {
                     directives: [
@@ -82569,7 +82718,7 @@ var render = function() {
                     attrs: {
                       type: "text",
                       name: "txteng",
-                      placeholder: _vm.textos.adreca[_vm.idioma]
+                      placeholder: _vm.textosMostrar[4].text
                     },
                     domProps: { value: _vm.objectText.txteng },
                     on: {

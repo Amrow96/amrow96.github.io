@@ -185,18 +185,6 @@ export default {
             }
             this.textosMostrar = [];
             this.modificarIdioma(0);
-            // me.textosCat.push({
-            //   text: element.txtcat,
-            //   referencia: element.txtref
-            // });
-            // me.textosCast.push({
-            //   text: element.txtcast,
-            //   referencia: element.txtref
-            // });
-            // me.textosEng.push({
-            //   text: element.txteng,
-            //   referencia: element.txtref
-            // });
         },
 
         modificarIdioma(id) {

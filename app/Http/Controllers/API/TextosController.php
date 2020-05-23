@@ -43,7 +43,7 @@ class TextosController extends Controller
             $text->save();
             $respuesta = (new TextoResource($text))
                 ->response()
-                ->setStatusCode(200);
+                ->setStatusCode(201);
 
         } catch (QueryException $e) {
             $mensaje = Utilitat::errorMessage($e);

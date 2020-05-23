@@ -5,7 +5,7 @@ DAM
 @endsection
 @section('principal')
 <div class="container">
-    <musica></musica>Estas en DAM
+    <musica></musica>
 </div>
 <script>
         var cookiDate = new Date(2020,11,24);
