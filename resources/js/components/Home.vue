@@ -66,10 +66,24 @@
           </div>
         </div>
         <!-- Footer -->
-        <div class="row col-12">
-          <button class="btn col-4" @click="modificarIdioma(0)">Traduir al Català</button>
-          <button class="btn col-4" @click="modificarIdioma(1)">Traduir al Castella</button>
-          <button class="btn col-4" @click="modificarIdioma(2)">Traduir al Anglés</button>
+        <footer class="page-footer font-small blue pt-4">
+          <!-- Copyright -->
+          <div class="footer-copyright text-center py-3"></div>
+          <div class="text-right"></div>
+          <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+        <div class="page-footer">
+          <div class="row alineamientoVertical">
+            <div class="col col-12">
+              <div class="row col-12">
+                <button class="btn col-3" onclick="canviarcolor()">Cambiar el Tema</button>
+                <button class="btn col-3" @click="modificarIdioma(0)">Traduir al Català</button>
+                <button class="btn col-3" @click="modificarIdioma(1)">Traduir al Castellano</button>
+                <button class="btn col-3" @click="modificarIdioma(2)">Translate to Anglés</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -88,7 +102,8 @@ export default {
         { referencia: "dam", numero: "13" },
         { referencia: "damdesc", numero: "15" },
         { referencia: "daw", numero: "14" },
-        { referencia: "dawdesc", numero: "16" }
+        { referencia: "dawdesc", numero: "16" },
+        { referencia: "dafo", numero: "30" }
       ],
 
       textosCat: [],
