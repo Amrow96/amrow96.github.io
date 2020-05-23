@@ -33,8 +33,8 @@ export default {
   data() {
     return {
       paraula: [
-        { referencia: "musica", numero: "17" },
-        { referencia: "musicadesc", numero: "18" }
+        { referencia: "daw", numero: "14" },
+        { referencia: "dawdesc", numero: "16" }
       ],
       textosCat: [],
       textosCast: [],

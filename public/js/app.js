@@ -1899,6 +1899,420 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dam.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dam.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      paraula: [{
+        referencia: "dam",
+        numero: "13"
+      }, {
+        referencia: "damdesc",
+        numero: "15"
+      }],
+      textosCat: [],
+      textosCast: [],
+      textosEng: [],
+      textosMostrar: [],
+      projectes: [{
+        titol: "Si em paguessin per sortir de festa",
+        link: "https://www.youtube.com/watch?v=mb-lFVcJTVM",
+        text: "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+      }, {
+        titol: "La Nostra Festa",
+        link: "https://www.youtube.com/watch?v=aepUHsLw7dQ",
+        text: "Amb el meu grup vam fer el tema oficial de la FM de Sitges"
+      }, {
+        titol: "Aquesta Nit",
+        link: "https://www.youtube.com/watch?v=0-gExVhHryA",
+        text: "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+      }, {
+        titol: "Todo Va a Cambiar",
+        link: "https://www.youtube.com/watch?v=eP-3zncYruw",
+        text: "Amb el meu grup vam fer aquest Videoclip i estem molt ilusionats"
+      }, {
+        titol: "Canal de Youtube",
+        link: "https://www.youtube.com/channel/UC0FnCUEsZEgTMhqkEW7-X7A/",
+        text: "El nostre canal de youtube"
+      }, {
+        titol: "LP-T'ho Pinto",
+        link: "https://www.youtube.com/watch?v=DjAGP_CCxT4",
+        text: "Amb el meu grup vam fer aquest disc amb 11 cançons"
+      }]
+    };
+  },
+  created: function created() {
+    var _iterator = _createForOfIteratorHelper(this.paraula),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var item = _step.value;
+        this.capturarTextos(item);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  },
+  methods: {
+    capturarTextos: function capturarTextos(id) {
+      var me = this;
+      axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
+      .then(function (response) {
+        var text = response.data.data; //cridar al metode que assigna els valors als arrays
+
+        me.assignarTextos(text, id);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    assignarTextos: function assignarTextos(element, id) {
+      // pasem el resultat de la request i la referencia interna que hem utilitzat
+      var me = this;
+      var i = 0; //Busquem la posició en la que esta aquesta referencia
+
+      var trobat = false;
+
+      if (!trobat) {
+        var _iterator2 = _createForOfIteratorHelper(me.paraula),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var item = _step2.value;
+
+            if (item.referencia === id.referencia) {
+              //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+              me.textosCat[i] = {
+                text: element.txtcat,
+                referencia: element.txtref
+              };
+              me.textosCast[i] = {
+                text: element.txtcast,
+                referencia: element.txtref
+              };
+              me.textosEng[i] = {
+                text: element.txteng,
+                referencia: element.txtref
+              };
+              trobat = true; //Comprovant per sortir del bucle
+            }
+
+            i++;
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      }
+
+      this.textosMostrar = [];
+      this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
+    },
+    getCookie: function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(";");
+
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+
+      return "";
+    },
+    modificarIdioma: function modificarIdioma(id) {
+      var me = this;
+
+      switch (id) {
+        case 0:
+          me.textosMostrar = me.textosCat;
+          break;
+
+        case 1:
+          //   console.log("Acabem de cambiar de:", me.textosMostrar[0].text);
+          me.textosMostrar = me.textosCast;
+          break;
+        //console.log("Acabem de cambiar a:", me.textosMostrar[0].text);
+
+        case 2:
+          me.textosMostrar = me.textosEng;
+          break;
+
+        default:
+          me.textosMostrar = me.textosCat;
+          id = 0;
+          break;
+      }
+
+      var cookiDate = new Date(2020, 11, 24);
+      document.cookie = "idioma=" + id + "; expires=" + cookiDate.toUTCString();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Daw.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Daw.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      paraula: [{
+        referencia: "daw",
+        numero: "14"
+      }, {
+        referencia: "dawdesc",
+        numero: "16"
+      }],
+      textosCat: [],
+      textosCast: [],
+      textosEng: [],
+      textosMostrar: [],
+      projectes: [{
+        titol: "Si em paguessin per sortir de festa",
+        link: "https://www.youtube.com/watch?v=mb-lFVcJTVM",
+        text: "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+      }, {
+        titol: "La Nostra Festa",
+        link: "https://www.youtube.com/watch?v=aepUHsLw7dQ",
+        text: "Amb el meu grup vam fer el tema oficial de la FM de Sitges"
+      }, {
+        titol: "Aquesta Nit",
+        link: "https://www.youtube.com/watch?v=0-gExVhHryA",
+        text: "Amb el meu grup vam fer aquest treball del cual estem molt contents"
+      }, {
+        titol: "Todo Va a Cambiar",
+        link: "https://www.youtube.com/watch?v=eP-3zncYruw",
+        text: "Amb el meu grup vam fer aquest Videoclip i estem molt ilusionats"
+      }, {
+        titol: "Canal de Youtube",
+        link: "https://www.youtube.com/channel/UC0FnCUEsZEgTMhqkEW7-X7A/",
+        text: "El nostre canal de youtube"
+      }, {
+        titol: "LP-T'ho Pinto",
+        link: "https://www.youtube.com/watch?v=DjAGP_CCxT4",
+        text: "Amb el meu grup vam fer aquest disc amb 11 cançons"
+      }]
+    };
+  },
+  created: function created() {
+    var _iterator = _createForOfIteratorHelper(this.paraula),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var item = _step.value;
+        this.capturarTextos(item);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  },
+  methods: {
+    capturarTextos: function capturarTextos(id) {
+      var me = this;
+      axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
+      .then(function (response) {
+        var text = response.data.data; //cridar al metode que assigna els valors als arrays
+
+        me.assignarTextos(text, id);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    assignarTextos: function assignarTextos(element, id) {
+      // pasem el resultat de la request i la referencia interna que hem utilitzat
+      var me = this;
+      var i = 0; //Busquem la posició en la que esta aquesta referencia
+
+      var trobat = false;
+
+      if (!trobat) {
+        var _iterator2 = _createForOfIteratorHelper(me.paraula),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var item = _step2.value;
+
+            if (item.referencia === id.referencia) {
+              //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+              me.textosCat[i] = {
+                text: element.txtcat,
+                referencia: element.txtref
+              };
+              me.textosCast[i] = {
+                text: element.txtcast,
+                referencia: element.txtref
+              };
+              me.textosEng[i] = {
+                text: element.txteng,
+                referencia: element.txtref
+              };
+              trobat = true; //Comprovant per sortir del bucle
+            }
+
+            i++;
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      }
+
+      this.textosMostrar = [];
+      this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
+    },
+    getCookie: function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(";");
+
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+
+      return "";
+    },
+    modificarIdioma: function modificarIdioma(id) {
+      var me = this;
+
+      switch (id) {
+        case 0:
+          me.textosMostrar = me.textosCat;
+          break;
+
+        case 1:
+          //   console.log("Acabem de cambiar de:", me.textosMostrar[0].text);
+          me.textosMostrar = me.textosCast;
+          break;
+        //console.log("Acabem de cambiar a:", me.textosMostrar[0].text);
+
+        case 2:
+          me.textosMostrar = me.textosEng;
+          break;
+
+        default:
+          me.textosMostrar = me.textosCat;
+          id = 0;
+          break;
+      }
+
+      var cookiDate = new Date(2020, 11, 24);
+      document.cookie = "idioma=" + id + "; expires=" + cookiDate.toUTCString();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -81926,6 +82340,136 @@ var e=function(){return(e=Object.assign||function(e){for(var t,r=1,s=arguments.l
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dam.vue?vue&type=template&id=6b57d375&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dam.vue?vue&type=template&id=6b57d375& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col col-12 text-center" }, [
+        _c("div", { staticClass: "vh-100 d-flex justify-content-center" }, [
+          _c("div", { staticClass: "col mt-auto mb-auto" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("h1", { staticClass: "titulo" }, [
+                  _vm._v(_vm._s(_vm.textosMostrar[0].text))
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.textosMostrar[1].text))])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "text-center row mt-3" },
+              _vm._l(_vm.projectes, function(item) {
+                return _c(
+                  "li",
+                  { key: item.titol, staticClass: "list-unstyled" },
+                  [
+                    _c("ul", [
+                      _c("a", { attrs: { href: item.link } }, [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(item.titol) +
+                            "\n                "
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Daw.vue?vue&type=template&id=6be4be7f&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Daw.vue?vue&type=template&id=6be4be7f& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col col-12 text-center" }, [
+        _c("div", { staticClass: "vh-100 d-flex justify-content-center" }, [
+          _c("div", { staticClass: "col mt-auto mb-auto" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("h1", { staticClass: "titulo" }, [
+                  _vm._v(_vm._s(_vm.textosMostrar[0].text))
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.textosMostrar[1].text))])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "text-center row mt-3" },
+              _vm._l(_vm.projectes, function(item) {
+                return _c(
+                  "li",
+                  { key: item.titol, staticClass: "list-unstyled" },
+                  [
+                    _c("ul", [
+                      _c("a", { attrs: { href: item.link } }, [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(item.titol) +
+                            "\n                "
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -82244,9 +82788,7 @@ var render = function() {
                   _vm._v(_vm._s(_vm.textosMostrar[0].text))
                 ]),
                 _vm._v(" "),
-                _c("h2", { staticClass: "subtitulo" }, [
-                  _vm._v(_vm._s(_vm.textosMostrar[1].text))
-                ])
+                _c("p", [_vm._v(_vm._s(_vm.textosMostrar[1].text))])
               ])
             ]),
             _vm._v(" "),
@@ -95017,7 +95559,10 @@ Vue.use(vue_waypoint__WEBPACK_IMPORTED_MODULE_0___default.a);
 Vue.component("example-component", __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component("home", __webpack_require__(/*! ./components/Home.vue */ "./resources/js/components/Home.vue")["default"]);
 Vue.component("musica", __webpack_require__(/*! ./components/Musica.vue */ "./resources/js/components/Musica.vue")["default"]);
+Vue.component("musica", __webpack_require__(/*! ./components/Musica.vue */ "./resources/js/components/Musica.vue")["default"]);
 Vue.component("textos", __webpack_require__(/*! ./components/RegistroTextos.vue */ "./resources/js/components/RegistroTextos.vue")["default"]);
+Vue.component("dam", __webpack_require__(/*! ./components/Dam.vue */ "./resources/js/components/Dam.vue")["default"]);
+Vue.component("daw", __webpack_require__(/*! ./components/Daw.vue */ "./resources/js/components/Daw.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -95074,6 +95619,144 @@ window.axios.defaults.baseURL = "/ItsMyTurn/public/api/";
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/Dam.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Dam.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Dam_vue_vue_type_template_id_6b57d375___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dam.vue?vue&type=template&id=6b57d375& */ "./resources/js/components/Dam.vue?vue&type=template&id=6b57d375&");
+/* harmony import */ var _Dam_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dam.vue?vue&type=script&lang=js& */ "./resources/js/components/Dam.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Dam_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Dam_vue_vue_type_template_id_6b57d375___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Dam_vue_vue_type_template_id_6b57d375___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Dam.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Dam.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/Dam.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Dam_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Dam.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dam.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Dam_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Dam.vue?vue&type=template&id=6b57d375&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Dam.vue?vue&type=template&id=6b57d375& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dam_vue_vue_type_template_id_6b57d375___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Dam.vue?vue&type=template&id=6b57d375& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dam.vue?vue&type=template&id=6b57d375&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dam_vue_vue_type_template_id_6b57d375___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dam_vue_vue_type_template_id_6b57d375___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Daw.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Daw.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Daw_vue_vue_type_template_id_6be4be7f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Daw.vue?vue&type=template&id=6be4be7f& */ "./resources/js/components/Daw.vue?vue&type=template&id=6be4be7f&");
+/* harmony import */ var _Daw_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Daw.vue?vue&type=script&lang=js& */ "./resources/js/components/Daw.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Daw_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Daw_vue_vue_type_template_id_6be4be7f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Daw_vue_vue_type_template_id_6be4be7f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Daw.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Daw.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/Daw.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Daw_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Daw.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Daw.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Daw_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Daw.vue?vue&type=template&id=6be4be7f&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Daw.vue?vue&type=template&id=6be4be7f& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Daw_vue_vue_type_template_id_6be4be7f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Daw.vue?vue&type=template&id=6be4be7f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Daw.vue?vue&type=template&id=6be4be7f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Daw_vue_vue_type_template_id_6be4be7f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Daw_vue_vue_type_template_id_6be4be7f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

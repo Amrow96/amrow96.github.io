@@ -5,7 +5,7 @@ DAW
 @endsection
 @section('principal')
 <div class="container">
-    <musica></musica>Estas en DAW
+    <daw></daw>
 </div>
 <script>
         var cookiDate = new Date(2020,11,24);

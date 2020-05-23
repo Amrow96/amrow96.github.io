@@ -29,7 +29,10 @@ Vue.component(
 );
 Vue.component("home", require("./components/Home.vue").default);
 Vue.component("musica", require("./components/Musica.vue").default);
+Vue.component("musica", require("./components/Musica.vue").default);
 Vue.component("textos", require("./components/RegistroTextos.vue").default);
+Vue.component("dam", require("./components/Dam.vue").default);
+Vue.component("daw", require("./components/Daw.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
