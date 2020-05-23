@@ -2076,8 +2076,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       _iterator.f();
     }
 
-    this.textosMostrar = [];
-    this.modificarIdioma(0);
     this.imagen();
   },
   mounted: function mounted() {
@@ -2147,7 +2145,26 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
 
       this.textosMostrar = [];
-      this.modificarIdioma(0);
+      console.log("estem al asignar textos amb el idioma", this.getCookie("idioma"));
+      this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
+    },
+    getCookie: function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(";");
+
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+
+      return "";
     },
     modificarIdioma: function modificarIdioma(id) {
       var me = this;
@@ -2166,7 +2183,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         case 2:
           me.textosMostrar = me.textosEng;
           break;
+
+        default:
+          me.textosMostrar = me.textosCat;
+          break;
       }
+
+      var cookiDate = new Date(2020, 11, 24);
+      document.cookie = "idioma=" + id + "; expires=" + cookiDate.toUTCString();
     },
     videoselector: function videoselector() {
       //detectem de quina pagina ve i mostrem un video en funció d'aquest
@@ -2252,8 +2276,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2309,11 +2331,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     } finally {
       _iterator.f();
     }
-
-    this.textosMostrar = [];
-    this.modificarIdioma(0);
   },
-  mounted: function mounted() {},
   methods: {
     capturarTextos: function capturarTextos(id) {
       var me = this;
@@ -2368,7 +2386,26 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
 
       this.textosMostrar = [];
-      this.modificarIdioma(0);
+      console.log("estem al asignar textos amb el idioma", this.getCookie("idioma"));
+      this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
+    },
+    getCookie: function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(";");
+
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+
+      return "";
     },
     modificarIdioma: function modificarIdioma(id) {
       var me = this;
@@ -2387,7 +2424,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         case 2:
           me.textosMostrar = me.textosEng;
           break;
+
+        default:
+          me.textosMostrar = me.textosCat;
+          break;
       }
+
+      var cookiDate = new Date(2020, 11, 24);
+      document.cookie = "idioma=" + id + "; expires=" + cookiDate.toUTCString();
     }
   }
 });
@@ -82118,19 +82162,11 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col" }, [
                 _c("h1", { staticClass: "titulo" }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.textosMostrar[0].text) +
-                      "\n                            "
-                  )
+                  _vm._v(_vm._s(_vm.textosMostrar[0].text))
                 ]),
                 _vm._v(" "),
                 _c("h2", { staticClass: "subtitulo" }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.textosMostrar[1].text) +
-                      "\n                            "
-                  )
+                  _vm._v(_vm._s(_vm.textosMostrar[1].text))
                 ])
               ])
             ]),
@@ -82143,7 +82179,13 @@ var render = function() {
                   _c(
                     "a",
                     { staticClass: "democolor", attrs: { href: item.link } },
-                    [_vm._v(_vm._s(item.titol))]
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(item.titol) +
+                          "\n              "
+                      )
+                    ]
                   )
                 ])
               }),

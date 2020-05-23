@@ -103,8 +103,6 @@ export default {
     for (let item of this.paraula) {
       this.capturarTextos(item);
     }
-    this.textosMostrar = [];
-    this.modificarIdioma(0);
     this.imagen();
   },
   mounted() {
@@ -129,7 +127,6 @@ export default {
         })
         .catch(error => console.log(error));
     },
-
     assignarTextos(element, id) {
       // pasem el resultat de la request i la referencia interna que hem utilitzat
       let me = this;
@@ -161,9 +158,26 @@ export default {
         }
       }
       this.textosMostrar = [];
-      this.modificarIdioma(0);
+      console.log(
+        "estem al asignar textos amb el idioma",
+        this.getCookie("idioma")
+      );
+      this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
     },
-
+    getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(";");
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    },
     modificarIdioma(id) {
       let me = this;
 
@@ -181,7 +195,13 @@ export default {
         case 2:
           me.textosMostrar = me.textosEng;
           break;
+        default:
+          me.textosMostrar = me.textosCat;
+          break;
       }
+
+      var cookiDate = new Date(2020, 11, 24);
+      document.cookie = "idioma=" + id + "; expires=" + cookiDate.toUTCString();
     },
     videoselector() {
       //detectem de quina pagina ve i mostrem un video en funció d'aquest
