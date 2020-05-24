@@ -175,6 +175,21 @@ export default {
         };
       }
     },
+    //Funció per obtenir el contingut d'una cookie
+    getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(";");
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    },
     //Fem la petició a la api
     capturarTextos(id) {
       let me = this;
@@ -221,21 +236,6 @@ export default {
       this.textosMostrar = [];
       //Modifiquem l'idioma amb el idioma que tenim guardat a la cookie
       this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
-    },
-    //Funció per obtenir el contingut d'una cookie
-    getCookie(cname) {
-      var name = cname + "=";
-      var ca = document.cookie.split(";");
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == " ") {
-          c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-      return "";
     },
     //Modifica l'idioma a partir d'un id
     modificarIdioma(id) {

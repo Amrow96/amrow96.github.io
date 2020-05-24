@@ -5038,9 +5038,10 @@ input[type="button"].btn-block {
     word-wrap: break-word;
     background-color: var(--white);
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 1px solid var(--secondary);
     border-radius: 0.25rem;
 }
+
 
 .card>hr {
     margin-right: 0;

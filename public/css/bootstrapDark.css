@@ -5050,7 +5050,7 @@ input[type="button"].btn-block {
     word-wrap: break-word;
     background-color: var(--black);
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 1px solid var(--secondary);
     border-radius: 0.25rem;
 }
 
@@ -6180,13 +6180,13 @@ a.badge-dark.focus {
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1;
-    color: var(--black);
+    color: var(--white);
     text-shadow: 0 1px 0 var(--white);
     opacity: 0.5;
 }
 
 .close:hover {
-    color: var(--black);
+    color: var(--gray-dark);
     text-decoration: none;
 }
 

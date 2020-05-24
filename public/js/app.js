@@ -2538,6 +2538,25 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         };
       }
     },
+    //Funció per obtenir el contingut d'una cookie
+    getCookie: function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(";");
+
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+
+      return "";
+    },
     //Fem la petició a la api
     capturarTextos: function capturarTextos(id) {
       var me = this;
@@ -2595,25 +2614,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.textosMostrar = []; //Modifiquem l'idioma amb el idioma que tenim guardat a la cookie
 
       this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
-    },
-    //Funció per obtenir el contingut d'una cookie
-    getCookie: function getCookie(cname) {
-      var name = cname + "=";
-      var ca = document.cookie.split(";");
-
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-
-        while (c.charAt(0) == " ") {
-          c = c.substring(1);
-        }
-
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-
-      return "";
     },
     //Modifica l'idioma a partir d'un id
     modificarIdioma: function modificarIdioma(id) {
@@ -3109,22 +3109,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3236,20 +3220,24 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         return console.log(error);
       });
     },
+    //Filtra a través del buscador
     onFiltered: function onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
     },
+    //Obre el modal enviantli el element seleciconat
     editText: function editText(item) {
       var me = this;
       me.objectText = item;
       this.$bvModal.show("editTextModal");
     },
+    //Obre el modal per afegir un nou element
     newText: function newText() {
       var me = this;
       this.$bvModal.show("addTextModal");
     },
+    // Modifica el element que estem editant
     updateText: function updateText(idObjecte) {
       var me = this; //pasem el idobjecte i el objecte a modificar
 
@@ -3261,6 +3249,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         console.log(error);
       });
     },
+    // guarda el element que hem creat
     storeText: function storeText() {
       var me = this; //pasem el objecte a afegir
 
@@ -3269,16 +3258,20 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         me.capturarTotsTextos();
         me.mensajeAdd();
         me.cancelar();
+        me.$bvModal.hide("addTextModal");
       })["catch"](function (error) {
         console.log(error);
       });
     },
+    // Mostra missatge de confirmacio
     mensajeAdd: function mensajeAdd() {
       alert("Text afegit amb exit");
     },
+    // Mostra missatge de confirmacio
     mensajeEdit: function mensajeEdit() {
       alert("Text modificat amb exit");
     },
+    //Tanca els modals
     cancelar: function cancelar() {
       this.$bvModal.hide("editTextModal");
       this.$bvModal.hide("addTextModal");
@@ -82901,11 +82894,7 @@ var render = function() {
           { staticClass: "col-12 text-center" },
           [
             _c("h1", { staticClass: "text-center mt-5 mb-3 titulo" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.textosMostrar[13].text) +
-                  "\n            "
-              )
+              _vm._v(_vm._s(_vm.textosMostrar[13].text))
             ]),
             _vm._v(" "),
             _c(
@@ -83001,13 +82990,7 @@ var render = function() {
                   }
                 }
               },
-              [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.textosMostrar[9].text) +
-                    "\n            "
-                )
-              ]
+              [_vm._v(_vm._s(_vm.textosMostrar[9].text))]
             )
           ],
           1
@@ -83066,9 +83049,9 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n            " +
                       _vm._s(_vm.textosMostrar[8].text) +
-                      ":\n                        "
+                      ":\n            "
                   ),
                   _c("input", {
                     directives: [
@@ -83099,9 +83082,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n            " +
                       _vm._s(_vm.textosMostrar[2].text) +
-                      ":\n                        "
+                      ":\n            "
                   ),
                   _c("input", {
                     directives: [
@@ -83132,9 +83115,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n            " +
                       _vm._s(_vm.textosMostrar[3].text) +
-                      ":\n                        "
+                      ":\n            "
                   ),
                   _c("input", {
                     directives: [
@@ -83165,9 +83148,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n            " +
                       _vm._s(_vm.textosMostrar[4].text) +
-                      ":\n                        "
+                      ":\n            "
                   ),
                   _c("input", {
                     directives: [
@@ -83253,9 +83236,9 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n            " +
                       _vm._s(_vm.textosMostrar[8].text) +
-                      ":\n                        "
+                      ":\n            "
                   ),
                   _c("input", {
                     directives: [
@@ -83286,9 +83269,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n            " +
                       _vm._s(_vm.textosMostrar[2].text) +
-                      ":\n                        "
+                      ":\n            "
                   ),
                   _c("input", {
                     directives: [
@@ -83319,9 +83302,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n            " +
                       _vm._s(_vm.textosMostrar[3].text) +
-                      ":\n                        "
+                      ":\n            "
                   ),
                   _c("input", {
                     directives: [
@@ -83352,9 +83335,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12" }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n            " +
                       _vm._s(_vm.textosMostrar[4].text) +
-                      ":\n                        "
+                      ":\n            "
                   ),
                   _c("input", {
                     directives: [
