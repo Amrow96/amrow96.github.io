@@ -13,7 +13,7 @@
             <div class="text-center row mt-3">
               <li class="list-unstyled" v-for="item in projectes" :key="item.titol">
                 <ul>
-                  <a :href="item.link">
+                  <a :href="item.link" :alt="item.text">
                     {{
                     item.titol
                     }}
@@ -46,22 +46,25 @@ export default {
           titol: "Broogi",
           link: "https://www.loom.com/share/31b7d08e5cab4696a45ae9e39d27023f",
           text:
-            "Projecte realitzat per al institut Broggi per als estudiants de infermeria"
+            "Enllaç a video explicatiu del Projecte realitzat per al institut Broggi per als estudiants de infermeria"
         },
         {
           titol: "API Ionic",
           link: "https://www.loom.com/share/d96d1fd4946e4114a9887fcf65cb927b",
-          text: "Projecte testejant una api amb ionic5"
+          text:
+            "Enllaç a video explicatiu del Projecte testejant una api amb ionic5"
         },
         {
           titol: "MNACTEC",
           link: "https://www.loom.com/share/8c42586c38904c408613019727766e63",
-          text: "Joc de Memory en moviment per al museu MNACTEC"
+          text:
+            "Enllaç a video explicatiu del Joc de Memory en moviment per al museu MNACTEC"
         },
         {
           titol: "Investigació Historia",
           link: "https://www.loom.com/share/c942081e4caf4c4aae20e4ced8e76eb5",
-          text: "Investigació de l'Historia de les interficies"
+          text:
+            "Enllaç a video explicatiu d'Investigació de l'Historia de les interficies"
         }
       ]
     };

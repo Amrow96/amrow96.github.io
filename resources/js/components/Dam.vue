@@ -13,7 +13,7 @@
             <div class="text-center row mt-3">
               <li class="list-unstyled" v-for="item in projectes" :key="item.titol">
                 <ul>
-                  <a :href="item.link">
+                  <a :href="item.link" :alt="item.text">
                     {{
                     item.titol
                     }}
@@ -45,17 +45,17 @@ export default {
         {
           titol: "Marcianets",
           link: "https://github.com/Amrow96/PMDM-Marcianets",
-          text: "Joc dels marcianets fet amb android i libgdx"
+          text: "Enllaç a joc dels marcianets fet amb android i libgdx"
         },
         {
           titol: "Xat senzill",
           link: "https://github.com/Amrow96/PSP-Xat_Senzill/",
-          text: "Xat utilitzant processos i fils"
+          text: "Enllaç a xat utilitzant processos i fils"
         },
         {
           titol: "Loteria Grafica",
           link: "https://github.com/Amrow96/P2-Loteria",
-          text: "Joc realitzat amb java amb una interficie grafica"
+          text: "Enllaç a joc realitzat amb java amb una interficie grafica"
         }
       ]
     };

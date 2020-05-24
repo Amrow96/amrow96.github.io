@@ -7,12 +7,7 @@
           <div class="alineamientoVertical">
             <div class="row">
               <div class="col">
-                <img
-                  onclick="canviarcolor()"
-                  class="col-6"
-                  :src="img"
-                  onerror="this.onerror=null; this.src='image.png'"
-                />
+                <img onclick="canviarcolor()" class="col-6" :src="img" alt="Isotipo personal" />
               </div>
             </div>
             <div class="text-center row mt-3">
@@ -180,6 +175,7 @@ export default {
         };
       }
     },
+    //Fem la petició a la api
     capturarTextos(id) {
       let me = this;
       axios
@@ -191,6 +187,7 @@ export default {
         })
         .catch(error => console.log(error));
     },
+    //Tractem el text per treballar-lo millor
     assignarTextos(element, id) {
       // pasem el resultat de la request i la referencia interna que hem utilitzat
       let me = this;
@@ -222,9 +219,10 @@ export default {
         }
       }
       this.textosMostrar = [];
-
+      //Modifiquem l'idioma amb el idioma que tenim guardat a la cookie
       this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
     },
+    //Funció per obtenir el contingut d'una cookie
     getCookie(cname) {
       var name = cname + "=";
       var ca = document.cookie.split(";");
@@ -239,6 +237,7 @@ export default {
       }
       return "";
     },
+    //Modifica l'idioma a partir d'un id
     modificarIdioma(id) {
       let me = this;
 
@@ -257,40 +256,55 @@ export default {
           me.textosMostrar = me.textosEng;
           break;
         default:
-          me.textosMostrar = me.textosCat;
-          id = 0;
+          //De no tenir cap cookie creada, assignem el idioma standard al castellà i assignem el id per crear la cookie
+          me.textosMostrar = me.textosCast;
+          id = 1;
           break;
       }
 
       var cookiDate = new Date(2020, 11, 24);
       document.cookie = "idioma=" + id + "; expires=" + cookiDate.toUTCString();
     },
+    // asignarem un video depenent de la cookie
     videoselector() {
       //detectem de quina pagina ve i mostrem un video en funció d'aquest
-      let element = "intro.mp4";
-
+      let element = null;
+      console.log("estem modificant el video");
+      let descripcio = "";
       let origen = this.getCookie("paginavisitada");
       // console.log("estem mostrant la cookie", origen);
       switch (origen) {
         case "musica":
           element = "musica.mp4";
+          descripcio =
+            "Video personalitzat a partir de que has vist el contingut de musica";
           break;
         case "dam":
           element = "dam.mp4";
+          descripcio =
+            "Video personalitzat a partir de que has vist el contingut de dam";
           break;
         case "daw":
           element = "daw.mp4";
+          descripcio =
+            "Video personalitzat a partir de que has vist el contingut de daw";
           break;
         default:
           element = "intro.mp4";
+          descripcio =
+            "Video presentació de qui soc i que es el que estas veient";
           break;
       }
+      //Assignem una descripció adequada a cada video
+      // document.getElementById("videoPresentacio").setAttribute("alt", descripcio);
       var baseSrc = "resources/video/" + element; //+ "#t=30,55";//Si volguessim talar per un minut en concret //separem la direcció a través dels parametres
       this.direccioVideo = baseSrc;
     },
+    //Obtenim la ruta de la imatge que canviarà en funció del tema
     imagen() {
       this.img = document.getElementById("ruta").getAttribute("desc");
     },
+    //Redireccións
     openMusica() {
       window.location.href = "musica";
     },

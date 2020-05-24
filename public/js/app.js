@@ -1961,15 +1961,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       projectes: [{
         titol: "Marcianets",
         link: "https://github.com/Amrow96/PMDM-Marcianets",
-        text: "Joc dels marcianets fet amb android i libgdx"
+        text: "Enllaç a joc dels marcianets fet amb android i libgdx"
       }, {
         titol: "Xat senzill",
         link: "https://github.com/Amrow96/PSP-Xat_Senzill/",
-        text: "Xat utilitzant processos i fils"
+        text: "Enllaç a xat utilitzant processos i fils"
       }, {
         titol: "Loteria Grafica",
         link: "https://github.com/Amrow96/P2-Loteria",
-        text: "Joc realitzat amb java amb una interficie grafica"
+        text: "Enllaç a joc realitzat amb java amb una interficie grafica"
       }]
     };
   },
@@ -2156,19 +2156,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       projectes: [{
         titol: "Broogi",
         link: "https://www.loom.com/share/31b7d08e5cab4696a45ae9e39d27023f",
-        text: "Projecte realitzat per al institut Broggi per als estudiants de infermeria"
+        text: "Enllaç a video explicatiu del Projecte realitzat per al institut Broggi per als estudiants de infermeria"
       }, {
         titol: "API Ionic",
         link: "https://www.loom.com/share/d96d1fd4946e4114a9887fcf65cb927b",
-        text: "Projecte testejant una api amb ionic5"
+        text: "Enllaç a video explicatiu del Projecte testejant una api amb ionic5"
       }, {
         titol: "MNACTEC",
         link: "https://www.loom.com/share/8c42586c38904c408613019727766e63",
-        text: "Joc de Memory en moviment per al museu MNACTEC"
+        text: "Enllaç a video explicatiu del Joc de Memory en moviment per al museu MNACTEC"
       }, {
         titol: "Investigació Historia",
         link: "https://www.loom.com/share/c942081e4caf4c4aae20e4ced8e76eb5",
-        text: "Investigació de l'Historia de les interficies"
+        text: "Enllaç a video explicatiu d'Investigació de l'Historia de les interficies"
       }]
     };
   },
@@ -2451,11 +2451,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2543,6 +2538,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         };
       }
     },
+    //Fem la petició a la api
     capturarTextos: function capturarTextos(id) {
       var me = this;
       axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
@@ -2554,6 +2550,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         return console.log(error);
       });
     },
+    //Tractem el text per treballar-lo millor
     assignarTextos: function assignarTextos(element, id) {
       // pasem el resultat de la request i la referencia interna que hem utilitzat
       var me = this;
@@ -2595,9 +2592,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
       }
 
-      this.textosMostrar = [];
+      this.textosMostrar = []; //Modifiquem l'idioma amb el idioma que tenim guardat a la cookie
+
       this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
     },
+    //Funció per obtenir el contingut d'una cookie
     getCookie: function getCookie(cname) {
       var name = cname + "=";
       var ca = document.cookie.split(";");
@@ -2616,6 +2615,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       return "";
     },
+    //Modifica l'idioma a partir d'un id
     modificarIdioma: function modificarIdioma(id) {
       var me = this;
 
@@ -2635,44 +2635,56 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           break;
 
         default:
-          me.textosMostrar = me.textosCat;
-          id = 0;
+          //De no tenir cap cookie creada, assignem el idioma standard al castellà i assignem el id per crear la cookie
+          me.textosMostrar = me.textosCast;
+          id = 1;
           break;
       }
 
       var cookiDate = new Date(2020, 11, 24);
       document.cookie = "idioma=" + id + "; expires=" + cookiDate.toUTCString();
     },
+    // asignarem un video depenent de la cookie
     videoselector: function videoselector() {
       //detectem de quina pagina ve i mostrem un video en funció d'aquest
-      var element = "intro.mp4";
+      var element = null;
+      console.log("estem modificant el video");
+      var descripcio = "";
       var origen = this.getCookie("paginavisitada"); // console.log("estem mostrant la cookie", origen);
 
       switch (origen) {
         case "musica":
           element = "musica.mp4";
+          descripcio = "Video personalitzat a partir de que has vist el contingut de musica";
           break;
 
         case "dam":
           element = "dam.mp4";
+          descripcio = "Video personalitzat a partir de que has vist el contingut de dam";
           break;
 
         case "daw":
           element = "daw.mp4";
+          descripcio = "Video personalitzat a partir de que has vist el contingut de daw";
           break;
 
         default:
           element = "intro.mp4";
+          descripcio = "Video presentació de qui soc i que es el que estas veient";
           break;
-      }
+      } //Assignem una descripció adequada a cada video
+      // document.getElementById("videoPresentacio").setAttribute("alt", descripcio);
+
 
       var baseSrc = "resources/video/" + element; //+ "#t=30,55";//Si volguessim talar per un minut en concret //separem la direcció a través dels parametres
 
       this.direccioVideo = baseSrc;
     },
+    //Obtenim la ruta de la imatge que canviarà en funció del tema
     imagen: function imagen() {
       this.img = document.getElementById("ruta").getAttribute("desc");
     },
+    //Redireccións
     openMusica: function openMusica() {
       window.location.href = "musica";
     },
@@ -82384,7 +82396,7 @@ var render = function() {
                   { key: item.titol, staticClass: "list-unstyled" },
                   [
                     _c("ul", [
-                      _c("a", { attrs: { href: item.link } }, [
+                      _c("a", { attrs: { href: item.link, alt: item.text } }, [
                         _vm._v(
                           "\n                  " +
                             _vm._s(item.titol) +
@@ -82449,7 +82461,7 @@ var render = function() {
                   { key: item.titol, staticClass: "list-unstyled" },
                   [
                     _c("ul", [
-                      _c("a", { attrs: { href: item.link } }, [
+                      _c("a", { attrs: { href: item.link, alt: item.text } }, [
                         _vm._v(
                           "\n                  " +
                             _vm._s(item.titol) +
@@ -82549,7 +82561,7 @@ var render = function() {
                   attrs: {
                     onclick: "canviarcolor()",
                     src: _vm.img,
-                    onerror: "this.onerror=null; this.src='image.png'"
+                    alt: "Isotipo personal"
                   }
                 })
               ])
@@ -82838,7 +82850,7 @@ var render = function() {
                   { key: item.titol, staticClass: "list-unstyled" },
                   [
                     _c("ul", [
-                      _c("a", { attrs: { href: item.link } }, [
+                      _c("a", { attrs: { href: item.link, alt: item.text } }, [
                         _vm._v(
                           "\n                  " +
                             _vm._s(item.titol) +

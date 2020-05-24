@@ -13,7 +13,7 @@
             <div class="text-center row mt-3">
               <li class="list-unstyled" v-for="item in projectes" :key="item.titol">
                 <ul>
-                  <a :href="item.link">
+                  <a :href="item.link" :alt="item.text">
                     {{
                     item.titol
                     }}
