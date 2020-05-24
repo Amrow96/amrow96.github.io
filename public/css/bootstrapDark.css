@@ -33,6 +33,7 @@
 
     --black: #000;
     --black75: #00000013;
+    --white75: #ffffff13;
     --black15: #00000026;
     --black17: #0000002d;
     --black10: #0000001a;
@@ -5054,6 +5055,11 @@ input[type="button"].btn-block {
     border-radius: 0.25rem;
 }
 
+.card:hover {
+    background-color: var(--white75);
+
+}
+
 .card>hr {
     margin-right: 0;
     margin-left: 0;
@@ -6351,9 +6357,9 @@ a.close.disabled {
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    background-color: var(--back);
+    background-color: var(--black);
     background-clip: padding-box;
-    border: 1px solid var(--black20);
+    border: 1px solid var(--gray-dark);
     border-radius: 0.3rem;
     outline: 0;
 }
@@ -6365,7 +6371,7 @@ a.close.disabled {
     z-index: 1040;
     width: 100vw;
     height: 100vh;
-    background-color: var(--black);
+    background-color: var(--black90);
 }
 
 .modal-backdrop.fade {

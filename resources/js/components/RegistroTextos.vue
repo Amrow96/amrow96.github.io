@@ -123,6 +123,7 @@
         :title="textosMostrar[9].text"
         @ok="updateText(objectText.idtxt)"
         @hidden="cancelar()"
+        class="modal-backdrop show"
       >
         <form action method="post">
           <div class="row">
