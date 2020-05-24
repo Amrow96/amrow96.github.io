@@ -2484,6 +2484,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }, {
         referencia: "dafonom",
         numero: "33"
+      }, {
+        referencia: "canviartema",
+        numero: "34"
       }],
       textosCat: [],
       textosCast: [],
@@ -3244,8 +3247,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       axios.put("/textos/" + idObjecte, this.objectText).then(function (response) {
         me.mensajeEdit();
-        me.capturarTextos();
-        me.$bvModal.hide("editTextModal");
+        me.capturarTotsTextos();
+        me.cancelar();
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3259,7 +3262,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         me.capturarTotsTextos();
         me.mensajeAdd();
         me.cancelar();
-        me.$bvModal.hide("addTextModal");
       })["catch"](function (error) {
         console.log(error);
       });
@@ -82731,14 +82733,14 @@ var render = function() {
         _c("div", { staticClass: "page-footer" }, [
           _c("div", { staticClass: "row alineamientoVertical" }, [
             _c("div", { staticClass: "col col-12" }, [
-              _c("div", { staticClass: "row col-12" }, [
+              _c("div", { staticClass: "row mb-4 col-12" }, [
                 _c(
                   "button",
                   {
                     staticClass: "btn col-3",
                     attrs: { onclick: "canviarcolor()" }
                   },
-                  [_vm._v("Cambiar el Tema")]
+                  [_vm._v(_vm._s(_vm.textosMostrar[10].text))]
                 ),
                 _vm._v(" "),
                 _c(
@@ -82764,7 +82766,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Traduir al Castellano")]
+                  [_vm._v("Traducir al Castellano")]
                 ),
                 _vm._v(" "),
                 _c(

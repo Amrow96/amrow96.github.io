@@ -94,10 +94,10 @@
         <div class="page-footer">
           <div class="row alineamientoVertical">
             <div class="col col-12">
-              <div class="row col-12">
-                <button class="btn col-3" onclick="canviarcolor()">Cambiar el Tema</button>
+              <div class="row mb-4 col-12">
+                <button class="btn col-3" onclick="canviarcolor()">{{ textosMostrar[10].text }}</button>
                 <button class="btn col-3" @click="modificarIdioma(0)">Traduir al Català</button>
-                <button class="btn col-3" @click="modificarIdioma(1)">Traduir al Castellano</button>
+                <button class="btn col-3" @click="modificarIdioma(1)">Traducir al Castellano</button>
                 <button class="btn col-3" @click="modificarIdioma(2)">Translate to Anglés</button>
               </div>
             </div>
@@ -122,7 +122,8 @@ export default {
         { referencia: "daw", numero: "14" },
         { referencia: "dawdesc", numero: "16" },
         { referencia: "dafo", numero: "30" },
-        { referencia: "dafonom", numero: "33" }
+        { referencia: "dafonom", numero: "33" },
+        { referencia: "canviartema", numero: "34" }
       ],
 
       textosCat: [],

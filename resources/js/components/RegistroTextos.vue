@@ -282,9 +282,8 @@ export default {
         .put("/textos/" + idObjecte, this.objectText)
         .then(function(response) {
           me.mensajeEdit();
-          me.capturarTextos();
-
-          me.$bvModal.hide("editTextModal");
+          me.capturarTotsTextos();
+          me.cancelar();
         })
         .catch(function(error) {
           console.log(error);
@@ -302,7 +301,6 @@ export default {
           me.capturarTotsTextos();
           me.mensajeAdd();
           me.cancelar();
-          me.$bvModal.hide("addTextModal");
         })
         .catch(function(error) {
           console.log(error);
