@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap);
 
 @import url(https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap);
-@import "/resources/sass/app.scss";
 
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -71,9 +70,22 @@
     box-sizing: border-box;
 }
 
+.horizontal {
+    display: inline-block;
+}
+
 .alineamientoVertical {
     transform: translateY(50%);
 
+}
+
+.navegador {
+    background-color: var(--white);
+}
+
+.bordes {
+    border-color: var(--secondary);
+    border-bottom-style: solid;
 }
 
 .titulo {
@@ -3494,7 +3506,7 @@ input[type="button"].btn-block {
     padding: 0.5rem 0;
     margin: 0.125rem 0 0;
     font-size: 1rem;
-    color: var(--text);
+    color: var(--secondary);
     text-align: left;
     list-style: none;
     background-color: var(--white);
@@ -3668,7 +3680,7 @@ input[type="button"].btn-block {
     padding: 0.25rem 1.5rem;
     clear: both;
     font-weight: 400;
-    color: var(--text);
+    color: var(--secondary);
     text-align: inherit;
     white-space: nowrap;
     background-color: transparent;
@@ -3677,7 +3689,7 @@ input[type="button"].btn-block {
 
 .dropdown-item:hover,
 .dropdown-item:focus {
-    color: #16181b;
+    color: var(--secondary);
     text-decoration: none;
     background-color: var(--light);
 }
@@ -3686,7 +3698,7 @@ input[type="button"].btn-block {
 .dropdown-item:active {
     color: var(--white);
     text-decoration: none;
-    background-color: var(--primary);
+    background-color: var(--secondary);
 }
 
 .dropdown-item.disabled,
@@ -5272,7 +5284,6 @@ input[type="button"].btn-block {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     list-style: none;
-    background-color: #e9ecef;
     border-radius: 0.25rem;
 }
 
