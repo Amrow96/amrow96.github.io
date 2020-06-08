@@ -7,7 +7,17 @@
           <div class="alineamientoVertical">
             <div class="row">
               <div class="col">
-                <img onclick="canviarcolor()" class="col-6" :src="img" alt="Isotipo personal" />
+                <img
+                  onclick="canviarcolor()"
+                  class="col-6"
+                  :src="img"
+                  alt="Isotipo personal"
+                  v-waypoint="{
+                            active: true,
+                            callback: logo,
+                            options: intersectionOptions
+                        }"
+                />
               </div>
             </div>
             <div class="text-center row mt-3">
@@ -19,7 +29,7 @@
           </div>
         </div>
         <!-- Video -->
-        <div class="vh-100">
+        <div id="about" class>
           <div class="text-center row mt-3">
             <div class="row d-flex justify-content-center">
               <a
@@ -49,7 +59,7 @@
           </div>
         </div>
         <!-- Dafo -->
-        <div class="vh-100 d-flex justify-content-center">
+        <div id="analisis" class="vh-100 d-flex justify-content-center">
           <div class="alineamientoVertical">
             <div class="text-center row mt-3">
               <div class="col">
@@ -60,7 +70,7 @@
           </div>
         </div>
         <!-- Cards  -->
-        <div class="vh-100">
+        <div id="projectes">
           <div class="row alineamientoVertical">
             <div class="col col-12">
               <div class="card-deck mb-3">
@@ -87,7 +97,7 @@
           </div>
         </div>
         <!-- Footer -->
-        <div class="page-footer">
+        <div id="social" class="page-footer">
           <div class="row alineamientoVertical">
             <div class="col col-12">
               <div class="row mb-4 col-12">
@@ -170,6 +180,15 @@ export default {
             );
           }
         };
+      }
+    },
+    logo({ going, direction }) {
+      if (going === this.$waypointMap.GOING_OUT) {
+        var navegador = document.getElementById("navegador");
+        navegador.setAttribute("class", "visible container");
+      } else if (going === this.$waypointMap.GOING_IN) {
+        var navegador = document.getElementById("navegador");
+        navegador.setAttribute("class", "invisible container");
       }
     },
     //Funció per obtenir el contingut d'una cookie

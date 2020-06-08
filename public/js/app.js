@@ -2451,10 +2451,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      paraula: [{
+      paraules: [{
         referencia: "nompau",
         numero: "3"
       }, {
@@ -2497,7 +2503,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   created: function created() {
-    var _iterator = _createForOfIteratorHelper(this.paraula),
+    var _iterator = _createForOfIteratorHelper(this.paraules),
         _step;
 
     try {
@@ -2541,6 +2547,18 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         };
       }
     },
+    logo: function logo(_ref2) {
+      var going = _ref2.going,
+          direction = _ref2.direction;
+
+      if (going === this.$waypointMap.GOING_OUT) {
+        var navegador = document.getElementById("navegador");
+        navegador.setAttribute("class", "visible container");
+      } else if (going === this.$waypointMap.GOING_IN) {
+        var navegador = document.getElementById("navegador");
+        navegador.setAttribute("class", "invisible container");
+      }
+    },
     //Funció per obtenir el contingut d'una cookie
     getCookie: function getCookie(cname) {
       var name = cname + "=";
@@ -2563,7 +2581,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     //Fem la petició a la api
     capturarTextos: function capturarTextos(id) {
       var me = this;
-      axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
+      axios.get("/textos/" + id.numero) //Busquem amb el me.paraules un element en concret a través del numero = id
       .then(function (response) {
         var text = response.data.data; //cridar al metode que assigna els valors als arrays
 
@@ -2581,7 +2599,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var trobat = false;
 
       if (!trobat) {
-        var _iterator2 = _createForOfIteratorHelper(me.paraula),
+        var _iterator2 = _createForOfIteratorHelper(me.paraules),
             _step2;
 
         try {
@@ -2589,7 +2607,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             var item = _step2.value;
 
             if (item.referencia === id.referencia) {
-              //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+              //obtenim la posicio de la paraules buscada i setejar-la a la posició de la paraules per evitar problemes d'indexació al carregar
               me.textosCat[i] = {
                 text: element.txtcat,
                 referencia: element.txtref
@@ -82553,6 +82571,19 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col" }, [
                 _c("img", {
+                  directives: [
+                    {
+                      name: "waypoint",
+                      rawName: "v-waypoint",
+                      value: {
+                        active: true,
+                        callback: _vm.logo,
+                        options: _vm.intersectionOptions
+                      },
+                      expression:
+                        "{\n                          active: true,\n                          callback: logo,\n                          options: intersectionOptions\n                      }"
+                    }
+                  ],
                   staticClass: "col-6",
                   attrs: {
                     onclick: "canviarcolor()",
@@ -82577,7 +82608,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "vh-100" }, [
+        _c("div", { attrs: { id: "about" } }, [
           _c("div", { staticClass: "text-center row mt-3" }, [
             _c("div", { staticClass: "row d-flex justify-content-center" }, [
               _c(
@@ -82637,21 +82668,28 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "vh-100 d-flex justify-content-center" }, [
-          _c("div", { staticClass: "alineamientoVertical" }, [
-            _c("div", { staticClass: "text-center row mt-3" }, [
-              _c("div", { staticClass: "col" }, [
-                _c("h1", { staticClass: "titulo" }, [
-                  _vm._v(_vm._s(_vm.textosMostrar[9].text))
-                ]),
-                _vm._v(" "),
-                _c("h4", [_vm._v(_vm._s(_vm.textosMostrar[8].text))])
+        _c(
+          "div",
+          {
+            staticClass: "vh-100 d-flex justify-content-center",
+            attrs: { id: "analisis" }
+          },
+          [
+            _c("div", { staticClass: "alineamientoVertical" }, [
+              _c("div", { staticClass: "text-center row mt-3" }, [
+                _c("div", { staticClass: "col" }, [
+                  _c("h1", { staticClass: "titulo" }, [
+                    _vm._v(_vm._s(_vm.textosMostrar[9].text))
+                  ]),
+                  _vm._v(" "),
+                  _c("h4", [_vm._v(_vm._s(_vm.textosMostrar[8].text))])
+                ])
               ])
             ])
-          ])
-        ]),
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "vh-100" }, [
+        _c("div", { attrs: { id: "projectes" } }, [
           _c("div", { staticClass: "row alineamientoVertical" }, [
             _c("div", { staticClass: "col col-12" }, [
               _c("div", { staticClass: "card-deck mb-3" }, [
@@ -82728,9 +82766,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "page-footer" }, [
+        _c("div", { staticClass: "page-footer", attrs: { id: "social" } }, [
           _c("div", { staticClass: "row alineamientoVertical" }, [
             _c("div", { staticClass: "col col-12" }, [
               _c("div", { staticClass: "row mb-4 col-12" }, [
@@ -82789,18 +82825,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "page-footer font-small blue pt-4" }, [
-      _c("div", { staticClass: "footer-copyright text-center py-3" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-right" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -96108,8 +96133,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/ItsMyTurn/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ItsMyTurn/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/itsmyturn/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/itsmyturn/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
