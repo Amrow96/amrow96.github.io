@@ -36,9 +36,55 @@
 </head>
 
 <body class="app">
-    
+    <div class="contanier ">
+        <nav class="navbar navbar-expand-lg navegador navbar-fixed-top fixed-top col col-12 bordes">
+             <a class="navbar-brand col-2 offset-1" href="#">
+                <img src="<?php echo $rutaImg ?>" width="50%" height="50%" class="d-inline-block align-top" alt="">
+                
+            </a>
+             <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="#">Home</a></li>
+            </ol>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse dropdown navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        {{-- DAFO --}}
+                        <a class="nav-link" href="#">Analisis</a>
+                    </li>
+                    <li class="nav-item">
+                        {{-- Musica/DAW/DAM --}}
+                        <a class="nav-link" href="#">Projectes</a>
+                    </li>
+                    <li class="nav-item">
+                        {{-- Xarxes Socials --}}
+                        <a class="nav-link" href="#">Social</a>
+                    </li>
+                    <li class="nav-item">
+                        {{-- BTN Download CV --}}
+                        <a class="nav-link" href="#">CV</a>
+                    </li>
+                    {{-- Selector d'idioma + canvi de tema--}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Configuració
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="cursos.php">Cursos</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     <div id="app">
         <div class="container">
+            
             <div class="row  col-8 offset-2 ">        
                 @yield('principal')
             </div>
