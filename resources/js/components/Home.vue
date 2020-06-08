@@ -2,7 +2,7 @@
   <main>
     <div class="row">
       <div class="col col-12 text-center">
-        <!-- Isotip + intntro -->
+        <!-- Isotip + intro -->
         <div class="vh-100">
           <div class="alineamientoVertical">
             <div class="row">
@@ -87,10 +87,6 @@
           </div>
         </div>
         <!-- Footer -->
-        <footer class="page-footer font-small blue pt-4">
-          <div class="footer-copyright text-center py-3"></div>
-          <div class="text-right"></div>
-        </footer>
         <div class="page-footer">
           <div class="row alineamientoVertical">
             <div class="col col-12">
@@ -112,7 +108,7 @@
 export default {
   data() {
     return {
-      paraula: [
+      paraules: [
         { referencia: "nompau", numero: "3" },
         { referencia: "descripcio", numero: "6" },
         { referencia: "musica", numero: "17" },
@@ -135,7 +131,7 @@ export default {
     };
   },
   created() {
-    for (let item of this.paraula) {
+    for (let item of this.paraules) {
       this.capturarTextos(item);
     }
     this.imagen();
@@ -195,7 +191,7 @@ export default {
     capturarTextos(id) {
       let me = this;
       axios
-        .get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
+        .get("/textos/" + id.numero) //Busquem amb el me.paraules un element en concret a través del numero = id
         .then(function(response) {
           let text = response.data.data;
           //cridar al metode que assigna els valors als arrays
@@ -211,9 +207,9 @@ export default {
 
       let trobat = false;
       if (!trobat) {
-        for (let item of me.paraula) {
+        for (let item of me.paraules) {
           if (item.referencia === id.referencia) {
-            //obtenim la posicio de la paraula buscada i setejar-la a la posició de la paraula per evitar problemes d'indexació al carregar
+            //obtenim la posicio de la paraules buscada i setejar-la a la posició de la paraules per evitar problemes d'indexació al carregar
 
             me.textosCat[i] = {
               text: element.txtcat,
