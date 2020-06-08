@@ -38,7 +38,7 @@
 <body class="app">
     <div class="contanier ">
         <nav class="navbar navbar-expand-lg navegador navbar-fixed-top fixed-top col col-12 bordes">
-             <a class="navbar-brand col-2 offset-1" href="#">
+             <a class="navbar-brand col-2 offset-1" href="{{ url('/') }}">
                 <img src="<?php echo $rutaImg ?>" width="50%" height="50%" class="d-inline-block align-top" alt="">
                 
             </a>
