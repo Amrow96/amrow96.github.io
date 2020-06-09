@@ -42,5 +42,13 @@ Vue.component("daw", require("./components/Daw.vue").default);
 Vue.use(BootstrapVue);
 
 const app = new Vue({
-    el: "#app"
+    el: "#app",
+    methods: {
+        modificarIdioma(valor) {
+            console.log("estem al modificar app amb el valor:");
+            var component = "component";
+            this.$refs[component].modificarIdioma(valor);
+            console.log("estem al modificar app amb el valor:", valor);
+        }
+    }
 });

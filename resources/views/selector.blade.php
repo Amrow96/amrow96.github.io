@@ -3,7 +3,7 @@
 Textos
 @endsection
 @section('principal')
-        <textos></textos>
+        <textos ref="component"></textos>
 
     @if(Auth::check())
         <a class="btn btn-secondary">{{ Auth::user()->email }}</a>

@@ -5,7 +5,7 @@ Musica
 @endsection
 @section('principal')
 <div class="container">
-    <musica></musica>
+    <musica ref="component"></musica>
     
 </div>
 <script>

@@ -79,10 +79,12 @@ export default {
     };
   },
   created() {
-    this.navegador();
     for (let item of this.paraula) {
       this.capturarTextos(item);
     }
+  },
+  mounted() {
+    this.navegador();
   },
   methods: {
     navegador() {

@@ -5,7 +5,7 @@ DAW
 @endsection
 @section('principal')
 <div class="container">
-    <daw></daw>
+    <daw ref="component"></daw>
 </div>
 <script>
         var cookiDate = new Date(2020,11,24);

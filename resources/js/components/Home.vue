@@ -74,19 +74,19 @@
           <div class="row alineamientoVertical">
             <div class="col col-12">
               <div class="card-deck mb-3">
-                <div class="card" @click="openMusica()">
+                <div class="card btn" @click="openMusica()">
                   <div class="card-body">
                     <h5 class="titulo">{{ textosMostrar[2].text }}</h5>
                     <p class="card-text">{{ textosMostrar[3].text }}</p>
                   </div>
                 </div>
-                <div class="card" @click="openDAM()">
+                <div class="card btn" @click="openDAM()">
                   <div class="card-body">
                     <h5 class="titulo">{{ textosMostrar[4].text }}</h5>
                     <p class="card-text">{{ textosMostrar[5].text }}</p>
                   </div>
                 </div>
-                <div class="card" @click="openDAW()">
+                <div class="card btn" @click="openDAW()">
                   <div class="card-body">
                     <h5 class="titulo">{{ textosMostrar[6].text }}</h5>
                     <p class="card-text">{{ textosMostrar[7].text }}</p>

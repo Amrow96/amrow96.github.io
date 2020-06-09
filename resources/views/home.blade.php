@@ -5,6 +5,6 @@ Welcome
 @endsection
 @section('principal')
 <div class="container">
-    <home></home>
+    <home ref="component"></home>
 </div>
 @endsection

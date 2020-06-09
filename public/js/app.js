@@ -1974,8 +1974,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   created: function created() {
-    this.navegador();
-
     var _iterator = _createForOfIteratorHelper(this.paraula),
         _step;
 
@@ -1989,6 +1987,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     } finally {
       _iterator.f();
     }
+  },
+  mounted: function mounted() {
+    this.navegador();
   },
   methods: {
     navegador: function navegador() {
@@ -2197,8 +2198,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   created: function created() {
-    this.navegador();
-
     var _iterator = _createForOfIteratorHelper(this.paraula),
         _step;
 
@@ -2212,6 +2211,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     } finally {
       _iterator.f();
     }
+  },
+  mounted: function mounted() {
+    this.navegador();
   },
   methods: {
     navegador: function navegador() {
@@ -2855,8 +2857,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   created: function created() {
-    this.navegador();
-
     var _iterator = _createForOfIteratorHelper(this.paraula),
         _step;
 
@@ -2870,6 +2870,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     } finally {
       _iterator.f();
     }
+  },
+  mounted: function mounted() {
+    this.navegador();
   },
   methods: {
     navegador: function navegador() {
@@ -82768,7 +82771,7 @@ var render = function() {
                 _c(
                   "div",
                   {
-                    staticClass: "card",
+                    staticClass: "card btn",
                     on: {
                       click: function($event) {
                         return _vm.openMusica()
@@ -82791,7 +82794,7 @@ var render = function() {
                 _c(
                   "div",
                   {
-                    staticClass: "card",
+                    staticClass: "card btn",
                     on: {
                       click: function($event) {
                         return _vm.openDAM()
@@ -82814,7 +82817,7 @@ var render = function() {
                 _c(
                   "div",
                   {
-                    staticClass: "card",
+                    staticClass: "card btn",
                     on: {
                       click: function($event) {
                         return _vm.openDAW()
@@ -95704,7 +95707,15 @@ Vue.component("daw", __webpack_require__(/*! ./components/Daw.vue */ "./resource
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["BootstrapVue"]);
 var app = new Vue({
-  el: "#app"
+  el: "#app",
+  methods: {
+    modificarIdioma: function modificarIdioma(valor) {
+      console.log("estem al modificar app amb el valor:");
+      var component = "component";
+      this.$refs[component].modificarIdioma(valor);
+      console.log("estem al modificar app amb el valor:", valor);
+    }
+  }
 });
 
 /***/ }),
