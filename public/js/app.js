@@ -1974,6 +1974,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   created: function created() {
+    this.navegador();
+
     var _iterator = _createForOfIteratorHelper(this.paraula),
         _step;
 
@@ -1989,6 +1991,28 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   },
   methods: {
+    navegador: function navegador() {
+      //Mostrem el navegador
+      var navegador = document.getElementById("navegador");
+      navegador.setAttribute("class", "visible container"); //Amaguem els elements que no son els de configuració
+
+      var navElements = document.querySelectorAll(".nav-item");
+      navElements.forEach(function (navElement) {
+        navElement.setAttribute("class", "invisible nav-item");
+      }); //Mostrem el element de configuracio
+
+      var configuracio = document.getElementById("configuracio");
+      configuracio.setAttribute("class", "visible nav-item"); //Mostrem la ruta en la que estem
+
+      var breadcrumb = document.getElementById("breadcrumb");
+      breadcrumb.setAttribute("class", "visible breadcrumb"); //creem el nou breadcrumb i l'afegim
+
+      var anexo = document.createElement("LI");
+      anexo.setAttribute("class", "breadcrumb-item active");
+      anexo.setAttribute("aria-current", "page");
+      anexo.innerText = "DAM";
+      breadcrumb.appendChild(anexo);
+    },
     capturarTextos: function capturarTextos(id) {
       var me = this;
       axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
@@ -2173,6 +2197,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   created: function created() {
+    this.navegador();
+
     var _iterator = _createForOfIteratorHelper(this.paraula),
         _step;
 
@@ -2188,6 +2214,28 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   },
   methods: {
+    navegador: function navegador() {
+      //Mostrem el navegador
+      var navegador = document.getElementById("navegador");
+      navegador.setAttribute("class", "visible container"); //Amaguem els elements que no son els de configuració
+
+      var navElements = document.querySelectorAll(".nav-item");
+      navElements.forEach(function (navElement) {
+        navElement.setAttribute("class", "invisible nav-item");
+      }); //Mostrem el element de configuracio
+
+      var configuracio = document.getElementById("configuracio");
+      configuracio.setAttribute("class", "visible nav-item"); //Mostrem la ruta en la que estem
+
+      var breadcrumb = document.getElementById("breadcrumb");
+      breadcrumb.setAttribute("class", "visible breadcrumb"); //creem el nou breadcrumb i l'afegim
+
+      var anexo = document.createElement("LI");
+      anexo.setAttribute("class", "breadcrumb-item active");
+      anexo.setAttribute("aria-current", "page");
+      anexo.innerText = "DAW";
+      breadcrumb.appendChild(anexo);
+    },
     capturarTextos: function capturarTextos(id) {
       var me = this;
       axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id
@@ -2807,6 +2855,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   created: function created() {
+    this.navegador();
+
     var _iterator = _createForOfIteratorHelper(this.paraula),
         _step;
 
@@ -2822,6 +2872,28 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   },
   methods: {
+    navegador: function navegador() {
+      //Mostrem el navegador
+      var navegador = document.getElementById("navegador");
+      navegador.setAttribute("class", "visible container"); //Amaguem els elements que no son els de configuració
+
+      var navElements = document.querySelectorAll(".nav-item");
+      navElements.forEach(function (navElement) {
+        navElement.setAttribute("class", "invisible nav-item");
+      }); //Mostrem el element de configuracio
+
+      var configuracio = document.getElementById("configuracio");
+      configuracio.setAttribute("class", "visible nav-item"); //Mostrem la ruta en la que estem
+
+      var breadcrumb = document.getElementById("breadcrumb");
+      breadcrumb.setAttribute("class", "visible breadcrumb"); //creem el nou breadcrumb i l'afegim
+
+      var anexo = document.createElement("LI");
+      anexo.setAttribute("class", "breadcrumb-item active");
+      anexo.setAttribute("aria-current", "page");
+      anexo.innerText = "Musica";
+      breadcrumb.appendChild(anexo);
+    },
     capturarTextos: function capturarTextos(id) {
       var me = this;
       axios.get("/textos/" + id.numero) //Busquem amb el me.paraula un element en concret a través del numero = id

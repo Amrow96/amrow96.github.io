@@ -61,11 +61,35 @@ export default {
     };
   },
   created() {
+    this.navegador();
     for (let item of this.paraula) {
       this.capturarTextos(item);
     }
   },
   methods: {
+    navegador() {
+      //Mostrem el navegador
+      var navegador = document.getElementById("navegador");
+      navegador.setAttribute("class", "visible container");
+      //Amaguem els elements que no son els de configuració
+      var navElements = document.querySelectorAll(".nav-item");
+      navElements.forEach(function(navElement) {
+        navElement.setAttribute("class", "invisible nav-item");
+      });
+      //Mostrem el element de configuracio
+
+      var configuracio = document.getElementById("configuracio");
+      configuracio.setAttribute("class", "visible nav-item");
+      //Mostrem la ruta en la que estem
+      var breadcrumb = document.getElementById("breadcrumb");
+      breadcrumb.setAttribute("class", "visible breadcrumb");
+      //creem el nou breadcrumb i l'afegim
+      var anexo = document.createElement("LI");
+      anexo.setAttribute("class", "breadcrumb-item active");
+      anexo.setAttribute("aria-current", "page");
+      anexo.innerText = "DAM";
+      breadcrumb.appendChild(anexo);
+    },
     capturarTextos(id) {
       let me = this;
       axios

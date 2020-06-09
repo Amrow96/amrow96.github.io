@@ -31,3 +31,4 @@ function canviarcolor() {
         document.cookie = "tema=light" + ";" + expires + ";path=/";
     }
 }
+//Obtenim els botons d'idioma i modifiquem les cookies(codi als components)

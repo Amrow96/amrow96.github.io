@@ -42,8 +42,8 @@
                 <img src="<?php echo $rutaImg ?>" width="50%" height="50%" class="d-inline-block align-top" alt="">
                 
             </a>
-             <ol id="breadcrumb" class="breadcrumb">
-                {{-- <li class="breadcrumb-item active"><a href="{{ url('/') }}">Home</a></li> --}}
+             <ol id="breadcrumb" class="invisible breadcrumb">
+                 <li class="breadcrumb-item active"><a href="{{ url('/') }}">Home</a></li> 
             </ol>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -70,8 +70,8 @@
                         <a class="nav-link" href="resources/CV_CAT_2019.pdf" download>CV</a>
                     </li>
                     {{-- Selector d'idioma + canvi de tema--}}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li id="configuracio" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Configuració
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
