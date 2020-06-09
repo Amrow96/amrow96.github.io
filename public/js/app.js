@@ -2507,6 +2507,24 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -82735,6 +82753,33 @@ var render = function() {
                       id: "contenidoVideo",
                       src: _vm.direccioVideo,
                       type: "video/mp4"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("track", {
+                    attrs: {
+                      src: "resources/video/subtitulosCatala.vtt",
+                      kind: "subtitles",
+                      srclang: "cat",
+                      label: "Català"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("track", {
+                    attrs: {
+                      src: "resources/video/subtitulosCastellano.vtt",
+                      kind: "subtitles",
+                      srclang: "es",
+                      label: "Castellano"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("track", {
+                    attrs: {
+                      src: "resources/video/subtitulosIngles.vtt",
+                      kind: "subtitles",
+                      srclang: "eng",
+                      label: "English"
                     }
                   })
                 ]

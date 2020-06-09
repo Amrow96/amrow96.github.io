@@ -54,6 +54,24 @@
                         }"
               >
                 <source id="contenidoVideo" :src="direccioVideo" type="video/mp4" />
+                <track
+                  src="resources/video/subtitulosCatala.vtt"
+                  kind="subtitles"
+                  srclang="cat"
+                  label="Català"
+                />
+                <track
+                  src="resources/video/subtitulosCastellano.vtt"
+                  kind="subtitles"
+                  srclang="es"
+                  label="Castellano"
+                />
+                <track
+                  src="resources/video/subtitulosIngles.vtt"
+                  kind="subtitles"
+                  srclang="eng"
+                  label="English"
+                />
               </video>
             </div>
           </div>
