@@ -42,7 +42,7 @@
         <div id="navegador" class="contanier invisible ">
             <nav  class="navbar  navbar-expand-lg navegador navbar-fixed-top fixed-top col col-12 bordes">
                 <a class="navbar-brand col-2 offset-1" href="{{ url('/') }}">
-                    <img src="<?php echo $rutaImg ?>" width="50%" height="50%" class="d-inline-block align-top" alt="">
+                    <img src="<?php echo $rutaImg ?>" width="40%" height="40%" class="d-inline-block align-top" alt="">
                     
                 </a>
                 <ol id="breadcrumb" class="invisible breadcrumb">

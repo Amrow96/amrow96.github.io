@@ -2521,17 +2521,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2656,14 +2645,30 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         mediaElement.onended = function () {
           // console.log("estem mostrant el src del video acabat", contenido.getAttribute("src"));
-          if (contenido.getAttribute("src") === ("resources/video/dam.mp4" || false)) {
+          if (contenido.getAttribute("src") === "resources/video/dam.mp4") {
             //Si el video ve dels cicles mostrem boto twiter
-            var btnTwitter = document.getElementById("btnTwitter");
-            btnTwitter.setAttribute("class", "visible btn-primary btn  mt-auto mb-auto");
+            var btnTwitter = document.createElement("BUTTON");
+            btnTwitter.setAttribute("class", "btn-primary btn ");
+            btnTwitter.setAttribute("href", "https://twitter.com/PauTrompeta_Dev");
+            btnTwitter.innerText = "Twitter";
+            var padre = document.getElementById("about");
+            padre.appendChild(btnTwitter);
+          } else if (contenido.getAttribute("src") === "resources/video/daw.mp4") {
+            //Si el video ve dels cicles mostrem boto twiter
+            var btnTwitter = document.createElement("BUTTON");
+            btnTwitter.setAttribute("class", "btn-primary btn");
+            btnTwitter.setAttribute("href", "https://twitter.com/PauTrompeta_Dev");
+            btnTwitter.innerText = "Twitter";
+            var padre = document.getElementById("about");
+            padre.appendChild(btnTwitter);
           } else if (contenido.getAttribute("src") === "resources/video/musica.mp4") {
             //Si ve de musica mostrem boto insta;
-            var btnInsta = document.getElementById("btnInsta");
-            btnInsta.setAttribute("class", "visible btn-primary btn  mt-auto mb-auto");
+            var btnInsta = document.createElement("BUTTON");
+            btnInsta.setAttribute("class", "btn-primary btn ");
+            btnInsta.setAttribute("href", "https://www.instagram.com/kliuoficial/");
+            btnInsta.innerText = "Instagram";
+            var padre = document.getElementById("about");
+            padre.appendChild(btnInsta);
           }
         };
       }
@@ -82762,37 +82767,13 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "espaciadotop", attrs: { id: "about" } }, [
-        _c("div", { staticClass: "titulo mt-4" }, [
+        _c("div", { staticClass: "titulo mt-1" }, [
           _vm._v(_vm._s(_vm.textosMostrar[13].text))
         ]),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
         _c("div", { staticClass: "row d-flex justify-content-center" }, [
-          _c(
-            "a",
-            {
-              staticClass: "invisible btn-secondary btn",
-              attrs: {
-                id: "btnInsta",
-                href: "https://www.instagram.com/kliuoficial/"
-              }
-            },
-            [_vm._v("Instagram")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "invisible btn-secondary btn",
-              attrs: {
-                id: "btnTwitter",
-                href: "https://twitter.com/PauTrompeta_Dev"
-              }
-            },
-            [_vm._v("Twitter")]
-          ),
-          _vm._v(" "),
           _c(
             "video",
             {
@@ -82852,7 +82833,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "espaciadotop", attrs: { id: "analisis" } }, [
-        _c("div", { staticClass: "titulo mt-4" }, [
+        _c("div", { staticClass: "titulo mt-1" }, [
           _vm._v(_vm._s(_vm.textosMostrar[11].text))
         ]),
         _vm._v(" "),
@@ -82877,7 +82858,7 @@ var render = function() {
         "div",
         { staticClass: "espaciadotop mb-5", attrs: { id: "projectes" } },
         [
-          _c("div", { staticClass: "titulo mt-4" }, [
+          _c("div", { staticClass: "titulo mt-1" }, [
             _vm._v(_vm._s(_vm.textosMostrar[12].text))
           ]),
           _vm._v(" "),

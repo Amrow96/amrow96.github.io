@@ -30,20 +30,9 @@
       </div>
       <!-- Video -->
       <div id="about" class="espaciadotop">
-        <div class="titulo mt-4">{{ textosMostrar[13].text }}</div>
+        <div class="titulo mt-1">{{ textosMostrar[13].text }}</div>
         <hr />
         <div class="row d-flex justify-content-center">
-          <a
-            id="btnInsta"
-            class="invisible btn-secondary btn"
-            href="https://www.instagram.com/kliuoficial/"
-          >Instagram</a>
-          <a
-            id="btnTwitter"
-            class="invisible btn-secondary btn"
-            href="https://twitter.com/PauTrompeta_Dev"
-          >Twitter</a>
-
           <video
             id="videoPresentacio"
             class="col-12"
@@ -77,7 +66,7 @@
       </div>
       <!-- Dafo -->
       <div id="analisis" class="espaciadotop">
-        <div class="titulo mt-4">{{ textosMostrar[11].text }}</div>
+        <div class="titulo mt-1">{{ textosMostrar[11].text }}</div>
         <hr />
         <div class="text-center row">
           <div class="col">
@@ -88,7 +77,7 @@
       </div>
       <!-- Cards  -->
       <div id="projectes" class="espaciadotop mb-5">
-        <div class="titulo mt-4">{{ textosMostrar[12].text }}</div>
+        <div class="titulo mt-1">{{ textosMostrar[12].text }}</div>
         <hr />
         <div class="row">
           <div class="col col-12">
@@ -221,25 +210,43 @@ export default {
         //Mirem que s'hagui acabat el video
         mediaElement.onended = function() {
           // console.log("estem mostrant el src del video acabat", contenido.getAttribute("src"));
-          if (
-            contenido.getAttribute("src") ===
-            ("resources/video/dam.mp4" || "resources/video/daw.mp4")
+          if (contenido.getAttribute("src") === "resources/video/dam.mp4") {
+            //Si el video ve dels cicles mostrem boto twiter
+            var btnTwitter = document.createElement("BUTTON");
+            btnTwitter.setAttribute("class", "btn-primary btn ");
+            btnTwitter.setAttribute(
+              "href",
+              "https://twitter.com/PauTrompeta_Dev"
+            );
+            btnTwitter.innerText = "Twitter";
+            var padre = document.getElementById("about");
+            padre.appendChild(btnTwitter);
+          } else if (
+            contenido.getAttribute("src") === "resources/video/daw.mp4"
           ) {
             //Si el video ve dels cicles mostrem boto twiter
-            var btnTwitter = document.getElementById("btnTwitter");
+            var btnTwitter = document.createElement("BUTTON");
+            btnTwitter.setAttribute("class", "btn-primary btn");
             btnTwitter.setAttribute(
-              "class",
-              "visible btn-primary btn  mt-auto mb-auto"
+              "href",
+              "https://twitter.com/PauTrompeta_Dev"
             );
+            btnTwitter.innerText = "Twitter";
+            var padre = document.getElementById("about");
+            padre.appendChild(btnTwitter);
           } else if (
             contenido.getAttribute("src") === "resources/video/musica.mp4"
           ) {
             //Si ve de musica mostrem boto insta;
-            var btnInsta = document.getElementById("btnInsta");
+            var btnInsta = document.createElement("BUTTON");
+            btnInsta.setAttribute("class", "btn-primary btn ");
             btnInsta.setAttribute(
-              "class",
-              "visible btn-primary btn  mt-auto mb-auto"
+              "href",
+              "https://www.instagram.com/kliuoficial/"
             );
+            btnInsta.innerText = "Instagram";
+            var padre = document.getElementById("about");
+            padre.appendChild(btnInsta);
           }
         };
       }
