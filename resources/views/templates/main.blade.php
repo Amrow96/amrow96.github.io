@@ -29,6 +29,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>
         @yield('titulo')
     </title>
@@ -81,7 +82,7 @@
                                 Configuració
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item btn" @click="modificarIdioma('0')">Català</a>
+                                <a class="dropdown-item btn" @click="modificarIdioma(0)">Català</a>
                                 <a class="dropdown-item btn" @click="modificarIdioma(1)">Castellà</a>
                                 <a class="dropdown-item btn" @click="modificarIdioma(2)">Anglés</a>
                                 <div class="dropdown-divider"></div>

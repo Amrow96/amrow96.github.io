@@ -2525,6 +2525,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2561,16 +2568,58 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }, {
         referencia: "canviartema",
         numero: "34"
+      }, {
+        referencia: "analisis",
+        numero: "35"
+      }, {
+        referencia: "projecte",
+        numero: "36"
+      }, {
+        referencia: "about",
+        numero: "37"
       }],
       textosCat: [],
       textosCast: [],
       textosEng: [],
-      textosMostrar: [],
-      img: "",
-      direccioVideo: ""
+      textosMostrar: [{
+        referencia: "nompau",
+        text: "Pau Gonzàlez Martí"
+      }, {
+        referencia: "descripcio",
+        text: "Benvingut al meu portfolio personal."
+      }, {
+        referencia: "musica",
+        text: "Música"
+      }, {
+        referencia: "musicadesc",
+        text: "A part de la programació sóc músic, trompetista, i m'hi dedico de manera professional, ja que aquest any no podré fer gaires concerts et deixo aquí un petit recopilatori"
+      }, {
+        referencia: "dam",
+        text: "DAM"
+      }, {
+        referencia: "damdesc",
+        text: "Fent DAM vaig poder treballar amb un munt de llenguatges i frameworks com ara C#, C++, Java, Kotlin, SQL, Android Studio, .Net i de més. També vaig tenir una primera presa de contacte amb les APIs, Backend i en definitiva la programacio orientada a objectes."
+      }, {
+        referencia: "daw",
+        text: "DAW"
+      }, {
+        referencia: "dawdesc",
+        text: "Fent DAW he canviat de paradigma, guanyant un nou punt de vista i coneixent un munt d'eines noves, com Angular, Ionic, Laravel, PHP, Vue, Bootstrap i moltes altres, també ens hem enfocat en el disseny i psicologia del usuari i aquesta web es el resultat del que he aprés aqui."
+      }, {
+        referencia: "dafo",
+        text: "Com a punts forts, m'adapto ràpid a les situacions, treballo bé sota pressió i m'agrada el treball en equip, però per contra, tinc una forta autocritica i sóc molt perfeccionista"
+      }, {
+        referencia: "dafonom",
+        text: "DAFO"
+      }, {
+        referencia: "canviartema",
+        text: "Canviar Tema"
+      }],
+      direccioVideo: "resources/video/intro.mp4",
+      img: "resources/img/IsotipoCirculo.svg"
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     var _iterator = _createForOfIteratorHelper(this.paraules),
         _step;
 
@@ -2586,9 +2635,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
 
     this.imagen();
-  },
-  mounted: function mounted() {
     this.videoselector();
+    var cookiDate = new Date(2020, 11, 24);
+    document.cookie = "paginavisitada=; expires=" + cookiDate.toUTCString();
   },
   methods: {
     //Detectem quan estem veient el video i el reproduim
@@ -2596,10 +2645,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var going = _ref.going,
           direction = _ref.direction;
 
-      if (going === this.$waypointMap.GOING_IN) {
+      if (direction === this.$waypointMap.DIRECTION_TOP) {
         var mediaElement = document.getElementById("videoPresentacio");
-        var contenido = document.getElementById("contenidoVideo");
-        mediaElement.play(); //Mirem que s'hagui acabat el video
+        var contenido = document.getElementById("contenidoVideo"); //Només posarem play la primera vegada
+
+        if (mediaElement.currentTime == 0) {
+          mediaElement.play();
+        } //Mirem que s'hagui acabat el video
+
 
         mediaElement.onended = function () {
           // console.log("estem mostrant el src del video acabat", contenido.getAttribute("src"));
@@ -2651,9 +2704,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var me = this;
       axios.get("/textos/" + id.numero) //Busquem amb el me.paraules un element en concret a través del numero = id
       .then(function (response) {
-        var text = response.data.data; //cridar al metode que assigna els valors als arrays
-
-        me.assignarTextos(text, id);
+        //cridar al metode que assigna els valors als arrays
+        me.assignarTextos(response.data.data, id);
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -2664,40 +2716,44 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var me = this;
       var i = 0; //Busquem la posició en la que esta aquesta referencia
 
-      var trobat = false;
+      try {
+        var trobat = false;
 
-      if (!trobat) {
-        var _iterator2 = _createForOfIteratorHelper(me.paraules),
-            _step2;
+        if (!trobat) {
+          var _iterator2 = _createForOfIteratorHelper(me.paraules),
+              _step2;
 
-        try {
-          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-            var item = _step2.value;
+          try {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              var item = _step2.value;
 
-            if (item.referencia === id.referencia) {
-              //obtenim la posicio de la paraules buscada i setejar-la a la posició de la paraules per evitar problemes d'indexació al carregar
-              me.textosCat[i] = {
-                text: element.txtcat,
-                referencia: element.txtref
-              };
-              me.textosCast[i] = {
-                text: element.txtcast,
-                referencia: element.txtref
-              };
-              me.textosEng[i] = {
-                text: element.txteng,
-                referencia: element.txtref
-              };
-              trobat = true; //Comprovant per sortir del bucle
+              if (item.referencia === id.referencia) {
+                //obtenim la posicio de la paraules buscada i setejar-la a la posició de la paraules per evitar problemes d'indexació al carregar
+                me.textosCat[i] = {
+                  text: element.txtcat,
+                  referencia: element.txtref
+                };
+                me.textosCast[i] = {
+                  text: element.txtcast,
+                  referencia: element.txtref
+                };
+                me.textosEng[i] = {
+                  text: element.txteng,
+                  referencia: element.txtref
+                };
+                trobat = true; //Comprovant per sortir del bucle
+              }
+
+              i++;
             }
-
-            i++;
+          } catch (err) {
+            _iterator2.e(err);
+          } finally {
+            _iterator2.f();
           }
-        } catch (err) {
-          _iterator2.e(err);
-        } finally {
-          _iterator2.f();
         }
+      } catch (e) {
+        console.log("error capturat", e);
       }
 
       this.textosMostrar = []; //Modifiquem l'idioma amb el idioma que tenim guardat a la cookie
@@ -2736,8 +2792,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     // asignarem un video depenent de la cookie
     videoselector: function videoselector() {
       //detectem de quina pagina ve i mostrem un video en funció d'aquest
-      var element = null;
-      console.log("estem modificant el video");
+      var element = null; // console.log("estem modificant el video");
+
       var descripcio = "";
       var origen = this.getCookie("paginavisitada"); // console.log("estem mostrant la cookie", origen);
 
@@ -2758,7 +2814,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           break;
 
         default:
-          element = "intro.mp4";
+          element = "intro.mp4#t=0,60";
           descripcio = "Video presentació de qui soc i que es el que estas veient";
           break;
       } //Assignem una descripció adequada a cada video
@@ -82670,11 +82726,10 @@ var render = function() {
                       rawName: "v-waypoint",
                       value: {
                         active: true,
-                        callback: _vm.logo,
-                        options: _vm.intersectionOptions
+                        callback: _vm.logo
                       },
                       expression:
-                        "{\n                          active: true,\n                          callback: logo,\n                          options: intersectionOptions\n                      }"
+                        "{\n                          active: true,\n                          callback: logo,\n                      }"
                     }
                   ],
                   staticClass: "col-6",
@@ -82689,128 +82744,146 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "text-center row mt-3" }, [
               _c("div", { staticClass: "col" }, [
-                _c("h1", { staticClass: "titulo" }, [
-                  _vm._v(_vm._s(_vm.textosMostrar[0].text))
-                ]),
+                _vm.textosMostrar[0].text
+                  ? _c("h1", { staticClass: "titulo" }, [
+                      _vm._v(_vm._s(_vm.textosMostrar[0].text))
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("h2", { staticClass: "subtitulo" }, [
-                  _vm._v(_vm._s(_vm.textosMostrar[1].text))
-                ])
+                _vm.textosMostrar[1].text
+                  ? _c("h2", { staticClass: "subtitulo" }, [
+                      _vm._v(_vm._s(_vm.textosMostrar[1].text))
+                    ])
+                  : _vm._e()
               ])
             ])
           ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "espaciadotop", attrs: { id: "about" } }, [
+        _c("div", { staticClass: "titulo mt-4" }, [
+          _vm._v(_vm._s(_vm.textosMostrar[13].text))
         ]),
         _vm._v(" "),
-        _c("div", { attrs: { id: "about" } }, [
-          _c("div", { staticClass: "text-center row mt-3" }, [
-            _c("div", { staticClass: "row d-flex justify-content-center" }, [
-              _c(
-                "a",
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "row d-flex justify-content-center" }, [
+          _c(
+            "a",
+            {
+              staticClass: "invisible btn-secondary btn",
+              attrs: {
+                id: "btnInsta",
+                href: "https://www.instagram.com/kliuoficial/"
+              }
+            },
+            [_vm._v("Instagram")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "invisible btn-secondary btn",
+              attrs: {
+                id: "btnTwitter",
+                href: "https://twitter.com/PauTrompeta_Dev"
+              }
+            },
+            [_vm._v("Twitter")]
+          ),
+          _vm._v(" "),
+          _c(
+            "video",
+            {
+              directives: [
                 {
-                  staticClass: "invisible btn-secondary btn mt-auto mb-auto",
-                  attrs: {
-                    id: "btnInsta",
-                    href: "https://www.instagram.com/kliuoficial/"
-                  }
-                },
-                [_vm._v("Instagram")]
-              ),
+                  name: "waypoint",
+                  rawName: "v-waypoint",
+                  value: {
+                    active: true,
+                    callback: _vm.onWaypoint
+                  },
+                  expression:
+                    "{\n                          active: true,\n                          callback: onWaypoint,\n                      }"
+                }
+              ],
+              staticClass: "col-12",
+              attrs: { id: "videoPresentacio", controls: "" }
+            },
+            [
+              _c("source", {
+                attrs: {
+                  id: "contenidoVideo",
+                  src: _vm.direccioVideo,
+                  type: "video/mp4"
+                }
+              }),
               _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "invisible btn-secondary btn mt-auto mb-auto",
-                  attrs: {
-                    id: "btnTwitter",
-                    href: "https://twitter.com/PauTrompeta_Dev"
-                  }
-                },
-                [_vm._v("Twitter")]
-              ),
+              _c("track", {
+                attrs: {
+                  src: "resources/video/subtitulosCatala.vtt",
+                  kind: "subtitles",
+                  srclang: "cat",
+                  label: "Català"
+                }
+              }),
               _vm._v(" "),
-              _c(
-                "video",
-                {
-                  directives: [
-                    {
-                      name: "waypoint",
-                      rawName: "v-waypoint",
-                      value: {
-                        active: true,
-                        callback: _vm.onWaypoint,
-                        options: _vm.intersectionOptions
-                      },
-                      expression:
-                        "{\n                          active: true,\n                          callback: onWaypoint,\n                          options: intersectionOptions\n                      }"
-                    }
-                  ],
-                  staticClass: "col-12",
-                  attrs: { id: "videoPresentacio", controls: "" }
-                },
-                [
-                  _c("source", {
-                    attrs: {
-                      id: "contenidoVideo",
-                      src: _vm.direccioVideo,
-                      type: "video/mp4"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("track", {
-                    attrs: {
-                      src: "resources/video/subtitulosCatala.vtt",
-                      kind: "subtitles",
-                      srclang: "cat",
-                      label: "Català"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("track", {
-                    attrs: {
-                      src: "resources/video/subtitulosCastellano.vtt",
-                      kind: "subtitles",
-                      srclang: "es",
-                      label: "Castellano"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("track", {
-                    attrs: {
-                      src: "resources/video/subtitulosIngles.vtt",
-                      kind: "subtitles",
-                      srclang: "eng",
-                      label: "English"
-                    }
-                  })
-                ]
-              )
-            ])
-          ])
+              _c("track", {
+                attrs: {
+                  src: "resources/video/subtitulosCastellano.vtt",
+                  kind: "subtitles",
+                  srclang: "es",
+                  label: "Castellano"
+                }
+              }),
+              _vm._v(" "),
+              _c("track", {
+                attrs: {
+                  src: "resources/video/subtitulosIngles.vtt",
+                  kind: "subtitles",
+                  srclang: "eng",
+                  label: "English"
+                }
+              })
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "espaciadotop", attrs: { id: "analisis" } }, [
+        _c("div", { staticClass: "titulo mt-4" }, [
+          _vm._v(_vm._s(_vm.textosMostrar[11].text))
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "vh-100 d-flex justify-content-center",
-            attrs: { id: "analisis" }
-          },
-          [
-            _c("div", { staticClass: "alineamientoVertical" }, [
-              _c("div", { staticClass: "text-center row mt-3" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c("h1", { staticClass: "titulo" }, [
-                    _vm._v(_vm._s(_vm.textosMostrar[9].text))
-                  ]),
-                  _vm._v(" "),
-                  _c("h4", [_vm._v(_vm._s(_vm.textosMostrar[8].text))])
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-center row" }, [
+          _c("div", { staticClass: "col" }, [
+            _vm.textosMostrar[9].text
+              ? _c("h1", { staticClass: "titulo" }, [
+                  _vm._v(_vm._s(_vm.textosMostrar[9].text))
                 ])
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { attrs: { id: "projectes" } }, [
-          _c("div", { staticClass: "row alineamientoVertical" }, [
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.textosMostrar[8].text
+              ? _c("h4", [_vm._v(_vm._s(_vm.textosMostrar[8].text))])
+              : _vm._e()
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "espaciadotop mb-5", attrs: { id: "projectes" } },
+        [
+          _c("div", { staticClass: "titulo mt-4" }, [
+            _vm._v(_vm._s(_vm.textosMostrar[12].text))
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col col-12" }, [
               _c("div", { staticClass: "card-deck mb-3" }, [
                 _c(
@@ -82825,13 +82898,17 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "card-body" }, [
-                      _c("h5", { staticClass: "titulo" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[2].text))
-                      ]),
+                      _vm.textosMostrar[2].text
+                        ? _c("h5", { staticClass: "titulo" }, [
+                            _vm._v(_vm._s(_vm.textosMostrar[2].text))
+                          ])
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[3].text))
-                      ])
+                      _vm.textosMostrar[3].text
+                        ? _c("p", { staticClass: "card-text" }, [
+                            _vm._v(_vm._s(_vm.textosMostrar[3].text))
+                          ])
+                        : _vm._e()
                     ])
                   ]
                 ),
@@ -82848,13 +82925,17 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "card-body" }, [
-                      _c("h5", { staticClass: "titulo" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[4].text))
-                      ]),
+                      _vm.textosMostrar[4].text
+                        ? _c("h5", { staticClass: "titulo" }, [
+                            _vm._v(_vm._s(_vm.textosMostrar[4].text))
+                          ])
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[5].text))
-                      ])
+                      _vm.textosMostrar[5].text
+                        ? _c("p", { staticClass: "card-text" }, [
+                            _vm._v(_vm._s(_vm.textosMostrar[5].text))
+                          ])
+                        : _vm._e()
                     ])
                   ]
                 ),
@@ -82871,81 +82952,73 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "card-body" }, [
-                      _c("h5", { staticClass: "titulo" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[6].text))
-                      ]),
+                      _vm.textosMostrar[6].text
+                        ? _c("h5", { staticClass: "titulo" }, [
+                            _vm._v(_vm._s(_vm.textosMostrar[6].text))
+                          ])
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(_vm.textosMostrar[7].text))
-                      ])
+                      _vm.textosMostrar[7].text
+                        ? _c("p", { staticClass: "card-text" }, [
+                            _vm._v(_vm._s(_vm.textosMostrar[7].text))
+                          ])
+                        : _vm._e()
                     ])
                   ]
                 )
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "page-footer", attrs: { id: "social" } }, [
-          _c("div", { staticClass: "row alineamientoVertical" }, [
-            _c("div", { staticClass: "col col-12" }, [
-              _c("div", { staticClass: "row mb-4 col-12" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn col-3",
-                    attrs: { onclick: "canviarcolor()" }
-                  },
-                  [_vm._v(_vm._s(_vm.textosMostrar[10].text))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn col-3",
-                    on: {
-                      click: function($event) {
-                        return _vm.modificarIdioma(0)
-                      }
-                    }
-                  },
-                  [_vm._v("Traduir al Català")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn col-3",
-                    on: {
-                      click: function($event) {
-                        return _vm.modificarIdioma(1)
-                      }
-                    }
-                  },
-                  [_vm._v("Traducir al Castellano")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn col-3",
-                    on: {
-                      click: function($event) {
-                        return _vm.modificarIdioma(2)
-                      }
-                    }
-                  },
-                  [_vm._v("Translate to Anglés")]
-                )
-              ])
-            ])
-          ])
-        ])
-      ])
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0)
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12", attrs: { id: "social" } }, [
+      _c("div", { staticClass: "row col-8 offset-2" }, [
+        _c("div", { staticClass: "btn col-4" }, [
+          _c(
+            "a",
+            {
+              staticClass: "twitter",
+              attrs: { href: "https://twitter.com/pautrompeta" }
+            },
+            [_c("i", { staticClass: "fa fa-twitter" })]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "btn col-4" }, [
+          _c(
+            "a",
+            {
+              staticClass: "linkedin",
+              attrs: { href: "https://www.linkedin.com/in/pau-g-60268984/" }
+            },
+            [_c("i", { staticClass: "fa fa-linkedin" })]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "btn col-4" }, [
+          _c(
+            "a",
+            {
+              staticClass: "instagram",
+              attrs: { href: "https://instagram.com/pautrompeta" }
+            },
+            [_c("i", { staticClass: "fa fa-instagram" })]
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -95754,11 +95827,10 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["BootstrapVue"]);
 var app = new Vue({
   el: "#app",
   methods: {
+    //accedirem al metode de modificar idioma del component
     modificarIdioma: function modificarIdioma(valor) {
-      console.log("estem al modificar app amb el valor:");
       var component = "component";
       this.$refs[component].modificarIdioma(valor);
-      console.log("estem al modificar app amb el valor:", valor);
     }
   }
 });

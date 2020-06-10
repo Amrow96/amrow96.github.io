@@ -10,7 +10,7 @@
  */
 
 :root {
-    --blue: #4265FF;
+    --blue: #4265ff;
     --pink: #e83e8c;
 
     --red: #dc3545;
@@ -18,8 +18,8 @@
     --red50: #dc354580;
     --red25: #dc354540;
 
-    --yellow: #FFC519;
-    --gold: #B28500;
+    --yellow: #ffc519;
+    --gold: #b28500;
 
     --green: #28a745;
     --green25: #28a74540;
@@ -41,7 +41,6 @@
     --black25: #00000040;
     --black20: #00000033;
 
-
     --gray-dark: #343a40;
     --text: #212529;
 
@@ -60,8 +59,8 @@
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
 
-    --font-family-text: 'Crimson Text', serif;
-    --font-family-sans-serif: 'Josefin Sans', sans-serif;
+    --font-family-text: "Crimson Text", serif;
+    --font-family-sans-serif: "Josefin Sans", sans-serif;
 }
 
 *,
@@ -70,13 +69,40 @@
     box-sizing: border-box;
 }
 
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+
+hr {
+    background-color: var(--secondary);
+}
+
 .horizontal {
     display: inline-block;
 }
 
+.espaciadotop {
+    padding-top: 100px;
+}
+
+.espaciadobot {
+    padding-bottom: 100px;
+}
+
+.fondo {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
 .alineamientoVertical {
     transform: translateY(50%);
-
 }
 
 .navegador {
@@ -104,7 +130,6 @@
     background-image: url(../../resources/img/Columnas4.svg);
     background-size: 100%;
     background-repeat: repeat-y;
-
 }
 
 .democolor {
@@ -112,7 +137,7 @@
 }
 
 html {
-    font-family: 'Crimson Text', serif;
+    font-family: "Crimson Text", serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -261,7 +286,7 @@ pre,
 code,
 kbd,
 samp {
-    font-family: 'Crimson Text', serif;
+    font-family: "Crimson Text", serif;
     font-size: 1em;
 }
 
@@ -321,7 +346,7 @@ select,
 optgroup,
 textarea {
     margin: 0;
-    font-family: 'Crimson Text', serif;
+    font-family: "Crimson Text", serif;
     font-size: inherit;
     line-height: inherit;
 }
@@ -3689,7 +3714,7 @@ input[type="button"].btn-block {
 
 .dropdown-item:hover,
 .dropdown-item:focus {
-    color: var(--secondary);
+    color: var(--white);
     text-decoration: none;
     background-color: var(--light);
 }
@@ -3703,7 +3728,7 @@ input[type="button"].btn-block {
 
 .dropdown-item.disabled,
 .dropdown-item:disabled {
-    color: var(--secondary);
+    color: var(--white);
     pointer-events: none;
     background-color: transparent;
 }
@@ -5057,7 +5082,6 @@ input[type="button"].btn-block {
 
 .card:hover {
     background-color: var(--black75);
-
 }
 
 .card>hr {
@@ -5681,7 +5705,7 @@ a.badge-dark.focus {
 
 .alert-warning {
     color: #856404;
-    background-color: var(--white)3cd;
+    background-color: var(--white) 3cd;
     border-color: #ffeeba;
 }
 
@@ -6601,7 +6625,7 @@ a.close.disabled {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: 'Crimson Text', serif;
+    font-family: "Crimson Text", serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;

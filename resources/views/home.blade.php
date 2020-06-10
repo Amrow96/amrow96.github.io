@@ -7,4 +7,5 @@ Welcome
 <div class="container">
     <home ref="component"></home>
 </div>
+
 @endsection

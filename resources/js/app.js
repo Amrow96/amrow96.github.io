@@ -44,11 +44,10 @@ Vue.use(BootstrapVue);
 const app = new Vue({
     el: "#app",
     methods: {
+        //accedirem al metode de modificar idioma del component
         modificarIdioma(valor) {
-            console.log("estem al modificar app amb el valor:");
             var component = "component";
             this.$refs[component].modificarIdioma(valor);
-            console.log("estem al modificar app amb el valor:", valor);
         }
     }
 });
