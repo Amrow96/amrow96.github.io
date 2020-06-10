@@ -62,6 +62,7 @@
               label="English"
             />
           </video>
+          <div id="botonera" class="d-flex justify-content-center"></div>
         </div>
       </div>
       <!-- Dafo -->
@@ -219,7 +220,7 @@ export default {
               "https://twitter.com/PauTrompeta_Dev"
             );
             btnTwitter.innerText = "Twitter";
-            var padre = document.getElementById("about");
+            var padre = document.getElementById("botonera");
             padre.appendChild(btnTwitter);
           } else if (
             contenido.getAttribute("src") === "resources/video/daw.mp4"
@@ -232,7 +233,7 @@ export default {
               "https://twitter.com/PauTrompeta_Dev"
             );
             btnTwitter.innerText = "Twitter";
-            var padre = document.getElementById("about");
+            var padre = document.getElementById("botonera");
             padre.appendChild(btnTwitter);
           } else if (
             contenido.getAttribute("src") === "resources/video/musica.mp4"
@@ -245,8 +246,46 @@ export default {
               "https://www.instagram.com/kliuoficial/"
             );
             btnInsta.innerText = "Instagram";
-            var padre = document.getElementById("about");
+            var padre = document.getElementById("botonera");
             padre.appendChild(btnInsta);
+          }
+        };
+        var onetime = true;
+        mediaElement.ontimeupdate = function() {
+          if (mediaElement.currentTime >= 50) {
+            if (onetime === true) {
+              var padre = document.getElementById("botonera");
+              var videoA = document.createElement("BUTTON");
+              videoA.setAttribute("class", "btn-primary btn mr-auto ml-auto");
+              videoA.onclick = function() {
+                var mediaElement = document.getElementById("videoPresentacio");
+                mediaElement.currentTime = 251;
+                mediaElement.play();
+              };
+              videoA.innerText = "Sintaxis";
+
+              var videoB = document.createElement("BUTTON");
+              videoB.setAttribute("class", "btn-primary btn ");
+              videoB.onclick = function() {
+                var mediaElement = document.getElementById("videoPresentacio");
+                mediaElement.currentTime = 61;
+                mediaElement.play();
+                var vist = true;
+                mediaElement.ontimeupdate = function() {
+                  if (mediaElement.currentTime >= 251) {
+                    if (vist === true) {
+                      mediaElement.pause();
+                      vist = false;
+                    }
+                  }
+                };
+              };
+              videoB.innerText = "Historia";
+
+              padre.appendChild(videoA);
+              padre.appendChild(videoB);
+              onetime = false;
+            }
           }
         };
       }
