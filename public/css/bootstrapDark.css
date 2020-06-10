@@ -71,6 +71,46 @@
     box-sizing: border-box;
 }
 
+.botonVideo {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+}
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+
+hr {
+    background-color: var(--secondary);
+}
+
+.horizontal {
+    display: inline-block;
+}
+
+.espaciadotop {
+    padding-top: 100px;
+}
+
+.espaciadobot {
+    padding-bottom: 100px;
+}
+
+.fondo {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
 .alineamientoVertical {
     transform: translateY(50%);
 }
@@ -102,7 +142,6 @@
 .navegador {
     background-color: var(--black);
     border-color: var(--grey-dark);
-
 }
 
 .bordes {
@@ -123,7 +162,6 @@ html {
 
 .table {
     background-color: var(--dark-grey);
-
 }
 
 .table thead th {
@@ -2245,7 +2283,6 @@ pre code {
     color: var(--white);
     background-color: var(--black);
     background-clip: padding-box var(--gray-dark);
-    ;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -3522,10 +3559,10 @@ input[type="button"].btn-block {
     padding: 0.5rem 0;
     margin: 0.125rem 0 0;
     font-size: 1rem;
-    color: var(--text);
+    color: var(--white);
     text-align: left;
     list-style: none;
-    background-color: var(--black);
+    background-color: var(--dark-grey);
     background-clip: padding-box;
     border: 1px solid var(--black15);
     border-radius: 0.25rem;
@@ -3699,7 +3736,7 @@ input[type="button"].btn-block {
     color: var(--white);
     text-align: inherit;
     white-space: nowrap;
-    background-color: transparent;
+    background-color: var(--black);
     border: 0;
 }
 
@@ -3707,7 +3744,7 @@ input[type="button"].btn-block {
 .dropdown-item:focus {
     color: var(--secondary);
     text-decoration: none;
-    background-color: var(--black);
+    background-color: var(--gray-dark);
 }
 
 .dropdown-item.active,
@@ -3740,7 +3777,7 @@ input[type="button"].btn-block {
 .dropdown-item-text {
     display: block;
     padding: 0.25rem 1.5rem;
-    color: var(--text);
+    color: var(--white);
 }
 
 .btn-group,
@@ -5073,7 +5110,6 @@ input[type="button"].btn-block {
 
 .card:hover {
     background-color: var(--white75);
-
 }
 
 .card>hr {

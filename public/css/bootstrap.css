@@ -68,7 +68,13 @@
 *::after {
     box-sizing: border-box;
 }
-
+.botonVideo {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+}
 .fa {
     padding: 20px;
     font-size: 30px;
