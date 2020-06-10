@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::apiResource('usuaris','API\UsuarioController');
-Route::apiResource('textos','API\TextosController');
-Route::apiResource('imatges','API\ImagenesController');
+
+Route::apiResource('usuaris', 'API\UsuarioController');
+Route::apiResource('textos', 'API\TextosController');
+Route::apiResource('imatges', 'API\ImagenesController');
+Route::apiResource('habilidades', 'API\HabilidadesController');
+Route::apiResource('niveles', 'API\NivelesController');
+
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
