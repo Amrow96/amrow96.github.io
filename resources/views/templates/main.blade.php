@@ -53,9 +53,7 @@
                 </button>
                 <div class="collapse dropdown navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
+                    
                         {{-- VIDEO --}}
                         <li class="nav-item">
                             <a class="nav-link" href="#about">About</a>
@@ -63,11 +61,15 @@
                         <li class="nav-item">
                             {{-- DAFO --}}
                             <a class="nav-link" href="#analisis">Analisis</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skills">Skills</a>
                         </li>
                         <li class="nav-item">
                             {{-- Musica/DAW/DAM --}}
                             <a class="nav-link" href="#projectes">Projectes</a>
                         </li>
+                       
                         <li class="nav-item">
                             {{-- Xarxes Socials --}}
                             <a class="nav-link" href="#social">Social</a>

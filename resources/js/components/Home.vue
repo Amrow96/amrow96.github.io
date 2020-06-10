@@ -76,6 +76,22 @@
           </div>
         </div>
       </div>
+      <!-- Skills -->
+      <div id="skills" class="espaciadotop">
+        <div class="titulo mt-1">{{ textosMostrar[14].text }}</div>
+        <hr />
+        <div class="text-center row">
+          <div class="col card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" v-for="item in habilidades" :key="item.id_habilidad">
+                <ul>
+                  <li>{{ item.nombre }}, {{ item.id_nivel }} estrellas: {{niveles[item.id_nivel-1].descripcion}}</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <!-- Cards  -->
       <div id="projectes" class="espaciadotop mb-5">
         <div class="titulo mt-1">{{ textosMostrar[12].text }}</div>
@@ -147,8 +163,11 @@ export default {
         { referencia: "canviartema", numero: "34" },
         { referencia: "analisis", numero: "35" },
         { referencia: "projecte", numero: "36" },
-        { referencia: "about", numero: "37" }
+        { referencia: "about", numero: "37" },
+        { referencia: "skills", numero: "38" }
       ],
+      habilidades: [],
+      niveles: [],
       textosCat: [],
       textosCast: [],
       textosEng: [],
@@ -197,6 +216,8 @@ export default {
     this.videoselector();
     var cookiDate = new Date(2020, 11, 24);
     document.cookie = "paginavisitada=; expires=" + cookiDate.toUTCString();
+    this.capturarHabilitats();
+    this.capturarNivells();
   },
   methods: {
     //Detectem quan estem veient el video i el reproduim
@@ -322,6 +343,26 @@ export default {
         .then(function(response) {
           //cridar al metode que assigna els valors als arrays
           me.assignarTextos(response.data.data, id);
+        })
+        .catch(error => console.log(error));
+    },
+    capturarHabilitats() {
+      let me = this;
+      axios
+        .get("/habilidades/") //Busquem amb el me.paraules un element en concret a través del numero = id
+        .then(function(response) {
+          //cridar al metode que assigna els valors als arrays
+          me.habilidades = response.data.data;
+        })
+        .catch(error => console.log(error));
+    },
+    capturarNivells() {
+      let me = this;
+      axios
+        .get("/niveles/") //Busquem amb el me.paraules un element en concret a través del numero = id
+        .then(function(response) {
+          //cridar al metode que assigna els valors als arrays
+          me.niveles = response.data.data;
         })
         .catch(error => console.log(error));
     },
