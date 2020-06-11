@@ -11,4 +11,9 @@ class Niveles extends Model
     public $incrementing = true;
     protected $keyType = 'int';
     public $timestamps = false;
+    //Declaramos que la habilidad tiene muchos niveles
+    public function habilidades()
+    {
+        return $this->hasMany('App\Models\Niveles', 'id_nivel');
+    }
 }

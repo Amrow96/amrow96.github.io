@@ -13,8 +13,8 @@ class Habilidades extends Model
     public $timestamps = false;
 
     //Declaramos que la habilidad tiene muchos niveles
-    public function usuarios()
+    public function niveles()
     {
-        return $this->hasMany('App\Models\Niveles', 'id_nivel');
+        return $this->belongsTo('App\Models\Niveles', 'id_nivel');
     }
 }

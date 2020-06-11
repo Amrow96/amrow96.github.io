@@ -85,7 +85,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item" v-for="item in habilidades" :key="item.id_habilidad">
                 <ul>
-                  <li>{{ item.nombre }}, {{ item.id_nivel }} estrellas: {{niveles[item.id_nivel-1].descripcion}}</li>
+                  <li>{{ item.nombre }}: {{item.niveles.descripcion}} , {{ item.id_nivel }} ☆</li>
                 </ul>
               </li>
             </ul>
@@ -353,16 +353,6 @@ export default {
         .then(function(response) {
           //cridar al metode que assigna els valors als arrays
           me.habilidades = response.data.data;
-        })
-        .catch(error => console.log(error));
-    },
-    capturarNivells() {
-      let me = this;
-      axios
-        .get("/niveles/") //Busquem amb el me.paraules un element en concret a través del numero = id
-        .then(function(response) {
-          //cridar al metode que assigna els valors als arrays
-          me.niveles = response.data.data;
         })
         .catch(error => console.log(error));
     },

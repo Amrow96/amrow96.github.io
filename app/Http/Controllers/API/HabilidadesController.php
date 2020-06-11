@@ -19,7 +19,7 @@ class HabilidadesController extends Controller
     public function index()
     {
 
-        $habilidades = Habilidades::all();
+        $habilidades = Habilidades::with('niveles')->get();
 
         return new HabilidadesResource($habilidades);
     }

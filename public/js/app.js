@@ -2522,6 +2522,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2567,7 +2583,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }, {
         referencia: "about",
         numero: "37"
+      }, {
+        referencia: "skills",
+        numero: "38"
       }],
+      habilidades: [],
+      niveles: [],
       textosCat: [],
       textosCast: [],
       textosEng: [],
@@ -2628,6 +2649,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     this.videoselector();
     var cookiDate = new Date(2020, 11, 24);
     document.cookie = "paginavisitada=; expires=" + cookiDate.toUTCString();
+    this.capturarHabilitats();
+    this.capturarNivells();
   },
   methods: {
     //Detectem quan estem veient el video i el reproduim
@@ -2755,6 +2778,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       .then(function (response) {
         //cridar al metode que assigna els valors als arrays
         me.assignarTextos(response.data.data, id);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    capturarHabilitats: function capturarHabilitats() {
+      var me = this;
+      axios.get("/habilidades/") //Busquem amb el me.paraules un element en concret a través del numero = id
+      .then(function (response) {
+        //cridar al metode que assigna els valors als arrays
+        me.habilidades = response.data.data;
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -82899,6 +82932,44 @@ var render = function() {
             _vm.textosMostrar[8].text
               ? _c("h4", [_vm._v(_vm._s(_vm.textosMostrar[8].text))])
               : _vm._e()
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "espaciadotop", attrs: { id: "skills" } }, [
+        _c("div", { staticClass: "titulo mt-1" }, [
+          _vm._v(_vm._s(_vm.textosMostrar[14].text))
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-center row" }, [
+          _c("div", { staticClass: "col card" }, [
+            _c(
+              "ul",
+              { staticClass: "list-group list-group-flush" },
+              _vm._l(_vm.habilidades, function(item) {
+                return _c(
+                  "li",
+                  { key: item.id_habilidad, staticClass: "list-group-item" },
+                  [
+                    _c("ul", [
+                      _c("li", [
+                        _vm._v(
+                          _vm._s(item.nombre) +
+                            ": " +
+                            _vm._s(item.niveles.descripcion) +
+                            " , " +
+                            _vm._s(item.id_nivel) +
+                            " ☆"
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
           ])
         ])
       ]),
