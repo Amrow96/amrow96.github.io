@@ -82808,7 +82808,7 @@ var render = function() {
                         "{\n                          active: true,\n                          callback: logo,\n                      }"
                     }
                   ],
-                  staticClass: "col-6",
+                  staticClass: "col-6 btn",
                   attrs: {
                     onclick: "canviarcolor()",
                     src: _vm.img,

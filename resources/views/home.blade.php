@@ -1,7 +1,7 @@
 @extends('templates.main')
 
 @section('titulo')
-Welcome
+Portfolio - Pau Gonzalez Martí
 @endsection
 @section('principal')
 <div class="container">

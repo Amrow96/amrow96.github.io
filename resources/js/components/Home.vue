@@ -9,7 +9,7 @@
               <div class="col">
                 <img
                   onclick="canviarcolor()"
-                  class="col-6"
+                  class="col-6 btn"
                   :src="img"
                   alt="Isotipo personal"
                   v-waypoint="{
