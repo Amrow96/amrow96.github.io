@@ -82942,10 +82942,10 @@ var render = function() {
         _c("hr"),
         _vm._v(" "),
         _c("div", { staticClass: "text-center row" }, [
-          _c("div", { staticClass: "col card" }, [
+          _c("div", { staticClass: "col card border-0 mr-auto ml-auto" }, [
             _c(
               "ul",
-              { staticClass: "list-group list-group-flush" },
+              { staticClass: "list-group unstyled" },
               _vm._l(_vm.habilidades, function(item) {
                 return _c(
                   "li",

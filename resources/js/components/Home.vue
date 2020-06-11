@@ -81,8 +81,8 @@
         <div v-if="textosMostrar[14].text" class="titulo mt-1">{{ textosMostrar[14].text }}</div>
         <hr />
         <div class="text-center row">
-          <div class="col card">
-            <ul class="list-group list-group-flush">
+          <div class="col card border-0 mr-auto ml-auto">
+            <ul class="list-group unstyled">
               <li class="list-group-item" v-for="item in habilidades" :key="item.id_habilidad">
                 <ul>
                   <li>{{ item.nombre }}: {{item.niveles.descripcion}} , {{ item.id_nivel }} ☆</li>
