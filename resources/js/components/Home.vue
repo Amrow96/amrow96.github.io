@@ -67,7 +67,7 @@
       </div>
       <!-- Dafo -->
       <div id="analisis" class="espaciadotop">
-        <div class="titulo mt-1">{{ textosMostrar[11].text }}</div>
+        <div v-if="textosMostrar[11].text" class="titulo mt-1">{{ textosMostrar[11].text }}</div>
         <hr />
         <div class="text-center row">
           <div class="col">
@@ -78,7 +78,7 @@
       </div>
       <!-- Skills -->
       <div id="skills" class="espaciadotop">
-        <div class="titulo mt-1">{{ textosMostrar[14].text }}</div>
+        <div v-if="textosMostrar[14].text" class="titulo mt-1">{{ textosMostrar[14].text }}</div>
         <hr />
         <div class="text-center row">
           <div class="col card">
@@ -94,7 +94,7 @@
       </div>
       <!-- Cards  -->
       <div id="projectes" class="espaciadotop mb-5">
-        <div class="titulo mt-1">{{ textosMostrar[12].text }}</div>
+        <div v-if="textosMostrar[12].text" class="titulo mt-1">{{ textosMostrar[12].text }}</div>
         <hr />
         <div class="row">
           <div class="col col-12">
@@ -150,24 +150,23 @@ export default {
   data() {
     return {
       paraules: [
-        { referencia: "nompau", numero: "3" },
-        { referencia: "descripcio", numero: "6" },
-        { referencia: "musica", numero: "17" },
-        { referencia: "musicadesc", numero: "18" },
-        { referencia: "dam", numero: "13" },
-        { referencia: "damdesc", numero: "15" },
-        { referencia: "daw", numero: "14" },
-        { referencia: "dawdesc", numero: "16" },
-        { referencia: "dafo", numero: "30" },
-        { referencia: "dafonom", numero: "33" },
-        { referencia: "canviartema", numero: "34" },
-        { referencia: "analisis", numero: "35" },
-        { referencia: "projecte", numero: "36" },
-        { referencia: "about", numero: "37" },
-        { referencia: "skills", numero: "38" }
+        { referencia: "nompau", numero: 3 },
+        { referencia: "descripcio", numero: 6 },
+        { referencia: "musica", numero: 17 },
+        { referencia: "musicadesc", numero: 18 },
+        { referencia: "dam", numero: 13 },
+        { referencia: "damdesc", numero: 15 },
+        { referencia: "daw", numero: 14 },
+        { referencia: "dawdesc", numero: 16 },
+        { referencia: "dafo", numero: 30 },
+        { referencia: "dafonom", numero: 33 },
+        { referencia: "canviartema", numero: 34 },
+        { referencia: "analisis", numero: 35 },
+        { referencia: "projecte", numero: 36 },
+        { referencia: "about", numero: 37 },
+        { referencia: "skills", numero: 38 }
       ],
       habilidades: [],
-      niveles: [],
       textosCat: [],
       textosCast: [],
       textosEng: [],
@@ -209,15 +208,13 @@ export default {
   },
 
   mounted() {
-    for (let item of this.paraules) {
-      this.capturarTextos(item);
-    }
+    this.capturarTot();
+
     this.imagen();
     this.videoselector();
     var cookiDate = new Date(2020, 11, 24);
     document.cookie = "paginavisitada=; expires=" + cookiDate.toUTCString();
     this.capturarHabilitats();
-    this.capturarNivells();
   },
   methods: {
     //Detectem quan estem veient el video i el reproduim
@@ -336,16 +333,6 @@ export default {
       return "";
     },
     //Fem la petició a la api
-    capturarTextos(id) {
-      let me = this;
-      axios
-        .get("/textos/" + id.numero) //Busquem amb el me.paraules un element en concret a través del numero = id
-        .then(function(response) {
-          //cridar al metode que assigna els valors als arrays
-          me.assignarTextos(response.data.data, id);
-        })
-        .catch(error => console.log(error));
-    },
     capturarHabilitats() {
       let me = this;
       axios
@@ -355,45 +342,56 @@ export default {
           me.habilidades = response.data.data;
         })
         .catch(error => console.log(error));
+    }, //Fem la petició a la api
+    capturarTot() {
+      let me = this;
+      axios
+        .get("/textos/") //Busquem amb el me.paraules un element en concret a través del numero = id
+        .then(function(response) {
+          //cridar al metode que assigna els valors als arrays
+          me.assignarTextos(response.data.data);
+        })
+        .catch(error => console.log(error));
     },
     //Tractem el text per treballar-lo millor
-    assignarTextos(element, id) {
+    assignarTextos(element) {
       // pasem el resultat de la request i la referencia interna que hem utilitzat
+      console.log("capturem :", element);
+
       let me = this;
       let i = 0; //Busquem la posició en la que esta aquesta referencia
       try {
-        let trobat = false;
-        if (!trobat) {
-          for (let item of me.paraules) {
-            if (item.referencia === id.referencia) {
+        for (let item of me.paraules) {
+          for (let paraula of element) {
+            if (item.numero === paraula.idtxt) {
               //obtenim la posicio de la paraules buscada i setejar-la a la posició de la paraules per evitar problemes d'indexació al carregar
 
               me.textosCat[i] = {
-                text: element.txtcat,
-                referencia: element.txtref
+                text: paraula.txtcat,
+                referencia: paraula.txtref
               };
               me.textosCast[i] = {
-                text: element.txtcast,
-                referencia: element.txtref
+                text: paraula.txtcast,
+                referencia: paraula.txtref
               };
 
               me.textosEng[i] = {
-                text: element.txteng,
-                referencia: element.txtref
+                text: paraula.txteng,
+                referencia: paraula.txtref
               };
-              trobat = true; //Comprovant per sortir del bucle
+              i++;
             }
-
-            i++;
           }
         }
       } catch (e) {
         console.log("error capturat", e);
       }
       this.textosMostrar = [];
+
       //Modifiquem l'idioma amb el idioma que tenim guardat a la cookie
       this.modificarIdioma(Number.parseInt(this.getCookie("idioma")));
     },
+
     //Modifica l'idioma a partir d'un id
     modificarIdioma(id) {
       let me = this;

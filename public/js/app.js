@@ -2543,52 +2543,51 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     return {
       paraules: [{
         referencia: "nompau",
-        numero: "3"
+        numero: 3
       }, {
         referencia: "descripcio",
-        numero: "6"
+        numero: 6
       }, {
         referencia: "musica",
-        numero: "17"
+        numero: 17
       }, {
         referencia: "musicadesc",
-        numero: "18"
+        numero: 18
       }, {
         referencia: "dam",
-        numero: "13"
+        numero: 13
       }, {
         referencia: "damdesc",
-        numero: "15"
+        numero: 15
       }, {
         referencia: "daw",
-        numero: "14"
+        numero: 14
       }, {
         referencia: "dawdesc",
-        numero: "16"
+        numero: 16
       }, {
         referencia: "dafo",
-        numero: "30"
+        numero: 30
       }, {
         referencia: "dafonom",
-        numero: "33"
+        numero: 33
       }, {
         referencia: "canviartema",
-        numero: "34"
+        numero: 34
       }, {
         referencia: "analisis",
-        numero: "35"
+        numero: 35
       }, {
         referencia: "projecte",
-        numero: "36"
+        numero: 36
       }, {
         referencia: "about",
-        numero: "37"
+        numero: 37
       }, {
         referencia: "skills",
-        numero: "38"
+        numero: 38
       }],
       habilidades: [],
-      niveles: [],
       textosCat: [],
       textosCast: [],
       textosEng: [],
@@ -2631,26 +2630,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   mounted: function mounted() {
-    var _iterator = _createForOfIteratorHelper(this.paraules),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var item = _step.value;
-        this.capturarTextos(item);
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-
+    this.capturarTot();
     this.imagen();
     this.videoselector();
     var cookiDate = new Date(2020, 11, 24);
     document.cookie = "paginavisitada=; expires=" + cookiDate.toUTCString();
     this.capturarHabilitats();
-    this.capturarNivells();
   },
   methods: {
     //Detectem quan estem veient el video i el reproduim
@@ -2772,16 +2757,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return "";
     },
     //Fem la petició a la api
-    capturarTextos: function capturarTextos(id) {
-      var me = this;
-      axios.get("/textos/" + id.numero) //Busquem amb el me.paraules un element en concret a través del numero = id
-      .then(function (response) {
-        //cridar al metode que assigna els valors als arrays
-        me.assignarTextos(response.data.data, id);
-      })["catch"](function (error) {
-        return console.log(error);
-      });
-    },
     capturarHabilitats: function capturarHabilitats() {
       var me = this;
       axios.get("/habilidades/") //Busquem amb el me.paraules un element en concret a través del numero = id
@@ -2792,47 +2767,66 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         return console.log(error);
       });
     },
+    //Fem la petició a la api
+    capturarTot: function capturarTot() {
+      var me = this;
+      axios.get("/textos/") //Busquem amb el me.paraules un element en concret a través del numero = id
+      .then(function (response) {
+        //cridar al metode que assigna els valors als arrays
+        me.assignarTextos(response.data.data);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
     //Tractem el text per treballar-lo millor
-    assignarTextos: function assignarTextos(element, id) {
+    assignarTextos: function assignarTextos(element) {
       // pasem el resultat de la request i la referencia interna que hem utilitzat
+      console.log("capturem :", element);
       var me = this;
       var i = 0; //Busquem la posició en la que esta aquesta referencia
 
       try {
-        var trobat = false;
+        var _iterator = _createForOfIteratorHelper(me.paraules),
+            _step;
 
-        if (!trobat) {
-          var _iterator2 = _createForOfIteratorHelper(me.paraules),
-              _step2;
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var item = _step.value;
 
-          try {
-            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-              var item = _step2.value;
+            var _iterator2 = _createForOfIteratorHelper(element),
+                _step2;
 
-              if (item.referencia === id.referencia) {
-                //obtenim la posicio de la paraules buscada i setejar-la a la posició de la paraules per evitar problemes d'indexació al carregar
-                me.textosCat[i] = {
-                  text: element.txtcat,
-                  referencia: element.txtref
-                };
-                me.textosCast[i] = {
-                  text: element.txtcast,
-                  referencia: element.txtref
-                };
-                me.textosEng[i] = {
-                  text: element.txteng,
-                  referencia: element.txtref
-                };
-                trobat = true; //Comprovant per sortir del bucle
+            try {
+              for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+                var paraula = _step2.value;
+
+                if (item.numero === paraula.idtxt) {
+                  //obtenim la posicio de la paraules buscada i setejar-la a la posició de la paraules per evitar problemes d'indexació al carregar
+                  me.textosCat[i] = {
+                    text: paraula.txtcat,
+                    referencia: paraula.txtref
+                  };
+                  me.textosCast[i] = {
+                    text: paraula.txtcast,
+                    referencia: paraula.txtref
+                  };
+                  me.textosEng[i] = {
+                    text: paraula.txteng,
+                    referencia: paraula.txtref
+                  };
+                  i++;
+                }
               }
-
-              i++;
+            } catch (err) {
+              _iterator2.e(err);
+            } finally {
+              _iterator2.f();
             }
-          } catch (err) {
-            _iterator2.e(err);
-          } finally {
-            _iterator2.f();
           }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
         }
       } catch (e) {
         console.log("error capturat", e);
@@ -82915,9 +82909,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "espaciadotop", attrs: { id: "analisis" } }, [
-        _c("div", { staticClass: "titulo mt-1" }, [
-          _vm._v(_vm._s(_vm.textosMostrar[11].text))
-        ]),
+        _vm.textosMostrar[11].text
+          ? _c("div", { staticClass: "titulo mt-1" }, [
+              _vm._v(_vm._s(_vm.textosMostrar[11].text))
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
@@ -82937,9 +82933,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "espaciadotop", attrs: { id: "skills" } }, [
-        _c("div", { staticClass: "titulo mt-1" }, [
-          _vm._v(_vm._s(_vm.textosMostrar[14].text))
-        ]),
+        _vm.textosMostrar[14].text
+          ? _c("div", { staticClass: "titulo mt-1" }, [
+              _vm._v(_vm._s(_vm.textosMostrar[14].text))
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
@@ -82978,9 +82976,11 @@ var render = function() {
         "div",
         { staticClass: "espaciadotop mb-5", attrs: { id: "projectes" } },
         [
-          _c("div", { staticClass: "titulo mt-1" }, [
-            _vm._v(_vm._s(_vm.textosMostrar[12].text))
-          ]),
+          _vm.textosMostrar[12].text
+            ? _c("div", { staticClass: "titulo mt-1" }, [
+                _vm._v(_vm._s(_vm.textosMostrar[12].text))
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
