@@ -1,8 +1,8 @@
 <template>
   <main>
     <div class="row">
+      <!-- Isotip + intro -->
       <div class="col col-12 text-center">
-        <!-- Isotip + intro -->
         <div class="vh-100">
           <div class="alineamientoVertical">
             <div class="row">
@@ -80,8 +80,8 @@
       <div id="skills" class="espaciadotop">
         <div v-if="textosMostrar[14].text" class="titulo mt-1">{{ textosMostrar[14].text }}</div>
         <hr />
-        <div class="text-center row">
-          <div class="col card border-0 mr-auto ml-auto">
+        <div class="text-center mr-auto ml-auto row">
+          <div class="col card border-0">
             <ul class="list-group unstyled">
               <li class="list-group-item" v-for="item in habilidades" :key="item.id_habilidad">
                 <ul>

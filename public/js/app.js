@@ -82941,8 +82941,8 @@ var render = function() {
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
-        _c("div", { staticClass: "text-center row" }, [
-          _c("div", { staticClass: "col card border-0 mr-auto ml-auto" }, [
+        _c("div", { staticClass: "text-center mr-auto ml-auto row" }, [
+          _c("div", { staticClass: "col card border-0" }, [
             _c(
               "ul",
               { staticClass: "list-group unstyled" },
